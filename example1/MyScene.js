@@ -42,7 +42,7 @@ class MyScene extends CGFscene {
         this.scaleFactor = 1;
         this.displayBigTriangle2 = true;
         this.displaySmallTriangle2 = true;
-        //this.displayCube = true;
+        this.displayCube = true;
 
     }
     initLights() {

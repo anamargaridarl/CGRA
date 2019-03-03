@@ -38,10 +38,13 @@ class MyCube extends CGFobject {
 
 	displayBase(Scene)
 	{
+		if(Scene.displayCube)
+		{
 		Scene.pushMatrix();
         Scene.translate(0,0,-0.5);
         Scene.myCube.display();
-        Scene.popMatrix();
+		Scene.popMatrix();
+		}
 	}
 
 }
