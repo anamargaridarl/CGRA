@@ -32,6 +32,8 @@ class MyInterface extends CGFinterface {
 
         this.gui.add(this.scene, 'displayBigTriangle').name('Display Big Triangle');
 
+        this.gui.add(this.scene, 'displayBigTriangle2').name('Display Big Triangle 2');
+
         return true;
     }
 }
