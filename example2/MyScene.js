@@ -27,12 +27,6 @@ class MyScene extends CGFscene {
         this.pyramid = new MyPyramid(this, 3, 1);
         this.cube = new MyCube(this);
 
-        this.diamond = new MyDiamond(this);
-        this.triangle = new MyTriangle(this);
-        this.parallelogram = new MyParallelogram(this);
-        this.smallTriangle = new MyTriangleSmall(this);
-        this.bigTriangle = new MyTriangleBig(this);
-        this.bigTriangle2 = new MyTriangleBig(this);
         this.tangram = new MyTangram(this);
 
         this.objects = [this.plane, this.pyramid, this.cone, this.cube, this.tangram];
@@ -41,13 +35,12 @@ class MyScene extends CGFscene {
         this.objectIDs = { 'Plane': 0, 'Pyramid': 1, 'Cone': 2, 'Cube': 3, 'Tangram': 4};
 
         //Other variables connected to MyInterface
-        this.selectedObject = 0;
+        this.selectedObject = 4;
         this.selectedMaterial = 0;
         this.displayAxis = true;
-        this.displayNormals = false;
+        this.displayNormals = true;
         this.objectComplexity = 0.5;
-        this.scaleFactor = 2.0;
-
+        this.scaleFactor = 0.5;
 
     }
     initLights() {
@@ -193,11 +186,7 @@ class MyScene extends CGFscene {
         else
             this.objects[this.selectedObject].disableNormalViz();
 
-        if (this.selectedObject == 4) {
-            this.objects[this.selectedObject].display(this);
-        } else {
-            this.objects[this.selectedObject].display();
-        }
+        this.objects[this.selectedObject].display();
         
         this.popMatrix();
         // ---- END Primitive drawing section
