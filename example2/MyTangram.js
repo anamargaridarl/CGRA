@@ -9,7 +9,7 @@ class MyTangram extends CGFobject {
         this.parallelogram = new MyParallelogram(this.current_scene);
         this.smallTriangle = new MyTriangleSmall(this.current_scene);
         this.bigTriangle = new MyTriangleBig(this.current_scene);
-        this.bigTriangle2 = new MyTriangleBig(this.current_scene);
+    
 
         // this.initBuffers()
     }
@@ -26,9 +26,11 @@ class MyTangram extends CGFobject {
             0.0, 0.0, 1, 0.0,
             -Math.cos(Math.PI / 4), 2 + Math.sqrt(2) / 2, 0.0, 1.0];
 
+    
         this.current_scene.pushMatrix();
         this.current_scene.multMatrix(tDiam);
         this.current_scene.multMatrix(rDiam);
+        this.current_scene.customMaterial.apply();
         this.diamond.display();
         this.current_scene.popMatrix();
 
@@ -36,7 +38,7 @@ class MyTangram extends CGFobject {
         this.current_scene.translate(1.83, - (Math.sqrt(8) - 1), 0);
         this.triangle.display();
         this.current_scene.popMatrix();
-
+        
         this.current_scene.pushMatrix();
         this.current_scene.translate(0, 1, 0);
         this.smallTriangle.display();
@@ -46,6 +48,7 @@ class MyTangram extends CGFobject {
         this.current_scene.translate(0.83, - (Math.sqrt(8) - 1), 0);
         this.smallTriangle.display();
         this.current_scene.popMatrix();
+        
 
         this.current_scene.pushMatrix();
         this.current_scene.translate(Math.sqrt(8) / 2, Math.sqrt(8) / 2, 0);
@@ -53,11 +56,13 @@ class MyTangram extends CGFobject {
         this.bigTriangle.display();
         this.current_scene.popMatrix();
 
+
         this.current_scene.pushMatrix();
         this.current_scene.translate(Math.sqrt(8) / 2, - (Math.sqrt(8) / 2), 0);
         this.current_scene.rotate(-(Math.PI / 2 + Math.PI / 4), 0, 0, 1);
-        this.bigTriangle2.display();
+        this.bigTriangle.display();
         this.current_scene.popMatrix();
+
 
         this.current_scene.pushMatrix();
         this.current_scene.translate(-Math.SQRT1_2, 0, 0);
@@ -66,6 +71,7 @@ class MyTangram extends CGFobject {
         this.current_scene.rotate(3 * Math.PI / 4, 0, 0, 1);
         this.parallelogram.display();
         this.current_scene.popMatrix();
+       
     }
     /*   initBuffers() {
            /*this.vertices = []
@@ -88,7 +94,6 @@ class MyTangram extends CGFobject {
         this.parallelogram.enableNormalViz();
         this.smallTriangle.enableNormalViz();
         this.bigTriangle.enableNormalViz();
-        this.bigTriangle2.enableNormalViz();
     }
 
     disableNormalViz()
@@ -98,6 +103,5 @@ class MyTangram extends CGFobject {
         this.parallelogram.disableNormalViz();
         this.smallTriangle.disableNormalViz();
         this.bigTriangle.disableNormalViz();
-        this.bigTriangle2.disableNormalViz();
     }
 }
