@@ -1,7 +1,7 @@
 class MyTangram extends CGFobject {
     constructor(scene) {
         super(scene);
-        
+
         this.current_scene = scene;
 
         this.diamond = new MyDiamond(this.current_scene);
@@ -11,11 +11,11 @@ class MyTangram extends CGFobject {
         this.bigTriangle = new MyTriangleBig(this.current_scene);
         this.bigTriangle2 = new MyTriangleBig(this.current_scene);
 
-        this.initBuffers()
+        // this.initBuffers()
     }
 
-    display(){
-        
+    display() {
+
         var rDiam = [Math.cos(Math.PI / 4), Math.cos(Math.PI / 4), 0.0, 0.0,
         -Math.cos(Math.PI / 4), Math.cos(Math.PI / 4), 0.0, 0.0,
             0.0, 0.0, 1, 0.0,
@@ -66,18 +66,37 @@ class MyTangram extends CGFobject {
         this.parallelogram.display();
         this.current_scene.popMatrix();
     }
-    initBuffers() {
-        this.vertices = []
-        this.indices = []
-        this.normals = []
-        this.vertices = this.vertices.concat(this.diamond.vertices, this.triangle.vertices, this.parallelogram.vertices, this.smallTriangle.vertices, this.bigTriangle.vertices, this.bigTriangle2.vertices)
-        this.indices = this.indices.concat(this.diamond.indices, this.triangle.indices, this.parallelogram.indices, this.smallTriangle.indices, this.bigTriangle.indices, this.bigTriangle2.indices)
-        this.normals = this.normals.concat(this.diamond.normals, this.triangle.normals, this.parallelogram.normals, this.smallTriangle.normals, this.bigTriangle.normals, this.bigTriangle2.normals)
-        
-        this.primitiveType = this.scene.gl.TRIANGLES;
-		this.initGLBuffers();
+    /*   initBuffers() {
+           /*this.vertices = []
+           this.indices = []
+           this.normals = []
+           this.vertices = this.vertices.concat(this.diamond.vertices, this.triangle.vertices, this.parallelogram.vertices, this.smallTriangle.vertices, this.bigTriangle.vertices, this.bigTriangle2.vertices)
+           this.indices = this.indices.concat(this.diamond.indices, this.triangle.indices, this.parallelogram.indices, this.smallTriangle.indices, this.bigTriangle.indices, this.bigTriangle2.indices)
+           this.normals = this.normals.concat(this.diamond.normals, this.triangle.normals, this.parallelogram.normals, this.smallTriangle.normals, this.bigTriangle.normals, this.bigTriangle2.normals)
+           
+           this.primitiveType = this.scene.gl.TRIANGLES;
+           this.initGLBuffers();
+       }
+       updateBuffers(complexity) {
+           this.complexity = complexity;
+       }
+       */
+    enableNormalViz() {
+        this.diamond.enableNormalViz();
+        this.triangle.enableNormalViz();
+        this.parallelogram.enableNormalViz();
+        this.smallTriangle.enableNormalViz();
+        this.bigTriangle.enableNormalViz();
+        this.bigTriangle2.enableNormalViz();
     }
-    updateBuffers(complexity) {
-        this.complexity = complexity;
+
+    disableNormalViz()
+    {
+        this.diamond.disableNormalViz();
+        this.triangle.disableNormalViz();
+        this.parallelogram.disableNormalViz();
+        this.smallTriangle.disableNormalViz();
+        this.bigTriangle.disableNormalViz();
+        this.bigTriangle2.disableNormalViz();
     }
 }
