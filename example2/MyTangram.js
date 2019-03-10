@@ -67,9 +67,12 @@ class MyTangram extends CGFobject {
         this.current_scene.popMatrix();
     }
     initBuffers() {
-        this.vertices = this.diamond.vertices.concat(this.triangle.vertices, this.parallelogram.vertices, this.smallTriangle.vertices, this.bigTriangle.vertices, this.bigTriangle2.vertices)
-        this.indices = this.diamond.indices.concat(this.triangle.indices, this.parallelogram.indices, this.smallTriangle.indices, this.bigTriangle.indices, this.bigTriangle2.indices)
-        this.normals = this.diamond.normals.concat(this.triangle.normals, this.parallelogram.normals, this.smallTriangle.normals, this.bigTriangle.normals, this.bigTriangle2.normals)
+        this.vertices = []
+        this.indices = []
+        this.normals = []
+        this.vertices = this.vertices.concat(this.diamond.vertices, this.triangle.vertices, this.parallelogram.vertices, this.smallTriangle.vertices, this.bigTriangle.vertices, this.bigTriangle2.vertices)
+        this.indices = this.indices.concat(this.diamond.indices, this.triangle.indices, this.parallelogram.indices, this.smallTriangle.indices, this.bigTriangle.indices, this.bigTriangle2.indices)
+        this.normals = this.normals.concat(this.diamond.normals, this.triangle.normals, this.parallelogram.normals, this.smallTriangle.normals, this.bigTriangle.normals, this.bigTriangle2.normals)
         
         this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
