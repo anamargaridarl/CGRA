@@ -174,7 +174,6 @@ class MyScene extends CGFscene {
             this.axis.display();
 
         // ---- BEGIN Primitive drawing section
-
         this.materials[this.selectedMaterial].apply();
 
         this.pushMatrix();
