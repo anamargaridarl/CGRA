@@ -13,37 +13,37 @@ class MyTangram extends CGFobject {
 
         this.material_diamond = new CGFappearance(scene)
         this.material_diamond.setSpecular(1, 1, 1, 1)
-        this.material_diamond.setDiffuse(0, 1, 0, 1)
+        // this.material_diamond.setDiffuse(0, 1, 0, 1)
         this.material_diamond.setAmbient(0, 1, 0, 1)
 
         this.material_small_triangle = new CGFappearance(scene)
         this.material_small_triangle.setSpecular(1, 1, 1, 1)
-        this.material_small_triangle.setDiffuse(169/255, 79/255, 193/255, 1)
+        // this.material_small_triangle.setDiffuse(169/255, 79/255, 193/255, 1)
         this.material_small_triangle.setAmbient(169/255, 79/255, 193/255, 1)
 
         this.material_small_triangle2 = new CGFappearance(scene)
         this.material_small_triangle2.setSpecular(1, 1, 1, 1)
-        this.material_small_triangle2.setDiffuse(1, 0, 0, 1)
+        // this.material_small_triangle2.setDiffuse(1, 0, 0, 1)
         this.material_small_triangle2.setAmbient(1, 0, 0, 1)
 
         this.material_parallelogram = new CGFappearance(scene)
         this.material_parallelogram.setSpecular(1, 1, 1, 1)
-        this.material_parallelogram.setDiffuse(1, 1, 0, 1)
+        // this.material_parallelogram.setDiffuse(1, 1, 0, 1)
         this.material_parallelogram.setAmbient(1, 1, 0, 1)
 
         this.material_triangle = new CGFappearance(scene)
         this.material_triangle.setSpecular(1, 1, 1, 1)
-        this.material_triangle.setDiffuse(1, 156/255, 208/255, 1)
+        // this.material_triangle.setDiffuse(1, 156/255, 208/255, 1)
         this.material_triangle.setAmbient(1, 156/255, 208/255, 1)
 
         this.material_big_triangle = new CGFappearance(scene)
         this.material_big_triangle.setSpecular(1, 1, 1, 1)
-        this.material_big_triangle.setDiffuse(1, 156/255, 0, 1)
+        // this.material_big_triangle.setDiffuse(1, 156/255, 0, 1)
         this.material_big_triangle.setAmbient(1, 156/255, 0, 1)
 
         this.material_big_triangle2 = new CGFappearance(scene)
         this.material_big_triangle2.setSpecular(1, 1, 1, 1)
-        this.material_big_triangle2.setDiffuse(0, 155/255, 1, 1)
+        // this.material_big_triangle2.setDiffuse(0, 155/255, 1, 1)
         this.material_big_triangle2.setAmbient(0, 155/255, 1, 1)
     }
 
