@@ -59,11 +59,12 @@ class MyTangram extends CGFobject {
             0.0, 0.0, 1, 0.0,
             -Math.cos(Math.PI / 4), 2 + Math.sqrt(2) / 2, 0.0, 1.0];
             
+
+    //this.material_diamond.apply()   
         this.current_scene.customMaterial.apply()
         this.current_scene.pushMatrix();
         this.current_scene.multMatrix(tDiam);
         this.current_scene.multMatrix(rDiam);
-        this.current_scene.customMaterial.apply();
         this.diamond.display();
         this.current_scene.popMatrix();
         
