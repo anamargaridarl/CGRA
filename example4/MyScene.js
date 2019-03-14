@@ -125,8 +125,10 @@ class MyScene extends CGFscene {
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-        if (this.displayQuad)
-            this.quad.display();
+       // if (this.displayQuad)
+         //   this.quad.display();
+
+            this.tangram.display();
 
         // ---- END Primitive drawing section
     }
