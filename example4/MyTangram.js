@@ -12,9 +12,9 @@ class MyTangram extends CGFobject {
         this.bigTriangle2 = new MyTriangleBig(scene);
 
         this.material_diamond = new CGFappearance(scene)
-        this.material_diamond.setSpecular(0, 1, 0, 1)
-        this.material_diamond.setDiffuse(0, 0.25, 0, 0.25)
-        this.material_diamond.setAmbient(0, 0.25, 0, 0.25)
+        //this.material_diamond.setSpecular(0, 1, 0, 1)
+       // this.material_diamond.setDiffuse(0, 0.25, 0, 0.25)
+        //this.material_diamond.setAmbient(0, 0.25, 0, 0.25)
         this.material_diamond.loadTexture('images/tangram.png');
         this.material_diamond.setTextureWrap('REPEAT', 'REPEAT');
       
