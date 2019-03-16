@@ -1,6 +1,12 @@
 class MyTriangleBig extends CGFobject {
-	constructor(scene) {
+	constructor(scene,a1,a2,b1,b2,c1,c2) {
 		super(scene);
+		this.texCoords=[
+			a1,a2,
+			b1,b2,
+			c1,c2
+			];
+		
 		this.initBuffers();
 	}
 	initBuffers() {
