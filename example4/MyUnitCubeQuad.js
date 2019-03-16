@@ -10,18 +10,48 @@ class MyUnitCubeQuad extends CGFobject {
         
         this.current_scene = scene
 
-        this.bottom = new MyQuad(scene)
-        this.upper = new MyQuad(scene)
         this.square1 = new MyQuad(scene)
         this.square2 = new MyQuad(scene)
         this.square3 = new MyQuad(scene)
         this.square4 = new MyQuad(scene)
+        this.square5 = new MyQuad(scene)
+        this.square6 = new MyQuad(scene)
 
 		if (coords != undefined)
 			this.updateTexCoords(coords);
     }
     
     display() {
-        this.bottom.display()
+        this.current_scene.pushMatrix()
+        this.current_scene.rotate(Math.PI/2, 1, 0, 0)
+        this.current_scene.translate(0,0,-0.5)
+        this.square1.display()
+        
+        this.current_scene.translate(0, 0, 1)
+        this.square1.display()
+        this.current_scene.popMatrix()
+
+        
+        this.current_scene.pushMatrix()
+        this.current_scene.translate(0, 0, 0.5)
+        this.square2.display()
+        
+        this.current_scene.translate(0, 0, -1)
+        this.square2.display()
+        this.current_scene.popMatrix()
+
+        
+        this.current_scene.pushMatrix()
+        this.current_scene.rotate(Math.PI/2, 0, 1, 0)
+        this.current_scene.translate(0, 0, 0.5)
+        this.square3.display()
+
+        this.current_scene.translate(0, 0, -1)
+        this.square3.display()
+        this.scene.popMatrix()
+
+        this.current_scene.pushMatrix()
+        this.square1.display()
+        this.current_scene.popMatrix()
     }
 }
