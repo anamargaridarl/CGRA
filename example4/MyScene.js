@@ -43,6 +43,10 @@ class MyScene extends CGFscene {
         this.texture2 = new CGFtexture(this, 'images/floor.png');
         this.texture3 = new CGFtexture(this, 'images/window.jpg');
         this.texture4 = new CGFtexture(this, 'images/tangram.png');
+
+        this.mine_side = new CGFtexture(this, 'images/mineSide.png')
+        this.mine_bottom = new CGFtexture(this, 'images/mineBottom.png')
+        this.mine_top = new CGFtexture(this, 'images/mineTop.png')
         //-------
 
         //-------Objects connected to MyInterface
