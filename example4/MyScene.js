@@ -20,10 +20,12 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
         this.enableTextures(true);
-
+        
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.quad = new MyQuad(this);
+        
+        this.tangram = new MyTangram(this);
         this.quadCube = new MyUnitCubeQuad(this)
 
         //------ Applied Material
@@ -41,6 +43,10 @@ class MyScene extends CGFscene {
         this.texture2 = new CGFtexture(this, 'images/floor.png');
         this.texture3 = new CGFtexture(this, 'images/window.jpg');
         this.texture4 = new CGFtexture(this, 'images/tangram.png');
+
+        this.mine_side = new CGFtexture(this, 'images/mineSide.png')
+        this.mine_bottom = new CGFtexture(this, 'images/mineBottom.png')
+        this.mine_top = new CGFtexture(this, 'images/mineTop.png')
         //-------
 
         //-------Objects connected to MyInterface
@@ -51,6 +57,10 @@ class MyScene extends CGFscene {
         this.wrapS = 0;
         this.wrapT = 0;
 
+        this.objects = [this.quad, this.tangram, this.quadCube]
+        this.objectIDs = {'Plane': 0, 'Tangram': 1, 'Cube': 2}
+        this.selectedObject = 0;
+
         this.textures = [this.texture1, this.texture2, this.texture3, this.texture4];
         this.texCoords = [0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0];
         this.wrappingMethods = ['REPEAT', 'CLAMP_TO_EDGE', 'MIRRORED_REPEAT'];
@@ -59,8 +69,7 @@ class MyScene extends CGFscene {
         this.wrappingS = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
         this.wrappingT = { 'Repeat': 0, 'Clamp to edge': 1, 'Mirrored repeat': 2 };
 
-        this.tangram = new MyTangram(this);
-      }
+    }
 
     initLights() {
         this.lights[0].setPosition(5, 2, 5, 1);
@@ -125,11 +134,9 @@ class MyScene extends CGFscene {
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-       // if (this.displayQuad)
-         //   this.quad.display();
-
-            this.tangram.display();
-
+        if (this.displayQuad)
+            this.quad.display();
+        this.objects[this.selectedObject].display()
         // ---- END Primitive drawing section
     }
 }
