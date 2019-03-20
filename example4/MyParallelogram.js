@@ -13,8 +13,10 @@ class MyParallelogram extends CGFobject {
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
-			1, 2, 0,
-			1, 3, 2,
+			1,0,2,
+			3,1,2,
+			1,2,0,
+			3,2,1
 		];
 
 		this.normals = [
