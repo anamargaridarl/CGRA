@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.plane = new MyPlane(this, 5);
-        this.cone = new MyCone(this, 3, 1);
+        this.cone = new MyCone(this, 3, 10);
         this.pyramid = new MyPyramid(this, 3, 1);
         this.cube = new MyCube(this);
 
