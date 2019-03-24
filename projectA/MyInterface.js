@@ -16,6 +16,8 @@ class MyInterface extends CGFinterface {
         
         var obj = this;
 
+        //this.gui.add(this.scene, 'selectedObject', this.scene.objectIDs).name('Selected Object').onChange(this.scene.updateAppliedTexture.bind(this.scene));
+
         return true;
     }
 }
