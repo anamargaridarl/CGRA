@@ -23,7 +23,9 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.prism = new MyPrism(this, 5)
 
-        this.cylinder = new MyCylinder(this, 5);
+        this.cylinder = new MyCylinder(this, 20);
+        // constructor(scene, trunk_height, trunk_radius, tree_top_height, tree_top_radius, trunk_texture, tree_top_texture)
+        this.tree = new MyTree(this, 2, 1, 3, 2)
     
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
@@ -64,8 +66,10 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         // this.prism.display();
-        this.cylinder.enableNormalViz();
-        this.cylinder.display();
+        // this.cylinder.enableNormalViz();
+        // this.cylinder.display();
+
+        this.tree.display()
 
         // ---- END Primitive drawing section
     }
