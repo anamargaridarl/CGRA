@@ -27,8 +27,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.current_scene.translate(0, 0, 0.5)
 
         // Apply textures and display first square
-        this.current_scene.quadMaterial.setTexture(this.current_scene.mine_top)
-        this.current_scene.quadMaterial.apply()
+        //this.current_scene.quadMaterial.setTexture(this.current_scene.mine_top)
+        //this.current_scene.quadMaterial.apply()
         this.square1.display()
         
         // Apply transformations
@@ -37,8 +37,8 @@ class MyUnitCubeQuad extends CGFobject {
         this.current_scene.translate(0, 0, 0.5)
         
         // Apply textures and display second square
-        this.current_scene.quadMaterial.setTexture(this.current_scene.mine_bottom)
-        this.current_scene.quadMaterial.apply()
+        //this.current_scene.quadMaterial.setTexture(this.current_scene.mine_bottom)
+        //this.current_scene.quadMaterial.apply()
         this.square1.display()
 
         // Reset scene
@@ -46,8 +46,8 @@ class MyUnitCubeQuad extends CGFobject {
 
         // ---------------------------------------------------------------------
         // Similar to the first set of squares
-        this.current_scene.quadMaterial.setTexture(this.current_scene.mine_side)
-        this.current_scene.quadMaterial.apply()
+        //this.current_scene.quadMaterial.setTexture(this.current_scene.mine_side)
+        //this.current_scene.quadMaterial.apply()
 
         this.current_scene.pushMatrix()
         this.current_scene.translate(0, 0, 0.5)
