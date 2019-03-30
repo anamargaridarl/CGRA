@@ -24,8 +24,9 @@ class MyScene extends CGFscene {
         this.prism = new MyPrism(this, 5)
 
         this.cylinder = new MyCylinder(this, 20);
-        // constructor(scene, trunk_height, trunk_radius, tree_top_height, tree_top_radius, trunk_texture, tree_top_texture)
-        this.tree = new MyTree(this, 2, 1, 3, 2)
+
+        this.tree = new MyTree(this, 2, 1, 3, 2) // TODO: apply textures
+        this.group_patch = new MyTreeGroupPatch(this)
     
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
@@ -69,7 +70,8 @@ class MyScene extends CGFscene {
         // this.cylinder.enableNormalViz();
         // this.cylinder.display();
 
-        this.tree.display()
+        // this.tree.display()
+        this.group_patch.display()
 
         // ---- END Primitive drawing section
     }
