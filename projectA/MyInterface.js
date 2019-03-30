@@ -16,7 +16,7 @@ class MyInterface extends CGFinterface {
         
         var obj = this;
 
-        //this.gui.add(this.scene, 'selectedObject', this.scene.objectIDs).name('Selected Object').onChange(this.scene.updateAppliedTexture.bind(this.scene));
+        this.gui.add(this.scene, 'scaleFactor', 0.1, 10.0).name('Scale');
 
         return true;
     }
