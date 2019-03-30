@@ -9,15 +9,12 @@ class MyTreeGroupPatch extends CGFobject {
         this.offsets = []
 
         for (var i = 0; i < 9; ++i) {
-            this.trees.push(new MyTree(scene, 2, 2, 2, 2))
+            this.trees.push(new MyTree(scene, 2, 2, 2, 2)) // TODO: Change to other values to randomize a bit
             this.offsets.push([(Math.trunc((Math.random() * 10)) % 3) - 1, (Math.trunc((Math.random() * 10)) % 3) - 1])
         }
-
-        console.log(this.offsets)
     }
 
     display() {
-
         for (var i = 0; i < 9; i += 3) {
             this.scene.pushMatrix()
             this.scene.translate(0, 0, 5 * (i / 3))

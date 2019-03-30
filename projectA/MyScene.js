@@ -27,6 +27,7 @@ class MyScene extends CGFscene {
 
         this.tree = new MyTree(this, 2, 1, 3, 2) // TODO: apply textures
         this.group_patch = new MyTreeGroupPatch(this)
+        this.row_patch = new MyTreeRowPatch(this)
     
         this.house = new MyHouse(this);
 
@@ -76,7 +77,9 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cylinder.enableNormalViz();
         //this.cylinder.display();
-        this.house.display();
+        // this.house.display();
+        this.row_patch.display()
+        
         // ---- END Primitive drawing section
     }
 }

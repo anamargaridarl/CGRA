@@ -1,5 +1,5 @@
 /**
-* MyPrism
+* MyTree
 * @constructor
 */
 class MyTree extends CGFobject {
