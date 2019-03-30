@@ -10,7 +10,7 @@ class MyHouse extends CGFobject {
     this.column2 = new MyCylinder(scene,20);
     this.roof = new MyPyramid(scene,4,1);
     this.base = new MyUnitCubeQuad(scene);
-    this.door = new MyRectangle(this);
+    this.door = new MyRectangle(scene);
 
 
     }
