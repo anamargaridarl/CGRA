@@ -10,6 +10,7 @@ class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
+        this.enableTextures(true);
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -77,8 +78,8 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cylinder.enableNormalViz();
         //this.cylinder.display();
-        // this.house.display();
-        this.row_patch.display()
+         this.house.display();
+        //this.row_patch.display()
         
         // ---- END Primitive drawing section
     }

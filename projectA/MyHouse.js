@@ -15,10 +15,11 @@ class MyHouse extends CGFobject {
     this.material_house.loadTexture('images/walls.jpg');
     this.material_house.setTextureWrap('REPEAT', 'REPEAT');
 
-    /*this.material_roof = new CGFappearance(scene)
-    this.material_roof.loadTexture('images/tangram.png');
+    this.material_roof = new CGFappearance(scene)
+    this.material_roof.loadTexture('images/roof.jpg');
     this.material_roof.setTextureWrap('REPEAT', 'REPEAT');
 
+    /*
     this.material_collumns = new CGFappearance(scene)
     this.material_collumns.loadTexture('images/tangram.png');
     this.material_collumns.setTextureWrap('REPEAT', 'REPEAT');*/
@@ -27,6 +28,7 @@ class MyHouse extends CGFobject {
 
     display()
     {
+        this.material_roof.apply();
         this.myscene.pushMatrix();
         this.material_house.apply();
         this.myscene.scale(2,1,1)
@@ -36,6 +38,7 @@ class MyHouse extends CGFobject {
 
         
         this.myscene.pushMatrix();
+        this.material_roof.apply();
         this.myscene.translate(0,0.5,0.15);
         this.myscene.rotate(Math.PI /4,0,1,0);
         this.myscene.scale(1.5,0.5,1.5);
