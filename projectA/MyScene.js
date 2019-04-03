@@ -24,7 +24,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.prism = new MyPrism(this, 5)
 
-        this.cylinder = new MyCylinder(this, 20);
+        this.cylinder = new MyCylinder(this, 4);
 
         this.tree = new MyTree(this, 2, 1, 3, 2) // TODO: apply textures
         this.group_patch = new MyTreeGroupPatch(this)
