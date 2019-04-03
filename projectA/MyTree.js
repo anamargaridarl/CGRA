@@ -19,15 +19,25 @@ class MyTree extends CGFobject {
         if (this.tree_top_radius <= this.trunk_radius) {
             this.tree_top_radius = this.trunk_radius + 1
         }
+
+        this.trunk_material = new CGFappearance(scene)
+        this.trunk_material.loadTexture('images/trunk.jpg')
+        this.trunk_material.setTextureWrap('REPEAT', 'REPEAT')
+
+        this.tree_top_material = new CGFappearance(scene)
+        this.tree_top_material.loadTexture('images/treetop.jpg')
+        this.tree_top_material.setTextureWrap('REPEAT', 'REPEAT')
     }
 
     display() {
         this.current_scene.pushMatrix()
+        this.trunk_material.apply()
         this.current_scene.scale(this.trunk_radius, this.trunk_height, this.trunk_radius)
         this.trunk.display()
         this.current_scene.popMatrix()
 
         this.current_scene.pushMatrix()
+        this.tree_top_material.apply()
         this.current_scene.translate(0, this.trunk_height, 0)
         this.current_scene.scale(this.tree_top_radius, this.tree_top_height, this.tree_top_radius)
         this.top.display()
