@@ -12,11 +12,11 @@ class MyHouse extends CGFobject {
     //this.door = new MyRectangle(this);
 
     this.material_house = new CGFappearance(scene)
-    this.material_house.loadTexture('images/walls.jpg');
+    this.material_house.loadTexture('images/walls3.png');
     this.material_house.setTextureWrap('REPEAT', 'REPEAT');
 
     this.material_roof = new CGFappearance(scene)
-    this.material_roof.loadTexture('images/roof.jpg');
+    this.material_roof.loadTexture('images/roof3.jpg');
     this.material_roof.setTextureWrap('REPEAT', 'REPEAT');
 
     /*
