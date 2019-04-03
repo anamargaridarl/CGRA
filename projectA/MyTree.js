@@ -12,16 +12,13 @@ class MyTree extends CGFobject {
         this.top = new MyCone(scene, 8, 10)
 
         this.trunk_height = trunk_height
-        
-        if (trunk_radius < tree_top_radius)
-            this.trunk_radius = trunk_radius
-        else
-            this.trunk_radius = tree_top_radius - 1
-        
-        this.tree_top_radius = tree_top_radius
+        this.trunk_radius = trunk_radius
         this.tree_top_height = tree_top_height
-        this.trunk_texture = trunk_texture
-        this.tree_top_texture = tree_top_texture
+        this.tree_top_radius = tree_top_radius
+
+        if (this.tree_top_radius <= this.trunk_radius) {
+            this.tree_top_radius = this.trunk_radius + 1
+        }
     }
 
     display() {
