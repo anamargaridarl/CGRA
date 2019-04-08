@@ -10,7 +10,6 @@ class MyVoxelHill extends CGFobject {
     }
 
     display(y, level) {
-        //this.nbcubes = (level * level) - ((level - 1) * (level - 1));
         var y  = 0;
         var x = 0;
         var z = 0;
