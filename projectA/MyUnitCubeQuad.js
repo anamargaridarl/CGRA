@@ -35,6 +35,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         // Apply textures and display first square
         this.top.apply();
+        this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
         this.square1.display()
 
         // Apply transformations
@@ -44,6 +45,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         // Apply textures and display second square
         this.bottom.apply();
+        this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
         this.square1.display()
 
         // Reset scene
@@ -53,6 +55,7 @@ class MyUnitCubeQuad extends CGFobject {
         // Similar to the first set of squares
        
         this.side.apply();
+        this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
         this.current_scene.pushMatrix()
         this.current_scene.translate(0, 0, 0.5)
         this.square2.display()
