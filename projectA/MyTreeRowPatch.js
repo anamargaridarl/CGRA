@@ -10,7 +10,7 @@ class MyTreeRowPatch extends CGFobject {
         this.offsets = []
 
         for (var i = 0; i < 6; ++i) {
-            this.trees.push(new MyTree(scene, 2, 2, 2, 2)) // TODO: Change to other values to randomize a bit
+            this.trees.push(new MyTree(scene, 1.5, 0.3, 1.5, 1.2)) // TODO: Change to other values to randomize a bit
             this.offsets.push([(Math.trunc((Math.random() * 10)) % 3) - 1, (Math.trunc((Math.random() * 10)) % 3) - 1])
         }
     }

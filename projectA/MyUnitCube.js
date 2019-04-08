@@ -1,4 +1,4 @@
-class MyCube extends CGFobject {
+class MyUnitCube extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();

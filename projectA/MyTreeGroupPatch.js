@@ -10,10 +10,10 @@ class MyTreeGroupPatch extends CGFobject {
 
         for (var i = 0; i < 9; ++i) {
             // TODO: Change to other values to randomize a bit
-            this.trunk_height = Math.trunc(Math.random() * 3 + 1)
-            this.trunk_radius = Math.trunc(Math.random() * 2 + 1)
-            this.tree_top_height = Math.trunc(Math.random() * 5 + 2)
-            this.tree_top_radius = Math.trunc(Math.random() * 3 + 1)
+            this.trunk_height = Math.trunc(Math.random() * 2 + 1)
+            this.trunk_radius = Math.trunc(Math.random() * 1 + 1) - 0.5;
+            this.tree_top_height = Math.trunc(Math.random() * 2 + 1)
+            this.tree_top_radius = Math.trunc(Math.random() * 2 + 1)
             
             this.trees.push(new MyTree(scene, this.trunk_height, this.trunk_radius, this.tree_top_height, this.tree_top_radius))
             this.offsets.push([(Math.trunc((Math.random() * 10)) % 3) - (1 / 2), (Math.trunc((Math.random() * 10)) % 3) - (1 / 2)])

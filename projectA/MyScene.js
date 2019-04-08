@@ -34,12 +34,23 @@ class MyScene extends CGFscene {
 
         this.hill = new MyVoxelHill(this,0,0);
 
+        this.ground = new MyQuad(this);
+
+        this.cubemap = new MyCubeMap(this);
+
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
         this.objectIDs = {'Cylinder': 0}
         this.selectedObject = 0;
 
         this.scaleFactor = 1;
+
+
+        //Initialize textures
+        this.floor = new CGFappearance(this)
+        this.floor.loadTexture('images/ground.jpg');
+        this.floor.setTextureWrap('REPEAT', 'REPEAT');
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -77,13 +88,45 @@ class MyScene extends CGFscene {
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         // ---- BEGIN Primitive drawing section
+
+
+         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+         
         // this.prism.display();
          //this.cylinder.enableNormalViz();
         //this.cylinder.display();
+        this.pushMatrix()
+        this.scale(1.5,1.5,1.5)
           this.house.display();
+          this.popMatrix();
+          
+          this.pushMatrix();
+          this.translate(-15,0,8)
           this.row_patch.display()
           this.group_patch.display()
+          this.popMatrix();
+
+          this.pushMatrix();
+          this.translate(6,0,-10);
           this.hill.display(0,4);
+          this.popMatrix();
+        
+          this.pushMatrix();
+          this.translate(-9,0,5);
+          this.hill.display(0,4);
+          this.popMatrix();
+        
+          this.pushMatrix();
+          this.floor.apply();
+          this.scale(30,30,30);
+          this.rotate(-Math.PI /2,1,0,0);
+          this.ground.display();
+          this.popMatrix();
+
+          this.pushMatrix();
+          this.cubemap.display();
+          this.popMatrix();
+
         
         // ---- END Primitive drawing section
     }

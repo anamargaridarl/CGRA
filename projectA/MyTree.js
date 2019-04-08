@@ -17,7 +17,7 @@ class MyTree extends CGFobject {
         this.tree_top_radius = tree_top_radius
 
         if (this.tree_top_radius <= this.trunk_radius) {
-            this.tree_top_radius = this.trunk_radius + 1
+            this.tree_top_radius = this.trunk_radius + 0.4
         }
 
         this.trunk_material = new CGFappearance(scene)
