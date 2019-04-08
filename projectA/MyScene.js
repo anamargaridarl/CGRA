@@ -78,8 +78,9 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cylinder.enableNormalViz();
         //this.cylinder.display();
-         this.house.display();
-        //this.row_patch.display()
+        //  this.house.display();
+        // this.row_patch.display()
+        this.group_patch.display()
         
         // ---- END Primitive drawing section
     }
