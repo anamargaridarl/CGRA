@@ -7,32 +7,14 @@ class MyVoxelHill extends CGFobject {
         super(scene);
 
         this.cubes = []
-    
-        for(i = 1; i<= levels; i++)
-        {
-            nbsquares = i +(i-1);
-            for(j = o; j< nbsquares; j++)
-            {
-                this.cubes.push(new MyUnitCubeQuad());
-            }
-        }       
-    
     }
 
-    display() {
+    display(y,level) {
+        side = level*2-1;
+        this.nbcubes = (level*level)-(( level-1)*(level-1));
 
-        for(i = 0; i < this.cubes.length; i++)
-        {
-            for(j = 1; j<= levels; j++)
-            {
-                nbsquares = j +(j-1);
 
-                for(l = 0; l< nbsquares; l++)
-                {
-                    this.scene.translate(1,0,0);
-                }
-            }
-        }
+
         
     }
 }
