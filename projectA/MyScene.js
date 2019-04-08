@@ -32,6 +32,8 @@ class MyScene extends CGFscene {
     
         this.house = new MyHouse(this);
 
+        this.hill = new MyVoxelHill(this,0,0);
+
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
         this.objectIDs = {'Cylinder': 0}
@@ -80,7 +82,8 @@ class MyScene extends CGFscene {
         //this.cylinder.display();
         //  this.house.display();
         // this.row_patch.display()
-        this.group_patch.display()
+        //this.group_patch.display()
+        this.hill.display(0,4);
         
         // ---- END Primitive drawing section
     }
