@@ -13,6 +13,9 @@ class MyUnitCubeQuad extends CGFobject {
         this.square1 = new MyQuad(scene)
         this.square2 = new MyQuad(scene)
         this.square3 = new MyQuad(scene)
+        this.square5 = new MyQuad(scene)
+        this.square4 = new MyQuad(scene)
+        this.square6 = new MyQuad(scene)
 
         this.top = new CGFappearance(scene)
         this.top.loadTexture('images/mineTop.png');
@@ -46,7 +49,7 @@ class MyUnitCubeQuad extends CGFobject {
         // Apply textures and display second square
         this.bottom.apply();
         this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
-        this.square1.display()
+        this.square2.display()
 
         // Reset scene
         this.current_scene.popMatrix()
@@ -58,11 +61,11 @@ class MyUnitCubeQuad extends CGFobject {
         this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
         this.current_scene.pushMatrix()
         this.current_scene.translate(0, 0, 0.5)
-        this.square2.display()
+        this.square3.display()
 
         this.current_scene.translate(0, 0, -1)
         this.current_scene.rotate(Math.PI, 0, 1, 0)
-        this.square2.display()
+        this.square4.display()
         this.current_scene.popMatrix()
 
         // ----------------------------------------------------------------------
@@ -70,11 +73,11 @@ class MyUnitCubeQuad extends CGFobject {
         this.current_scene.pushMatrix()
         this.current_scene.rotate(Math.PI / 2, 0, 1, 0)
         this.current_scene.translate(0, 0, 0.5)
-        this.square3.display()
+        this.square5.display()
 
         this.current_scene.translate(0, 0, -1)
         this.current_scene.rotate(Math.PI, 0, 1, 0)
-        this.square3.display()
+        this.square6.display()
         this.scene.popMatrix()
 
     }
