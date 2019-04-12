@@ -6,6 +6,7 @@ class MyFire extends CGFobject {
 
         this.woodT = new CGFappearance(scene)
         this.woodT.loadTexture('images/column3.png');
+    
 
     }
 

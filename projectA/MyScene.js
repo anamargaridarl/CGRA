@@ -55,9 +55,15 @@ class MyScene extends CGFscene {
 
     }
     initLights() {
+
+        this.GlobalLight = 0.3;
+
+        this.setGlobalAmbientLight(this.GlobalLight, this.GlobalLight, this.GlobalLight, 1.0);
+
         this.lights[0].setPosition(15, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].enable();
+        this.lights[0].setVisible(true);
         this.lights[0].update();
     }
     initCameras() {
@@ -68,6 +74,9 @@ class MyScene extends CGFscene {
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
+    }
+    updateAmbientLight() {
+        this.setGlobalAmbientLight(this.GlobalLight, this.GlobalLight, this.GlobalLight, 1.0);
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -88,6 +97,10 @@ class MyScene extends CGFscene {
 
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+
+        //update lights
+        this.lights[0].update();
+
 
         // ---- BEGIN Primitive drawing section
 

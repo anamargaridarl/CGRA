@@ -18,6 +18,16 @@ class MyInterface extends CGFinterface {
 
         this.gui.add(this.scene, 'scaleFactor', 0.1, 10.0).name('Scale');
 
+
+        //Initializa lights
+        //global light - maybe delete after
+        this.gui.add(this.scene, 'GlobalLight', 0.0,1.0).onChange(this.scene.updateAmbientLight.bind(this.scene));
+       
+        var f0 = this.gui.addFolder('Light 0 ');
+        f0.add(this.scene.lights[0], 'enabled').name("Enabled");
+
+   
+
         return true;
     }
 }
