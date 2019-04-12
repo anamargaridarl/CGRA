@@ -38,6 +38,8 @@ class MyScene extends CGFscene {
 
         this.cubemap = new MyCubeMap(this);
 
+        this.fire = new MyFire(this);
+
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
         this.objectIDs = { 'Cylinder': 0 }
@@ -92,9 +94,9 @@ class MyScene extends CGFscene {
 
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-        this.prism.display();
+       /* this.prism.display();
         this.cylinder.enableNormalViz();
-        this.cylinder.display();
+        this.cylinder.display();*/
         this.pushMatrix()
         this.scale(1.5, 1.5, 1.5)
         this.house.display();
@@ -107,13 +109,17 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(6, 0, -10);
+        this.translate(6, 0.5, -10);
         this.hill.display(0, 4);
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-9, 0, 5);
+        this.translate(-9, 0.5, 5);
         this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.fire.display();
         this.popMatrix();
 
         this.pushMatrix();
@@ -124,8 +130,13 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.cubemap.display();
+        this.translate(6, 0.5, -10);
+        this.hill.display(0, 4);
         this.popMatrix();
+
+        /*this.pushMatrix();
+        this.cubemap.display();
+        this.popMatrix();*/
 
         // this.group_patch.display()
         // this.row_patch.display()
