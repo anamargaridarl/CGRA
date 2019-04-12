@@ -60,11 +60,38 @@ class MyScene extends CGFscene {
 
         this.setGlobalAmbientLight(this.GlobalLight, this.GlobalLight, this.GlobalLight, 1.0);
 
-        this.lights[0].setPosition(15, 2, 5, 1);
-        this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.lights[0].enable();
+        //Luz Fogueira
+        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0, 2.5, 2);
+        //this.lights[0].setSpotCutOff(-Math.PI);
+        //this.lights[0].setSpotDirection( 0,1,0 );
+        this.lights[1].setConstantAttenuation(1);
+        this.lights[0].setDiffuse(1.0, 168/255, 0, 1.0);
+        this.lights[0].setAmbient(1/8, (168/255)/8, 0, 1.0);
+        this.lights[0].setSpecular(1/8, (168/255)/8, 0, 1.0);
+        this.lights[0].disable();
         this.lights[0].setVisible(true);
         this.lights[0].update();
+
+        //Luz Sol
+        this.lights[1].setPosition(0, 5, 0, 2);
+        this.lights[1].setConstantAttenuation(0.2);
+        this.lights[1].setDiffuse(1.0, 168/255, 0, 1.0);
+        this.lights[1].setAmbient(1/8, (168/255)/8, 0, 1.0);
+        this.lights[1].setSpecular(1/8, (168/255)/8, 0, 1.0);
+        this.lights[1].disable();
+        this.lights[1].setVisible(true);
+        this.lights[1].update();
+
+        //Luz lua
+        this.lights[2].setPosition(0, 5, 0, 2);
+        this.lights[2].setConstantAttenuation(0.2);
+        //cores erradas
+        this.lights[2].setDiffuse(1.0, 168/255, 0, 1.0);
+        this.lights[2].setAmbient(1/8, (168/255)/8, 0, 1.0);
+        this.lights[2].setSpecular(1/8, (168/255)/8, 0, 1.0);
+        this.lights[2].disable();
+        this.lights[2].setVisible(true);
+        this.lights[2].update();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
@@ -100,6 +127,8 @@ class MyScene extends CGFscene {
 
         //update lights
         this.lights[0].update();
+        this.lights[1].update();
+        this.lights[2].update();
 
 
         // ---- BEGIN Primitive drawing section
@@ -107,9 +136,9 @@ class MyScene extends CGFscene {
 
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-       /* this.prism.display();
-        this.cylinder.enableNormalViz();
-        this.cylinder.display();*/
+        /* this.prism.display();
+         this.cylinder.enableNormalViz();
+         this.cylinder.display();*/
         this.pushMatrix()
         this.scale(1.5, 1.5, 1.5)
         this.house.display();

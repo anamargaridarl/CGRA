@@ -23,8 +23,12 @@ class MyInterface extends CGFinterface {
         //global light - maybe delete after
         this.gui.add(this.scene, 'GlobalLight', 0.0,1.0).onChange(this.scene.updateAmbientLight.bind(this.scene));
        
-        var f0 = this.gui.addFolder('Light 0 ');
-        f0.add(this.scene.lights[0], 'enabled').name("Enabled");
+        var f0 = this.gui.addFolder('Night ');
+        f0.add(this.scene.lights[0], 'enabled').name("Fire");
+        f0.add(this.scene.lights[2], 'enabled').name("Moon");
+       
+        var f1 = this.gui;
+        f1.add(this.scene.lights[1], 'enabled').name("Day");
 
    
 
