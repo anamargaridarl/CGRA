@@ -5,8 +5,21 @@
 class MyVoxelHill extends CGFobject {
     constructor(scene, levels, x, z) {
         super(scene);
+        
         this.levels = levels;
-        this.cube = new MyUnitCubeQuad(scene);
+        
+        var topText = new CGFappearance(scene)
+        topText.loadTexture('images/mineTop.png');
+
+        var sideText = new CGFappearance(scene)
+        sideText.loadTexture('images/mineSide.png');
+
+        var bottomText = new CGFappearance(scene)
+        bottomText.loadTexture('images/mineBottom.png');
+
+        var texturesMinecraft = [topText, bottomText, sideText, sideText];
+        
+        this.cube = new MyUnitCubeQuad(scene,texturesMinecraft);
     }
 
     display(y, level) {

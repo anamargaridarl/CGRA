@@ -5,15 +5,15 @@ class MyHouse extends CGFobject {
 
     this.myscene = scene;
 
-    this.cube = new MyUnitCubeQuad(scene);
+   
     this.column1 = new MyCylinder(scene,20);
     this.roof = new MyPyramid(scene,4,1);
-    this.base = new MyUnitCubeQuad(scene);
     //this.door = new MyRectangle(this);
 
-    this.material_house = new CGFappearance(scene)
-    this.material_house.loadTexture('images/walls3.png');
-    this.material_house.setTextureWrap('REPEAT', 'REPEAT');
+    var material_house = new CGFappearance(scene)
+    material_house.loadTexture('images/walls3.png');
+
+    var texturesHouse = [material_house, material_house, material_house, material_house];
 
     this.material_roof = new CGFappearance(scene)
     this.material_roof.loadTexture('images/roof3.jpg');
@@ -24,13 +24,13 @@ class MyHouse extends CGFobject {
     this.material_collumns.loadTexture('images/column.jpg');
     this.material_collumns.setTextureWrap('REPEAT', 'REPEAT');
 
+    this.cube = new MyUnitCubeQuad(scene,texturesHouse);
+    this.base = new MyUnitCubeQuad(scene,texturesHouse);
     }
 
     display()
     {
-        this.material_roof.apply();
         this.myscene.pushMatrix();
-        this.material_house.apply();
         this.myscene.scale(2,1,1)
         this.myscene.translate(0,0.5,0);
         this.cube.display();
