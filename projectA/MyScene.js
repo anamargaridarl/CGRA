@@ -29,10 +29,10 @@ class MyScene extends CGFscene {
         this.tree = new MyTree(this, 2, 1, 3, 2) // TODO: apply textures
         this.group_patch = new MyTreeGroupPatch(this)
         this.row_patch = new MyTreeRowPatch(this)
-    
+
         this.house = new MyHouse(this);
 
-        this.hill = new MyVoxelHill(this,0,0);
+        this.hill = new MyVoxelHill(this, 0, 0);
 
         this.ground = new MyQuad(this);
 
@@ -40,7 +40,7 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.objects = [this.cylinder]
-        this.objectIDs = {'Cylinder': 0}
+        this.objectIDs = { 'Cylinder': 0 }
         this.selectedObject = 0;
 
         this.scaleFactor = 1;
@@ -90,44 +90,47 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
 
-         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-         
-        // this.prism.display();
-         //this.cylinder.enableNormalViz();
-        //this.cylinder.display();
+        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+
+        this.prism.display();
+        this.cylinder.enableNormalViz();
+        this.cylinder.display();
         this.pushMatrix()
-        this.scale(1.5,1.5,1.5)
-          this.house.display();
-          this.popMatrix();
-          
-          this.pushMatrix();
-          this.translate(-15,0,8)
-          this.row_patch.display()
-          this.group_patch.display()
-          this.popMatrix();
+        this.scale(1.5, 1.5, 1.5)
+        this.house.display();
+        this.popMatrix();
 
-          this.pushMatrix();
-          this.translate(6,0,-10);
-          this.hill.display(0,4);
-          this.popMatrix();
-        
-          this.pushMatrix();
-          this.translate(-9,0,5);
-          this.hill.display(0,4);
-          this.popMatrix();
-        
-          this.pushMatrix();
-          this.floor.apply();
-          this.scale(30,30,30);
-          this.rotate(-Math.PI /2,1,0,0);
-          this.ground.display();
-          this.popMatrix();
+        this.pushMatrix();
+        this.translate(5, 0, 3)
+        // this.row_patch.display()
+        this.group_patch.display()
+        this.popMatrix();
 
-          this.pushMatrix();
-          this.cubemap.display();
-          this.popMatrix();
+        this.pushMatrix();
+        this.translate(6, 0, -10);
+        this.hill.display(0, 4);
+        this.popMatrix();
 
-        
+        this.pushMatrix();
+        this.translate(-9, 0, 5);
+        this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.floor.apply();
+        this.scale(30, 30, 30);
+        this.rotate(-Math.PI / 2, 1, 0, 0);
+        this.ground.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.cubemap.display();
+        this.popMatrix();
+
+        // this.group_patch.display()
+        // this.row_patch.display()
+
+
         // ---- END Primitive drawing section
     }
 }
