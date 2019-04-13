@@ -20,8 +20,6 @@ class MyInterface extends CGFinterface {
 
 
         //Initializa lights
-        //global light - maybe delete after
-        this.gui.add(this.scene, 'GlobalLight', 0.0,1.0).onChange(this.scene.updateAmbientLight.bind(this.scene));
        
         this.gui.add(this.scene, 'selectedObject', this.scene.lightsIDs).name('Light').onChange(this.scene.updateObjectComplexity.bind(this.scene));
 
