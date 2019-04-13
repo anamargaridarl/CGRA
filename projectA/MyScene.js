@@ -6,6 +6,31 @@ class MyScene extends CGFscene {
     constructor() {
         super();
     }
+    updateObjectComplexity() {
+
+        if(this.selectedObject == this.lightsIDs['Day'])
+        {
+            this.lights[0].disable();
+            this.lights[2].disable();
+            this.lights[1].enable();
+
+            this.lights[0].update();
+            this.lights[2].update();
+            this.lights[1].update();
+        }
+
+        if(this.selectedObject == this.lightsIDs['Night'])
+        {
+            this.lights[1].disable();
+            this.lights[0].enable();
+            this.lights[2].enable();
+
+            this.lights[0].update();
+            this.lights[2].update();
+            this.lights[1].update();
+        }
+   
+    }
     init(application) {
         super.init(application);
         this.initCameras();
@@ -39,10 +64,7 @@ class MyScene extends CGFscene {
         this.cubemap = new MyCubeMap(this);
 
         this.fire = new MyFire(this);
-
-    
-        this.selectedObject = 0;
-    
+  
 
         this.scaleFactor = 1;
 
@@ -56,60 +78,38 @@ class MyScene extends CGFscene {
 
         //Luz Fogueira
         this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 2.5, 1);
-        this.lights[0].setDiffuse(1, 0, 0, 1.0);
-        this.lights[0].setAmbient(1, 0, 0, 1.0);
-        this.lights[0].setLinearAttenuation(0.5);
-        this.lights[0].setSpecular(1,0, 0, 1.0);
+        this.lights[0].setDiffuse(1, 102/256, 0, 1.0);
+        this.lights[0].setAmbient(1, 102/256, 0, 1.0);
+        this.lights[0].setLinearAttenuation(0.3);
+        this.lights[0].setSpecular(1,102/256, 0, 1.0);
         this.lights[0].disable();
         this.lights[0].setVisible(true);
         this.lights[0].update();
 
         //Luz Sol
-        this.lights[1].setPosition(0, 15, 0, 1);
-        this.lights[1].setConstantAttenuation(1);
-        this.lights[1].setDiffuse(1.0, 1, 0, 1.0);
-        this.lights[1].setAmbient(1, 1, 0, 1.0);
-        this.lights[1].setSpecular(1, 1, 0, 1.0);
+        this.lights[1].setConstantAttenuation(0.2);
+        this.lights[1].setPosition(2, 15, 1, 1);
+        this.lights[1].setDiffuse(1.0, 1,  153/256, 1.0);
+       /* this.lights[1].setAmbient(1, 1, 153/256, 1.0);
+        this.lights[1].setSpecular(1, 1, 153/256, 1.0);*/
         this.lights[1].setVisible(true);
-        this.lights[0].enable();
+        this.lights[1].disable();
         this.lights[1].update();
 
         //Luz lua
-        this.lights[2].setPosition(0, 15, 0, 1);
+        this.lights[2].setPosition(0, 20, 0, 1);
         this.lights[2].setDiffuse(1, 1, 1, 1.0);
         this.lights[2].setAmbient(1, 1, 1, 1.0);
         this.lights[2].setSpecular(1, 1,1, 1.0);
-        this.lights[0].setConstantAttenuation(1);
+        this.lights[2].setConstantAttenuation(1);
         this.lights[2].disable();
         this.lights[2].setVisible(true);
         this.lights[2].update();
 
         this.lightsIDs = { 'Day': 0, 'Night': 1};
-    }
-    updateObjectComplexity() {
 
-        if(this.selectedObject == this.lightsIDs['Day'])
-        {
-            this.lights[0].disable();
-            this.lights[2].disable();
-            this.lights[1].enable();
-
-            this.lights[0].update();
-            this.lights[2].update();
-            this.lights[1].update();
-        }
-
-        if(this.selectedObject == this.lightsIDs['Night'])
-        {
-            this.lights[1].disable();
-            this.lights[0].enable();
-            this.lights[2].enable();
-
-            this.lights[0].update();
-            this.lights[2].update();
-            this.lights[1].update();
-        }
-   
+        this.selectedObject = 0;
+        this.updateObjectComplexity();
     }
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));

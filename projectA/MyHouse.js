@@ -11,9 +11,15 @@ class MyHouse extends CGFobject {
     //this.door = new MyRectangle(this);
 
     var material_house = new CGFappearance(scene)
-    material_house.loadTexture('images/wall5.png');
+    material_house.setDiffuse(1, 1, 1, 1.0);
+    material_house.setSpecular(0.1, 0.1, 0.1, 1.0);
+    material_house.setShininess(0.1);
+    material_house.loadTexture('images/wall5.jpg');
 
     var material_door = new CGFappearance(scene)
+    material_door.setDiffuse(1, 1, 1, 1.0);
+    material_door.setSpecular(0.1, 0.1, 0.1, 1.0);
+    material_door.setShininess(0.1);
     material_door.loadTexture('images/doorside.png');
 
     var texturesHouse = [material_house, material_house, material_house, material_door];
@@ -24,10 +30,10 @@ class MyHouse extends CGFobject {
 
     
     this.material_collumns = new CGFappearance(scene)
-    this.material_collumns.loadTexture('images/column3.png');
     this.material_collumns.setDiffuse(92/256, 51/256, 23/256, 1.0);
     this.material_collumns.setSpecular(92/256*0.1, 51/256*0.1, 23/256*0.1, 1.0);
-    this.material_collumns.setShininess(10.0);
+    this.material_collumns.setShininess(0.1);
+    this.material_collumns.loadTexture('images/column3.png');
 
     this.cube = new MyUnitCubeQuad(scene,texturesHouse);
     this.base = new MyUnitCubeQuad(scene,texturesHouse);

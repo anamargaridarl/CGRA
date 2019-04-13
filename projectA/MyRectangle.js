@@ -1,83 +1,71 @@
-class MyRectangle extends CGFobject {
-	constructor(scene) {
+class MyRectangle extends CGFobject { //estou a tentar fazer circulo para a fogueira
+	constructor(scene,r,slices,coords) {
 		super(scene);
+
+		this.r=r;
+		this.slices =slices;
+
 		this.initBuffers();
-    }
-    
+		if (coords != undefined)
+			this.updateTexCoords(coords);
+
+	
+	}
+	
 	initBuffers() {
-		this.vertices = [
-			0.5, -1, 0.1,		//0
-			-0.5, -1, 0.1,	//1
-			-0.5, 1, 0.1,		//2
-			0.5, 1, 0.1,		//3
-			0.5, -1, -0.1,	//4
-			-0.5, -1, -0.1,	//5
-			-0.5, 1, -0.1,	//6	
-			0.5, 1, -0.1,
-            0.5, -1, 0.1,		//0
-			-0.5, -1, 0.1,	//1
-			-0.5, 1, 0.1,		//2
-			0.5, 1, 0.1,		//3
-			0.5, -1, -0.1,	//4
-			-0.5, -1, -0.1,	//5
-			-0.5, 1, -0.1,	//6	
-			0.5, 1, -0.1,
-            0.5, -1, 0.1,		//0
-			-0.5, -1, 0.1,	//1
-			-0.5, 1, 0.1,		//2
-			0.5, 1, 0.1,		//3
-			0.5, -1, -0.1,	//4
-			-0.5, -1, -0.1,	//5
-			-0.5, 1, -0.1,	//6	
-			0.5, 1, -0.1,
-		];
+		this.vertices = [];
+			
+		var ang = Math.PI*2 / slices;
+
+			for(var i = 0; i < this.slices; i++){
+			{
+				this.vertices.push(Math.cos(ang),Math.sen(ang));
+				ang += ang;
+			}
+		
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
-		   0,3,2,
-		   1,0,2,
-		   4,0,1,
-		   5,4,1,
-		   7,3,0,
-		   4,7,0,
-		   5,1,2,
-		   6,5,2,
-		   6,2,3,
-		   7,6,3,
-		   5,6,7,
-		   4,5,7
-           
+			0, 1, 2,
+			1, 3, 2
 		];
 
+		//Facing Z positive
 		this.normals = [
-			0,0,1,  //0
-			0,0,1,
-			0,0,1,
-			0,0,1,
-			0,0,-1,
-			0,0,-1,
-			0,0,-1,
-			0,0,-1,  //7
-			0,-1,0,  //0
-			0,-1,0,
-			0,1,0,
-			0,1,0,
-			0,-1,0,
-			0,-1,0,
-			0,1,0,
-			0,1,0,   //7
-			1,0,0,
-			-1,0,0,
-			-1,0,0,
-			1,0,0,
-			1,0,0,
-			-1,0,0,
-			-1,0,0,
-			1,0,0
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1
 		];
 		
+		/*
+		Texture coords (s,t)
+		+----------> s
+        |
+        |
+		|
+		v
+        t
+        */
+
+		this.texCoords = [
+			0, 1,
+			1, 1,
+			0, 0,
+			1, 0
+		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
+	}
+
+	/**
+	 * @method updateTexCoords
+	 * Updates the list of texture coordinates of the quad
+	 * @param {Array} coords - Array of texture coordinates
+	 */
+	updateTexCoords(coords) {
+		this.texCoords = [...coords];
+		this.updateTexCoordsGLBuffers();
 	}
 
 
