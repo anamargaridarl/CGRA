@@ -20,12 +20,14 @@ class MyHouse extends CGFobject {
 
     this.material_roof = new CGFappearance(scene)
     this.material_roof.loadTexture('images/roof3.jpg');
-    this.material_roof.setTextureWrap('REPEAT', 'REPEAT');
+
 
     
     this.material_collumns = new CGFappearance(scene)
     this.material_collumns.loadTexture('images/column3.png');
-    this.material_collumns.setTextureWrap('REPEAT', 'REPEAT');
+    this.material_collumns.setDiffuse(92/256, 51/256, 23/256, 1.0);
+    this.material_collumns.setSpecular(92/256*0.1, 51/256*0.1, 23/256*0.1, 1.0);
+    this.material_collumns.setShininess(10.0);
 
     this.cube = new MyUnitCubeQuad(scene,texturesHouse);
     this.base = new MyUnitCubeQuad(scene,texturesHouse);
