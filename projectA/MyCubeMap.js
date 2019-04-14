@@ -5,108 +5,26 @@ class MyCubeMap extends CGFobject {
         this.cubemap_texture = new CGFappearance(scene)
         this.cubemap_texture.loadTexture('images/skybox.png')
 
-
 		this.initBuffers();
     }
-    
-	initBuffers() {
-		// this.vertices = [
-		// 	0.5, -0.5, 0.5,		//0
-		// 	-0.5, -0.5, 0.5,	//1
-		// 	-0.5, 0.5, 0.5,		//2
-		// 	0.5, 0.5, 0.5,		//3
-		// 	0.5, -0.5, -0.5,	//4
-		// 	-0.5, -0.5, -0.5,	//5
-		// 	-0.5, 0.5, -0.5,	//6	
-		// 	0.5, 0.5, -0.5,
-		// 	0.5, -0.5, 0.5,		//0
-		// 	-0.5, -0.5, 0.5,	//1
-		// 	-0.5, 0.5, 0.5,		//2
-		// 	0.5, 0.5, 0.5,		//3
-		// 	0.5, -0.5, -0.5,	//4
-		// 	-0.5, -0.5, -0.5,	//5
-		// 	-0.5, 0.5, -0.5,	//6	
-		// 	0.5, 0.5, -0.5,
-		// 	0.5, -0.5, 0.5,		//0
-		// 	-0.5, -0.5, 0.5,	//1
-		// 	-0.5, 0.5, 0.5,		//2
-		// 	0.5, 0.5, 0.5,		//3
-		// 	0.5, -0.5, -0.5,	//4
-		// 	-0.5, -0.5, -0.5,	//5
-		// 	-0.5, 0.5, -0.5,	//6	
-		// 	0.5, 0.5, -0.5    	//7
-		// ];
-
-		// //Counter-clockwise reference of vertices
-		// this.indices = [
-		//    2,3,0,
-		//    2,0,1,
-		//    1,0,4,
-		//    1,4,5,
-		//    0,3,7,
-		//    0,7,4,
-		//    2,1,5,
-		//    2,5,6,
-		//    3,2,6,
-		//    3,6,7,
-		//    7,6,5,
-		//    7,5,4
-           
-		// ];
-
-		// this.normals = [
-		// 	0,0,1,  //0
-		// 	0,0,1,
-		// 	0,0,1,
-		// 	0,0,1,
-		// 	0,0,-1,
-		// 	0,0,-1,
-		// 	0,0,-1,
-		// 	0,0,-1,  //7
-		// 	0,-1,0,  //0
-		// 	0,-1,0,
-		// 	0,1,0,
-		// 	0,1,0,
-		// 	0,-1,0,
-		// 	0,-1,0,
-		// 	0,1,0,
-		// 	0,1,0,   //7
-		// 	1,0,0,
-		// 	-1,0,0,
-		// 	-1,0,0,
-		// 	1,0,0,
-		// 	1,0,0,
-		// 	-1,0,0,
-		// 	-1,0,0,
-		// 	1,0,0
-		// ];
-		
-		// this.primitiveType = this.scene.gl.TRIANGLES;
-		// this.initGLBuffers();
-	}
 
 	initBottom() {
 		this.vertices = [
             -0.5, -0.5, -0.5, // P - 0
             0.5, -0.5, -0.5, // Q - 1
-            0.5, -0.5, 0.5, // R - 2
+            0.5, -0.5, 0.5, // R - 2                
             -0.5, -0.5, 0.5, // S - 3
         ]
 
-        // this.indices = [
-        //     3,2,1,
-        //     1,0,3
-        // ]
-
         this.indices = [
-            1,2,3,3,0,1
-		]
+			1,0,3,1,2,3
+        ]
 		
         this.normals = [
-			0,-1,0,
-			0,-1,0,
-			0,-1,0,
-			0,-1,0
+			0,1,0,
+			0,1,0,
+			0,1,0,
+			0,1,0
         ]
 
         this.texCoords = [
@@ -128,19 +46,14 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.indices = [
-            3,2,1,
-            1,0,3
-        ]
-
-        // this.indices = [
-        //     1,2,3,3,0,1
-		// ]
+            3,0,1,3,2,1
+		]
 		
         this.normals = [
-			0,1,0,
-			0,1,0,
-			0,1,0,
-			0,1,0
+			0,-1,0,
+			0,-1,0,
+			0,-1,0,
+			0,-1,0
         ]
 
         this.texCoords = [
@@ -162,19 +75,14 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.indices = [
-            3,2,1,
-            1,0,3
-        ]
-
-        // this.indices = [
-        //     1,2,3,3,0,1
-		// ]
+            3,2,1,3,0,1
+		]
 		
         this.normals = [
-			0,0,1,
-			0,0,1,
-			0,0,1,
-			0,0,1
+			0,0,-1,
+			0,0,-1,
+			0,0,-1,
+			0,0,-1
         ]
 
         this.texCoords = [
@@ -196,19 +104,14 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.indices = [
-            3,2,1,
-            1,0,3
-        ]
-
-        // this.indices = [
-        //     1,2,3,3,0,1
-		// ]
+            3,2,1,3,0,1
+		]
 		
         this.normals = [
-			-1,0,0,
-			-1,0,0,
-			-1,0,0,
-			-1,0,0
+			1,0,0,
+			1,0,0,
+			1,0,0,
+			1,0,0
         ]
 
         this.texCoords = [
@@ -230,19 +133,14 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.indices = [
-            3,2,1,
-            1,0,3
-        ]
-
-        // this.indices = [
-        //     1,2,3,3,0,1
-		// ]
+            3,2,1,3,0,1
+		]
 		
         this.normals = [
-			1,0,0,
-			1,0,0,
-			1,0,0,
-			1,0,0
+			-1,0,0,
+			-1,0,0,
+			-1,0,0,
+			-1,0,0
         ]
 
         this.texCoords = [
@@ -264,19 +162,14 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.indices = [
-            3,2,1,
-            1,0,3
-        ]
-
-        // this.indices = [
-        //     1,2,3,3,0,1
-		// ]
+            3,2,1,3,0,1
+		]
 		
         this.normals = [
-			0,0,-1,
-			0,0,-1,
-			0,0,-1,
-			0,0,-1
+			0,0,1,
+			0,0,1,
+			0,0,1,
+			0,0,1
         ]
 
         this.texCoords = [
@@ -296,6 +189,9 @@ class MyCubeMap extends CGFobject {
 		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
 		
 		// Display cube faces
+		this.scene.pushMatrix()
+		this.scene.translate(0, 50, 0)
+		this.scene.scale(100, 100, 100)
 		this.initBottom()
 		this.display()
 		
@@ -313,6 +209,7 @@ class MyCubeMap extends CGFobject {
 
 		this.initBack()
 		this.display()
+		this.scene.popMatrix()
 	}
 
 }
