@@ -166,6 +166,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.floor.apply();
+        this.translate(0, 0.01, 0);
         this.scale(30, 30, 30);
         this.rotate(-Math.PI / 2, 1, 0, 0);
         this.ground.display();
@@ -177,6 +178,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
+        this.translate(0, 0.01, 0);
         this.pool.display();
         this.popMatrix();
     
