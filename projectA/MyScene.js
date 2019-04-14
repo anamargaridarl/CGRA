@@ -179,15 +179,11 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.pool.display();
         this.popMatrix();
-
-
-       
-
     
 
-        /*this.pushMatrix();
-        this.cubemap.display();
-        this.popMatrix();*/
+        this.pushMatrix();
+        this.cubemap.displayBase();
+        this.popMatrix();
 
         // this.group_patch.display()
         // this.row_patch.display()
