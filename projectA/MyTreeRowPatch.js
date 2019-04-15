@@ -23,7 +23,7 @@ class MyTreeRowPatch extends CGFobject {
     display() {
         this.scene.pushMatrix()
         for (var i = 0; i < 6; ++i) {
-            this.scene.translate(i == 0 ? 0 : 3.6 + this.offsets[i][0], 0, this.offsets[i][1])
+            this.scene.translate((i == 0 ? 0 : 3.6) + this.offsets[i][0], 0, this.offsets[i][1])
             this.trees[i].display()
         }
         this.scene.popMatrix()

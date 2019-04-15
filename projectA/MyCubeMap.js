@@ -7,165 +7,86 @@ class MyCubeMap extends CGFobject {
 
 		this.initBuffers();
     }
-
-	initBottom() {
+	
+	initBuffers() {
 		this.vertices = [
             -0.5, -0.5, -0.5, // P - 0
             0.5, -0.5, -0.5, // Q - 1
             0.5, -0.5, 0.5, // R - 2                
-            -0.5, -0.5, 0.5, // S - 3
-        ]
+			-0.5, -0.5, 0.5, // S - 3
 
-        this.indices = [
-			1,0,3,1,2,3
-        ]
+			-0.5, 0.5, -0.5, // P - 4 - 0
+            0.5, 0.5, -0.5, // Q - 5 - 1
+            0.5, 0.5, 0.5, // R - 6 - 2
+			-0.5, 0.5, 0.5, // S - 7 - 3
+
+			-0.5, 0.5, 0.5, // P - 8 - 0
+            0.5, 0.5, 0.5, // Q - 9 - 1
+            0.5, -0.5, 0.5, // R - 10 - 2
+			-0.5, -0.5, 0.5, // S - 11 - 3
+
+			-0.5, 0.5, -0.5, // P - 12 - 0
+            -0.5, 0.5, 0.5, // Q - 13 - 1
+            -0.5, -0.5, 0.5, // R - 14 - 2
+			-0.5, -0.5, -0.5, // S - 15 - 3
+
+			0.5, 0.5, 0.5, // P - 16 - 0
+            0.5, 0.5, -0.5, // Q - 17 - 1
+            0.5, -0.5, -0.5, // R - 18 - 2
+			0.5, -0.5, 0.5, // S - 19 - 3
+
+			0.5, 0.5, -0.5, // P - 20 - 0
+            -0.5, 0.5, -0.5, // Q - 21 - 1
+            -0.5, -0.5, -0.5, // R - 22 - 2
+            0.5, -0.5, -0.5, // S - 23 - 3
+		]
 		
-        this.normals = [
+		this.indices = [
+			1,0,3,
+			3,2,1,
+
+			7,4,5,
+			5,6,7,
+
+			9,10,11,
+			11,8,9,
+
+			13,14,15,
+			15,12,13,
+
+			17,18,19,
+			19,16,17,
+
+			21,22,23,
+			23,20,21
+		]
+		
+		this.normals = [
 			0,1,0,
 			0,1,0,
 			0,1,0,
-			0,1,0
-        ]
+			0,1,0,
 
-        this.texCoords = [
-			0.25, 0.5,
-			0.5, 0.5,
-			0.5, 0.75,
-			0.25, 0.75
-        ]
-
-        this.initGLBuffers()
-	}
-
-	initTop() {
-		this.vertices = [
-            -0.5, 0.5, -0.5, // P - 0
-            0.5, 0.5, -0.5, // Q - 1
-            0.5, 0.5, 0.5, // R - 2
-            -0.5, 0.5, 0.5, // S - 3
-        ]
-
-        this.indices = [
-            3,0,1,3,2,1
-		]
-		
-        this.normals = [
 			0,-1,0,
 			0,-1,0,
 			0,-1,0,
-			0,-1,0
-        ]
+			0,-1,0,
 
-        this.texCoords = [
-			0.25, 0,
-			0.5, 0,
-			0.5, 0.25,
-			0.25, 0.25
-        ]
-
-        this.initGLBuffers()
-	}
-
-	initFront() {
-		this.vertices = [
-            -0.5, 0.5, 0.5, // P - 0
-            0.5, 0.5, 0.5, // Q - 1
-            0.5, -0.5, 0.5, // R - 2
-            -0.5, -0.5, 0.5, // S - 3
-        ]
-
-        this.indices = [
-            3,2,1,3,0,1
-		]
-		
-        this.normals = [
 			0,0,-1,
 			0,0,-1,
 			0,0,-1,
-			0,0,-1
-        ]
+			0,0,-1,
 
-        this.texCoords = [
-			0.25, 0.25,
-			0.5, 0.25,
-			0.5, 0.5,
-			0.25, 0.5
-        ]
-
-        this.initGLBuffers()
-	}
-
-	initFrontLeft() {
-		this.vertices = [
-            -0.5, 0.5, -0.5, // P - 0
-            -0.5, 0.5, 0.5, // Q - 1
-            -0.5, -0.5, 0.5, // R - 2
-            -0.5, -0.5, -0.5, // S - 3
-        ]
-
-        this.indices = [
-            3,2,1,3,0,1
-		]
-		
-        this.normals = [
 			1,0,0,
 			1,0,0,
 			1,0,0,
-			1,0,0
-        ]
+			1,0,0,
 
-        this.texCoords = [
-			0, 0.25,
-			0.25, 0.25,
-			0.25, 0.5,
-			0, 0.5
-        ]
-
-        this.initGLBuffers()
-	}
-
-	initFrontRight() {
-		this.vertices = [
-            0.5, 0.5, 0.5, // P - 0
-            0.5, 0.5, -0.5, // Q - 1
-            0.5, -0.5, -0.5, // R - 2
-            0.5, -0.5, 0.5, // S - 3
-        ]
-
-        this.indices = [
-            3,2,1,3,0,1
-		]
-		
-        this.normals = [
 			-1,0,0,
 			-1,0,0,
 			-1,0,0,
-			-1,0,0
-        ]
+			-1,0,0,
 
-        this.texCoords = [
-			0.5, 0.25,
-			0.75, 0.25,
-			0.75, 0.5,
-			0.5, 0.5
-        ]
-
-        this.initGLBuffers()
-	}
-
-	initBack() {
-		this.vertices = [
-            0.5, 0.5, -0.5, // P - 0
-            -0.5, 0.5, -0.5, // Q - 1
-            -0.5, -0.5, -0.5, // R - 2
-            0.5, -0.5, -0.5, // S - 3
-        ]
-
-        this.indices = [
-            3,2,1,3,0,1
-		]
-		
-        this.normals = [
 			0,0,1,
 			0,0,1,
 			0,0,1,
@@ -173,13 +94,39 @@ class MyCubeMap extends CGFobject {
         ]
 
         this.texCoords = [
+			0.25, 0.5,
+			0.5, 0.5,
+			0.5, 0.75,
+			0.25, 0.75,
+
+			0.25, 0,
+			0.5, 0,
+			0.5, 0.25,
+			0.25, 0.25,
+
+			0.25, 0.25,
+			0.5, 0.25,
+			0.5, 0.5,
+			0.25, 0.5,
+
+			0, 0.25,
+			0.25, 0.25,
+			0.25, 0.5,
+			0, 0.5,
+
+			0.5, 0.25,
+			0.75, 0.25,
+			0.75, 0.5,
+			0.5, 0.5,
+
 			0.75, 0.25,
 			1, 0.25,
 			1, 0.5,
 			0.75, 0.5
-        ]
-
-        this.initGLBuffers()
+		]
+		
+		this.primitiveType = this.scene.gl.TRIANGLES
+		this.initGLBuffers()
 	}
 
 	displayBase()
@@ -192,22 +139,6 @@ class MyCubeMap extends CGFobject {
 		this.scene.pushMatrix()
 		this.scene.translate(0, 50, 0)
 		this.scene.scale(500, 100, 500)
-		this.initBottom()
-		this.display()
-		
-		this.initTop()
-		this.display()
-
-		this.initFront()
-		this.display()
-
-		this.initFrontLeft()
-		this.display()
-
-		this.initFrontRight()
-		this.display()
-
-		this.initBack()
 		this.display()
 		this.scene.popMatrix()
 	}
