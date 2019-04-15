@@ -9,10 +9,10 @@ class MyVoxelHill extends CGFobject {
         this.levels = levels;
         
         var topText = new CGFappearance(scene)
-        topText.loadTexture('images/mineTop.png');
+        topText.loadTexture('images/grass6.png');
 
         var sideText = new CGFappearance(scene)
-        sideText.loadTexture('images/mineSide.png');
+        sideText.loadTexture('images/mineSide3.png');
 
         var bottomText = new CGFappearance(scene)
         bottomText.loadTexture('images/mineBottom.png');

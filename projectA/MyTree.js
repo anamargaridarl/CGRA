@@ -25,11 +25,9 @@ class MyTree extends CGFobject {
         this.trunk_material.setDiffuse(1, 1, 1, 1.0);
         this.trunk_material.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.trunk_material.setShininess(0.1);
-        this.trunk_material.setTextureWrap('REPEAT', 'REPEAT')
 
         this.tree_top_material = new CGFappearance(scene)
         this.tree_top_material.loadTexture(tree_top_texture)
-        this.tree_top_material.setTextureWrap('REPEAT', 'REPEAT')
     }
 
     display() {

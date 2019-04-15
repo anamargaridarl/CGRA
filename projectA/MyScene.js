@@ -50,8 +50,14 @@ class MyScene extends CGFscene {
         this.row_patch = new MyTreeRowPatch(this)
         this.house = new MyHouse(this);
         this.hill = new MyVoxelHill(this, 0, 0);
-        this.ground = new MyQuad(this);
-        this.cubemap_day = new MyCubeMap(this, 'images/skybox_day.png');
+        var coords = [
+            0,0,
+            5,0,
+            0,5,
+            5,5
+        ];
+        this.ground = new MyQuad(this,coords);
+        this.cubemap_day = new MyCubeMap(this, 'images/skybox_day5.png');
         this.cubemap_night = new MyCubeMap(this, 'images/skybox_night.png');
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
@@ -60,7 +66,8 @@ class MyScene extends CGFscene {
 
         //Initialize textures
         this.floor = new CGFappearance(this)
-        this.floor.loadTexture('images/ground.jpg');
+        this.floor.loadTexture('images/grass6.png');
+        this.floor.setTextureWrap('REPEAT', 'REPEAT');
 
     }
     initLights() {
@@ -71,21 +78,16 @@ class MyScene extends CGFscene {
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
         this.lights[0].setSpecular(1, 102 / 256, 0, 1.0);
-        this.lights[0].disable();
 
         //Luz Sol
         this.lights[1].setConstantAttenuation(0.2);
-        this.lights[1].setPosition(2, 15, 1, 1);
+        this.lights[1].setPosition(2, 30, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
-        this.lights[1].disable();
 
         //Luz lua
-        this.lights[2].setPosition(0, 20, 0, 1);
+        this.lights[2].setPosition(2, 30, 1, 1);
         this.lights[2].setDiffuse(1, 1, 1, 1.0);
-        this.lights[2].setAmbient(1, 1, 1, 1.0);
-        this.lights[2].setSpecular(1, 1, 1, 1.0);
         this.lights[2].setConstantAttenuation(1);
-        this.lights[2].disable();
 
         this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
@@ -137,7 +139,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.translate(-5, 0.01, -2);
-        this.scale(2.3, 2.3, 2.3);
+        this.scale(3, 3, 3);
         this.pool.display();
         this.popMatrix();
 
