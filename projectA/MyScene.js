@@ -8,8 +8,7 @@ class MyScene extends CGFscene {
     }
     updateObjectComplexity() {
 
-        if(this.selectedObject == this.lightsIDs['Day'])
-        {
+        if (this.selectedObject == this.lightsIDs['Day']) {
             this.lights[0].disable();
             this.lights[2].disable();
             this.lights[1].enable();
@@ -19,8 +18,7 @@ class MyScene extends CGFscene {
             this.lights[1].update();
         }
 
-        if(this.selectedObject == this.lightsIDs['Night'])
-        {
+        if (this.selectedObject == this.lightsIDs['Night']) {
             this.lights[1].disable();
             this.lights[0].enable();
             this.lights[2].enable();
@@ -29,7 +27,7 @@ class MyScene extends CGFscene {
             this.lights[2].update();
             this.lights[1].update();
         }
-   
+
     }
     init(application) {
         super.init(application);
@@ -57,8 +55,8 @@ class MyScene extends CGFscene {
         this.cubemap_night = new MyCubeMap(this, 'images/skybox_night.png');
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
-        
-        this.scaleFactor = 1;
+
+        this.scaleFactor = 0.6;
 
         //Initialize textures
         this.floor = new CGFappearance(this)
@@ -69,10 +67,10 @@ class MyScene extends CGFscene {
 
         //Luz Fogueira
         this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 2.5, 1);
-        this.lights[0].setDiffuse(1, 102/256, 0, 1.0);
-        this.lights[0].setAmbient(1, 102/256, 0, 1.0);
+        this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
+        this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
-        this.lights[0].setSpecular(1,102/256, 0, 1.0);
+        this.lights[0].setSpecular(1, 102 / 256, 0, 1.0);
         this.lights[0].disable();
         this.lights[0].setVisible(true);
         this.lights[0].update();
@@ -80,9 +78,9 @@ class MyScene extends CGFscene {
         //Luz Sol
         this.lights[1].setConstantAttenuation(0.2);
         this.lights[1].setPosition(2, 15, 1, 1);
-        this.lights[1].setDiffuse(1.0, 1,  153/256, 1.0);
-       /* this.lights[1].setAmbient(1, 1, 153/256, 1.0);
-        this.lights[1].setSpecular(1, 1, 153/256, 1.0);*/
+        this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
+        /* this.lights[1].setAmbient(1, 1, 153/256, 1.0);
+         this.lights[1].setSpecular(1, 1, 153/256, 1.0);*/
         this.lights[1].setVisible(true);
         this.lights[1].disable();
         this.lights[1].update();
@@ -91,25 +89,80 @@ class MyScene extends CGFscene {
         this.lights[2].setPosition(0, 20, 0, 1);
         this.lights[2].setDiffuse(1, 1, 1, 1.0);
         this.lights[2].setAmbient(1, 1, 1, 1.0);
-        this.lights[2].setSpecular(1, 1,1, 1.0);
+        this.lights[2].setSpecular(1, 1, 1, 1.0);
         this.lights[2].setConstantAttenuation(1);
         this.lights[2].disable();
         this.lights[2].setVisible(true);
         this.lights[2].update();
 
-        this.lightsIDs = { 'Day': 0, 'Night': 1};
+        this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
         this.selectedObject = 0;
         this.updateObjectComplexity();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 15, 30), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
+    }
+    displayScene() {
+
+        this.pushMatrix()
+        this.scale(4, 4,4)
+        this.house.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.scale(2, 2, 2);
+        this.translate(6, 0.5, -10);
+        this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.scale(2, 2, 2);
+        this.translate(-9, 0.5, 5);
+        this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0,0,3);
+        this.scale(2,2,2)
+        this.fire.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.floor.apply();
+        this.translate(0, 0.01, 0);
+        this.scale(80, 80, 80);
+        this.rotate(-Math.PI / 2, 1, 0, 0);
+        this.ground.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-6, 0.01, -2);
+        this.scale(2.3, 2.3, 2.3);
+        this.pool.display();
+        this.popMatrix();
+
+        
+        this.pushMatrix();
+        this.translate(-25,0,-15)
+        this.scale(2,2,2)
+        this.group_patch.display()
+        this.popMatrix();
+        
+        this.pushMatrix();
+        this.translate(-25,0,-25)
+        this.scale(2,2,2)
+        this.row_patch.display()
+        this.popMatrix();
+
+
+
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -131,65 +184,21 @@ class MyScene extends CGFscene {
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
-    
+
         // ---- BEGIN Primitive drawing section
 
 
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-        /* this.prism.display();
-         this.cylinder.enableNormalViz();
-         this.cylinder.display();*/
-        this.pushMatrix()
-        this.scale(1.5, 1.5, 1.5)
-        this.house.display();
-        this.popMatrix();
-
-       /* this.pushMatrix();
-        this.translate(5, 0, 3)
-        // this.row_patch.display()
-        this.group_patch.display()
-        this.popMatrix();*/
-
         this.pushMatrix();
-        this.translate(6, 0.5, -10);
-        this.hill.display(0, 4);
+        this.displayScene();
         this.popMatrix();
 
-        this.pushMatrix();
-        this.translate(-9, 0.5, 5);
-        this.hill.display(0, 4);
-        this.popMatrix();
 
-        this.pushMatrix();
-        this.fire.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.floor.apply();
-        this.translate(0, 0.01, 0);
-        this.scale(30, 30, 30);
-        this.rotate(-Math.PI / 2, 1, 0, 0);
-        this.ground.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.translate(6, 0.5, -10);
-        this.hill.display(0, 4);
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.translate(0, 0.01, 0);
-        this.pool.display();
-        this.popMatrix();
-        
         if (this.selectedObject == 0)
             this.cubemap_day.displayBase();
         else if (this.selectedObject == 1)
             this.cubemap_night.displayBase();
-
-        // this.group_patch.display()
-        this.row_patch.display()
 
 
         // ---- END Primitive drawing section
