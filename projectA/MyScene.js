@@ -189,7 +189,7 @@ class MyScene extends CGFscene {
             this.cubemap_night.displayBase();
 
         // this.group_patch.display()
-        // this.row_patch.display()
+        this.row_patch.display()
 
 
         // ---- END Primitive drawing section
