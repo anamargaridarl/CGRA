@@ -58,7 +58,7 @@ class MyScene extends CGFscene {
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
         
-        this.scaleFactor = 1;
+        this.scaleFactor = 0.6;
 
         //Initialize textures
         this.floor = new CGFappearance(this)
@@ -111,6 +111,46 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
+    displayScene()
+    {
+     
+        this.pushMatrix()
+        this.scale(2.5,2.5, 2.5)
+        this.house.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.scale(2, 2, 2);
+        this.translate(6, 0.5, -10);
+        this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.scale(2, 2, 2);
+        this.translate(-9, 0.5, 5);
+        this.hill.display(0, 4);
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.fire.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.floor.apply();
+        this.translate(0, 0.01, 0);
+        this.scale(90, 90, 90);
+        this.rotate(-Math.PI / 2, 1, 0, 0);
+        this.ground.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0, 0.01, 0);
+        this.pool.display();
+        this.popMatrix();
+
+        // this.group_patch.display()
+        this.row_patch.display()
+    }
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -137,59 +177,20 @@ class MyScene extends CGFscene {
 
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-        /* this.prism.display();
-         this.cylinder.enableNormalViz();
-         this.cylinder.display();*/
-        this.pushMatrix()
-        this.scale(1.5, 1.5, 1.5)
-        this.house.display();
-        this.popMatrix();
-
-       /* this.pushMatrix();
-        this.translate(5, 0, 3)
-        // this.row_patch.display()
-        this.group_patch.display()
-        this.popMatrix();*/
-
         this.pushMatrix();
-        this.translate(6, 0.5, -10);
-        this.hill.display(0, 4);
+        //this.translate(0,-10,0);
+        this.displayScene();
         this.popMatrix();
 
-        this.pushMatrix();
-        this.translate(-9, 0.5, 5);
-        this.hill.display(0, 4);
-        this.popMatrix();
 
-        this.pushMatrix();
-        this.fire.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.floor.apply();
-        this.translate(0, 0.01, 0);
-        this.scale(30, 30, 30);
-        this.rotate(-Math.PI / 2, 1, 0, 0);
-        this.ground.display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.translate(6, 0.5, -10);
-        this.hill.display(0, 4);
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.translate(0, 0.01, 0);
-        this.pool.display();
-        this.popMatrix();
         
         if (this.selectedObject == 0)
             this.cubemap_day.displayBase();
         else if (this.selectedObject == 1)
             this.cubemap_night.displayBase();
 
-        // this.group_patch.display()
-        this.row_patch.display()
+ 
+    
 
 
         // ---- END Primitive drawing section
