@@ -182,8 +182,11 @@ class MyScene extends CGFscene {
         this.translate(0, 0.01, 0);
         this.pool.display();
         this.popMatrix();
-    
-        this.cubemap_day.displayBase();
+        
+        if (this.selectedObject == 0)
+            this.cubemap_day.displayBase();
+        else if (this.selectedObject == 1)
+            this.cubemap_night.displayBase();
 
         // this.group_patch.display()
         // this.row_patch.display()
