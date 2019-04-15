@@ -66,24 +66,18 @@ class MyScene extends CGFscene {
     initLights() {
 
         //Luz Fogueira
-        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 2.5, 1);
+        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 4.5, 1);
         this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
         this.lights[0].setSpecular(1, 102 / 256, 0, 1.0);
         this.lights[0].disable();
-        this.lights[0].setVisible(true);
-        this.lights[0].update();
 
         //Luz Sol
         this.lights[1].setConstantAttenuation(0.2);
         this.lights[1].setPosition(2, 15, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
-        /* this.lights[1].setAmbient(1, 1, 153/256, 1.0);
-         this.lights[1].setSpecular(1, 1, 153/256, 1.0);*/
-        this.lights[1].setVisible(true);
         this.lights[1].disable();
-        this.lights[1].update();
 
         //Luz lua
         this.lights[2].setPosition(0, 20, 0, 1);
@@ -92,12 +86,11 @@ class MyScene extends CGFscene {
         this.lights[2].setSpecular(1, 1, 1, 1.0);
         this.lights[2].setConstantAttenuation(1);
         this.lights[2].disable();
-        this.lights[2].setVisible(true);
-        this.lights[2].update();
 
         this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
         this.selectedObject = 0;
+
         this.updateObjectComplexity();
     }
     initCameras() {
@@ -129,8 +122,8 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0,0,3);
-        this.scale(2,2,2)
+        this.translate(0,0,2);
+        this.scale(3,3,3)
         this.fire.display();
         this.popMatrix();
 
@@ -143,7 +136,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-6, 0.01, -2);
+        this.translate(-5, 0.01, -2);
         this.scale(2.3, 2.3, 2.3);
         this.pool.display();
         this.popMatrix();
@@ -160,8 +153,6 @@ class MyScene extends CGFscene {
         this.scale(2,2,2)
         this.row_patch.display()
         this.popMatrix();
-
-
 
     }
     display() {
