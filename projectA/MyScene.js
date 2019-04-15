@@ -53,7 +53,8 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.hill = new MyVoxelHill(this, 0, 0);
         this.ground = new MyQuad(this);
-        this.cubemap = new MyCubeMap(this);
+        this.cubemap_day = new MyCubeMap(this, 'images/skybox_day.png');
+        this.cubemap_night = new MyCubeMap(this, 'images/skybox_night.png');
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
         
@@ -182,10 +183,7 @@ class MyScene extends CGFscene {
         this.pool.display();
         this.popMatrix();
     
-
-        this.pushMatrix();
-        this.cubemap.displayBase();
-        this.popMatrix();
+        this.cubemap_day.displayBase();
 
         // this.group_patch.display()
         // this.row_patch.display()

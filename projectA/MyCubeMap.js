@@ -1,9 +1,9 @@
 class MyCubeMap extends CGFobject {
-	constructor(scene) {
+	constructor(scene, texture) {
         super(scene);
         
         this.cubemap_texture = new CGFappearance(scene)
-        this.cubemap_texture.loadTexture('images/skybox.png')
+        this.cubemap_texture.loadTexture(texture)
 
 		this.initBuffers();
     }
