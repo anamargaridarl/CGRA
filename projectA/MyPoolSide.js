@@ -12,9 +12,9 @@ class MyPoolSide extends CGFobject {
 
 		//Specular texture with light grey color
 		var topText = new CGFappearance(scene);
-		topText.setSpecular(211 / 256, 211 / 256, 211 / 256, 1.0);
-		topText.setDiffuse(211 / 256 * 0.1, 211 / 256 * 0.1, 211 / 256 * 0.1, 1.0);
-		topText.setAmbient(211 / 256 * 0.1, 211 / 256 * 0.1, 211 / 256 * 0.1, 1.0);
+		topText.setSpecular(211 / 255, 211 / 255, 211 / 255, 1.0);
+		topText.setDiffuse(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
+		topText.setAmbient(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
 		topText.setShininess(0.6);
 		topText.loadTexture('images/marble3.jpeg');
 
