@@ -6,6 +6,7 @@ class MyScene extends CGFscene {
     constructor() {
         super();
     }
+
     updateObjectComplexity() {
 
         if (this.selectedObject == this.lightsIDs['Day']) {
@@ -24,6 +25,7 @@ class MyScene extends CGFscene {
         this.lights[2].update();
         this.lights[1].update();
     }
+
     init(application) {
         super.init(application);
         this.initCameras();
@@ -44,12 +46,14 @@ class MyScene extends CGFscene {
         this.row_patch = new MyTreeRowPatch(this)
         this.house = new MyHouse(this);
         this.hill = new MyVoxelHill(this, 0, 0);
+
         var coords = [
             0, 0,
             10, 0,
             0, 10,
             10, 10
         ];
+
         this.ground = new MyQuad(this, coords);
         this.cubemap_day = new MyCubeMap(this, 'images/skybox_day5.png');
         this.cubemap_night = new MyCubeMap(this, 'images/skybox_night3.png');
@@ -63,15 +67,14 @@ class MyScene extends CGFscene {
         this.floor = new CGFappearance(this)
         this.floor.loadTexture('images/grass6.png');
         this.floor.setTextureWrap('REPEAT', 'REPEAT');
-
     }
-    initLights() {
 
+    initLights() {
         //Luz Fogueira
         this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
         this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
-        this.lights[0].setSpecular(1*0.1, 102 / 256 * 0.1, 0, 1.0);
-        this.lights[0].setAmbient(1*0.1, 102 / 256 *0.1, 0, 1.0);
+        this.lights[0].setSpecular(1 * 0.1, 102 / 256 * 0.1, 0, 1.0);
+        this.lights[0].setAmbient(1 * 0.1, 102 / 256 * 0.1, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.2);
         this.lights[0].disable();
 
@@ -79,8 +82,8 @@ class MyScene extends CGFscene {
         this.lights[1].setConstantAttenuation(0.0);
         this.lights[1].setPosition(2, 30, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
-        this.lights[1].setSpecular(1*0.1, 1 *0.1 ,153 / 256 * 0.1, 1.0);
-        this.lights[1].setAmbient(1*0.1, 1 *0.1 ,153 / 256 * 0.1, 1.0);
+        this.lights[1].setSpecular(1 * 0.1, 1 * 0.1, 153 / 256 * 0.1, 1.0);
+        this.lights[1].setAmbient(1 * 0.1, 1 * 0.1, 153 / 256 * 0.1, 1.0);
         this.lights[1].disable();
 
         //Luz lua
@@ -97,17 +100,19 @@ class MyScene extends CGFscene {
 
         this.updateObjectComplexity();
     }
+
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 10, 30), vec3.fromValues(0, 0, 0));
     }
+
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    displayScene() {
 
+    displayScene() {
         this.pushMatrix()
         this.scale(4, 4, 4)
         this.house.display();
@@ -158,6 +163,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
     }
+
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -178,8 +184,8 @@ class MyScene extends CGFscene {
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
+
         // ---- BEGIN Primitive drawing section
-        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
         this.displayScene();
 

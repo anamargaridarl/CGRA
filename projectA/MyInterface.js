@@ -16,6 +16,7 @@ class MyInterface extends CGFinterface {
         var obj = this;
 
         this.gui.add(this.scene, 'scaleFactor', 0.1, 10.0).name('Scale');
+
         //Initializa Day / Night
         this.gui.add(this.scene, 'selectedObject', this.scene.lightsIDs).name('Light').onChange(this.scene.updateObjectComplexity.bind(this.scene));
 

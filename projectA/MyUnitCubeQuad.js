@@ -56,7 +56,7 @@ class MyUnitCubeQuad extends CGFobject {
 
         // ---------------------------------------------------------------------
         // Similar to the first set of squares
-       
+
         this.textures[3].apply();
         this.current_scene.gl.texParameteri(this.current_scene.gl.TEXTURE_2D, this.current_scene.gl.TEXTURE_MAG_FILTER, this.current_scene.gl.NEAREST);
         this.current_scene.pushMatrix()

@@ -15,12 +15,9 @@ class MyFire extends CGFobject {
 
         this.fireT = new CGFappearance(scene)
         this.fireT.loadTexture('images/fire2.jpg');
-
-
     }
 
     display() {
-
         //Wood fire
         this.scene.pushMatrix();
         this.woodT.apply();
@@ -58,12 +55,11 @@ class MyFire extends CGFobject {
         this.scene.popMatrix();
 
         //Fire
-
         this.scene.pushMatrix();
         this.fireT.apply();
         this.scene.translate(Math.sqrt(1 / 2) / 2, 0.5, 2.5 - Math.sqrt(1 / 2) / 2);
         this.scene.scale(0.5, 0.8, 0.5);
-        this.scene.rotate(Math.PI,0,1,0);
+        this.scene.rotate(Math.PI, 0, 1, 0);
         this.fire.display();
         this.scene.popMatrix();
 
