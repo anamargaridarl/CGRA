@@ -12,7 +12,7 @@ class MyPool extends CGFobject {
 
         //Specular texture with light blue color
         this.waterT = new CGFappearance(scene)
-        this.waterT.setSpecular(135 / 255, 206 / 255, 250 / 255);
+        this.waterT.setSpecular(135 / 255*0.5, 206 / 255*0.5, 250 / 255*0.5);
         this.waterT.setDiffuse(135 / 255 * 0.1, 206 / 255 * 0.1, 250 / 255 * 0.1, 1.0);
         this.waterT.setAmbient(135 / 255 * 0.1, 206 / 255 * 0.1, 250 / 255 * 0.1, 1.0);
         this.waterT.setShininess(0.2);

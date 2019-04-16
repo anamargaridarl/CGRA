@@ -9,6 +9,14 @@ class MyScene extends CGFscene {
 
     updateTextures() {
         this.enableTextures(this.texturesEnabled);
+
+        if(!this.texturesEnabled)
+        this.lights[1].setConstantAttenuation(1.0);
+        else
+        this.lights[1].setConstantAttenuation(0.0);
+
+        this.lights[1].update();
+
     }
 
     updateObjectComplexity() {
@@ -23,10 +31,6 @@ class MyScene extends CGFscene {
             this.lights[0].enable();
             this.lights[2].enable();
         }
-
-        this.lights[0].update();
-        this.lights[2].update();
-        this.lights[1].update();
     }
 
     init(application) {
@@ -83,12 +87,12 @@ class MyScene extends CGFscene {
         this.lights[0].setDiffuse(1, 102 / 255, 0, 1.0);
         this.lights[0].setSpecular(1, 102 / 255, 0, 1.0);
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
-        this.lights[0].setLinearAttenuation(0.2);
+        this.lights[0].setLinearAttenuation(0.5);
         this.lights[0].disable();
 
         //Luz Sol
         this.lights[1].setConstantAttenuation(0.0);
-        this.lights[1].setPosition(2, 30, 1, 1);
+        this.lights[1].setPosition(2, 50, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 255, 1.0);
         this.lights[1].setSpecular(1, 1, 153 / 255, 1.0);
         this.lights[1].setAmbient(1 , 1, 153 / 255, 1.0);
@@ -110,7 +114,7 @@ class MyScene extends CGFscene {
     }
 
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 10, 30), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(31, 9, 32), vec3.fromValues(0, 0, 0));
     }
 
     setDefaultAppearance() {
@@ -128,13 +132,13 @@ class MyScene extends CGFscene {
 
         this.pushMatrix();
         this.scale(2, 2, 2);
-        this.translate(6, 0.5, -10);
+        this.translate(5, 0.5, -10);
         this.hill.display(0, 4);
         this.popMatrix();
 
         this.pushMatrix();
         this.scale(2, 2, 2);
-        this.translate(-9, 0.5, 5);
+        this.translate(-9, 0.5, 9);
         this.hill.display(0, 4);
         this.popMatrix();
 
@@ -159,13 +163,27 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-25, 0, -15)
+        this.translate(-30, 0, -25)
         this.scale(2, 2, 2)
         this.group_patch.display()
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-25, 0, -25)
+        this.translate(-30, 0, -5)
+        this.scale(2, 2, 2)
+        this.group_patch.display()
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(35,0,5);
+        this.rotate(Math.PI/2,0,1,0);
+        this.scale(2, 2, 2)
+        this.row_patch.display()
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(29,0,5);
+        this.rotate(Math.PI/2,0,1,0);
         this.scale(2, 2, 2)
         this.row_patch.display()
         this.popMatrix();

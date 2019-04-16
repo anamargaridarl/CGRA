@@ -15,7 +15,7 @@ class MyPoolSide extends CGFobject {
 		topText.setSpecular(211 / 255, 211 / 255, 211 / 255, 1.0);
 		topText.setDiffuse(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
 		topText.setAmbient(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
-		topText.setShininess(0.6);
+		topText.setShininess(0.1);
 		topText.loadTexture('images/marble3.jpeg');
 
 		var textures = [topText, topText, topText, topText];
