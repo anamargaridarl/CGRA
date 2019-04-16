@@ -5,24 +5,30 @@
 class MyPool extends CGFobject {
     constructor(scene) {
         super(scene);
-		
+        
+        //Objects
         this.water = new MyQuad(scene);
-        this.poolside = new MyPoolSide(scene,5,5,6,10);
+        this.poolside = new MyPoolSide(scene,6,10);
 
+        //Specular texture with light blue color
         this.waterT = new CGFappearance(scene)
-        this.waterT.setSpecular(1, 1, 1, 1.0);
-        this.waterT.setDiffuse(0.1, 0.1, 0.1, 1.0);
-        this.waterT.setShininess(1);
-        this.waterT.loadTexture('images/pool.jpg');
+        this.waterT.setSpecular(135/256,206/256,250/256); 
+        this.waterT.setDiffuse(135/256*0.1, 206/256*0.1, 250/256*0.1, 1.0);
+        this.waterT.setAmbient(135/256*0.1, 206/256*0.1, 250/256*0.1, 1.0);
+        this.waterT.setShininess(0.6);
+        this.waterT.loadTexture('images/pool2.jpg');
 
     }
 
     display() {
 
+        //Pool sides
         this.scene.pushMatrix();
+        this.scene.translate(5,0,5);
         this.poolside.display();
         this.scene.popMatrix();
 
+        //water
         this.scene.pushMatrix();
         this.waterT.apply();
         this.scene.translate(5+2.5,0.01,5+1.5);

@@ -3,11 +3,12 @@
 * @constructor
 */
 class MyVoxelHill extends CGFobject {
-    constructor(scene, levels, x, z) {
+    constructor(scene, levels) {
         super(scene);
         
         this.levels = levels;
         
+        //textures
         var topText = new CGFappearance(scene)
         topText.loadTexture('images/grass6.png');
 
@@ -17,8 +18,8 @@ class MyVoxelHill extends CGFobject {
         var bottomText = new CGFappearance(scene)
         bottomText.loadTexture('images/mineBottom.png');
 
-        var texturesMinecraft = [topText, bottomText, sideText, sideText];
-        
+        //objects
+        var texturesMinecraft = [topText, bottomText, sideText, sideText]; 
         this.cube = new MyUnitCubeQuad(scene,texturesMinecraft);
     }
 
@@ -27,19 +28,19 @@ class MyVoxelHill extends CGFobject {
         var x = 0;
         var z = 0;
 
-        //linhas por nivel
+        //draw each level
         for (var i = level; i > 0; i--) {
 
             var side = i * 2 - 1;
             var y;
 
-            //primeiro cubo do nivel 
+            //first cube 
             this.scene.pushMatrix();
             this.scene.translate(x, y, z);
             this.cube.display();
             this.scene.popMatrix();
 
-            //linhas verticais e horizontais
+            //draw lines and columns
             for (var l = 1; l < side; l++) {
                 this.scene.pushMatrix();
                 this.scene.translate(x + l, y, z);

@@ -2,9 +2,11 @@ class MyFire extends CGFobject {
     constructor(scene) {
         super(scene);
 
+        //Objects
         this.wood = new MyCylinder(scene, 20);
         this.fire = new MyQuad(scene);
 
+        //Textures
         this.woodT = new CGFappearance(scene)
         this.woodT.setDiffuse(92 / 256, 51 / 256, 23 / 256, 1.0);
         this.woodT.setSpecular(92 / 256 * 0.1, 51 / 256 * 0.1, 23 / 256 * 0.1, 1.0);
@@ -18,6 +20,8 @@ class MyFire extends CGFobject {
     }
 
     display() {
+
+        //Wood fire
         this.scene.pushMatrix();
         this.woodT.apply();
         this.scene.translate(0, 0, 2.5);
@@ -36,7 +40,6 @@ class MyFire extends CGFobject {
         this.wood.display();
         this.scene.popMatrix();
 
-
         this.scene.pushMatrix();
         this.woodT.apply();
         this.scene.translate(-0.15, 0, 2.5 - Math.sqrt(1 / 2) / 2);
@@ -46,7 +49,6 @@ class MyFire extends CGFobject {
         this.wood.display();
         this.scene.popMatrix();
 
-
         this.scene.pushMatrix();
         this.woodT.apply();
         this.scene.translate(Math.sqrt(1 / 2) / 2, 0, 2.5 + 0.15);
@@ -55,6 +57,7 @@ class MyFire extends CGFobject {
         this.wood.display();
         this.scene.popMatrix();
 
+        //Fire
         this.scene.pushMatrix();
         this.fireT.apply();
         this.scene.translate(Math.sqrt(1 / 2) / 2, 0.5, 2.5 - Math.sqrt(1 / 2) / 2);

@@ -37,7 +37,6 @@ class MyScene extends CGFscene {
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
@@ -52,9 +51,9 @@ class MyScene extends CGFscene {
         this.hill = new MyVoxelHill(this, 0, 0);
         var coords = [
             0,0,
-            5,0,
-            0,5,
-            5,5
+            10,0,
+            0,10,
+            10,10
         ];
         this.ground = new MyQuad(this,coords);
         this.cubemap_day = new MyCubeMap(this, 'images/skybox_day5.png');
@@ -62,6 +61,7 @@ class MyScene extends CGFscene {
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
 
+        //Initialize scene scale factor
         this.scaleFactor = 0.6;
 
         //Initialize textures
@@ -73,7 +73,7 @@ class MyScene extends CGFscene {
     initLights() {
 
         //Luz Fogueira
-        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 4.5, 1);
+        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
         this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
@@ -96,7 +96,7 @@ class MyScene extends CGFscene {
         this.updateObjectComplexity();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 15, 30), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(30, 10, 30), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -143,7 +143,6 @@ class MyScene extends CGFscene {
         this.pool.display();
         this.popMatrix();
 
-        
         this.pushMatrix();
         this.translate(-25,0,-15)
         this.scale(2,2,2)
@@ -183,20 +182,16 @@ class MyScene extends CGFscene {
 
 
         // ---- BEGIN Primitive drawing section
-
-
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
         this.pushMatrix();
         this.displayScene();
         this.popMatrix();
 
-
         if (this.selectedObject == 0)
             this.cubemap_day.displayBase();
         else if (this.selectedObject == 1)
             this.cubemap_night.displayBase();
-
 
         // ---- END Primitive drawing section
     }
