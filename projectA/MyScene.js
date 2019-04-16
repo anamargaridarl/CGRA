@@ -74,15 +74,15 @@ class MyScene extends CGFscene {
 
         //Luz Fogueira
         this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
-        this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
-        this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
+        this.lights[0].setDiffuse(1, 102 / 255, 0, 1.0);
+        this.lights[0].setAmbient(1, 102 / 255, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
-        this.lights[0].setSpecular(1, 102 / 256, 0, 1.0);
+        this.lights[0].setSpecular(1, 102 / 255, 0, 1.0);
 
         //Luz Sol
         this.lights[1].setConstantAttenuation(0.2);
         this.lights[1].setPosition(2, 30, 1, 1);
-        this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
+        this.lights[1].setDiffuse(1.0, 1, 153 / 255, 1.0);
 
         //Luz lua
         this.lights[2].setPosition(2, 30, 1, 1);
@@ -184,9 +184,7 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
-        this.pushMatrix();
         this.displayScene();
-        this.popMatrix();
 
         if (this.selectedObject == 0)
             this.cubemap_day.displayBase();
