@@ -3,7 +3,7 @@
 * @constructor
 */
 class MyVoxelHill extends CGFobject {
-    constructor(scene, levels, x, z) {
+    constructor(scene, levels) {
         super(scene);
         
         this.levels = levels;

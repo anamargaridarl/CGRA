@@ -8,17 +8,20 @@ class MyHouse extends CGFobject {
    
     this.column1 = new MyPrism(scene,10);
     this.roof = new MyPyramid(scene,4,1);
-    //this.door = new MyRectangle(this);
 
+    //Diffuse texture with grey color (stone)
     var material_house = new CGFappearance(scene)
-    material_house.setDiffuse(1, 1, 1, 1.0);
-    material_house.setSpecular(0.1, 0.1, 0.1, 1.0);
+    material_house.setDiffuse(211/256,211/256,211/256, 1.0);
+    material_house.setSpecular(211/256*0.1,211/256*0.1,211/256*0.1, 1.0);
+    material_house.setAmbient(211/256*0.1,211/256*0.1,211/256*0.1, 1.0);
     material_house.setShininess(0.1);
     material_house.loadTexture('images/wall5.jpg');
 
+    //Diffuse texture with grey color (stone)
     var material_door = new CGFappearance(scene)
-    material_door.setDiffuse(1, 1, 1, 1.0);
-    material_door.setSpecular(0.1, 0.1, 0.1, 1.0);
+    material_door.setDiffuse(211/256,211/256,211/256, 1.0);
+    material_door.setSpecular(211/256*0.1,211/256*0.1,211/256*0.1, 1.0);
+    material_door.setAmbient(211/256*0.1,211/256*0.1,211/256*0.1, 1.0);
     material_door.setShininess(0.1);
     material_door.loadTexture('images/doorside.png');
 
@@ -28,7 +31,7 @@ class MyHouse extends CGFobject {
     this.material_roof.loadTexture('images/roof3.jpg');
 
 
-    
+    //Diffuse texture with brown color (wood)
     this.material_collumns = new CGFappearance(scene)
     this.material_collumns.setDiffuse(92/256, 51/256, 23/256, 1.0);
     this.material_collumns.setSpecular(92/256*0.1, 51/256*0.1, 23/256*0.1, 1.0);
