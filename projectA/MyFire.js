@@ -8,12 +8,15 @@ class MyFire extends CGFobject {
 
         //Textures
         this.woodT = new CGFappearance(scene)
-        this.woodT.setDiffuse(92 / 255, 51 / 255, 23 / 255, 1.0);
-        this.woodT.setSpecular(92 / 255 * 0.1, 51 / 255 * 0.1, 23 / 255 * 0.1, 1.0);
-        this.woodT.setShininess(0.1);
+        this.woodT.setDiffuse(1, 102 / 256, 0, 1.0);
+        this.woodT.setSpecular(1, 1, 1, 1.0);
+        this.woodT.setShininess(10);
         this.woodT.loadTexture('images/column3.png');
 
         this.fireT = new CGFappearance(scene)
+        this.fireT.setDiffuse(1, 102 / 256, 0, 1.0);
+        this.fireT.setSpecular(1, 1, 1, 1.0);
+        this.fireT.setShininess(10);
         this.fireT.loadTexture('images/fire2.jpg');
     }
 

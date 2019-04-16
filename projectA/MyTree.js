@@ -20,12 +20,15 @@ class MyTree extends CGFobject {
 
         this.trunk_material = new CGFappearance(scene)
         this.trunk_material.loadTexture(trunk_texture)
-        this.trunk_material.setDiffuse(1, 1, 1, 1.0);
+        this.trunk_material.setDiffuse(80 / 255, 80 / 255, 95 / 255, 1.0);
         this.trunk_material.setSpecular(0.1, 0.1, 0.1, 1.0);
         this.trunk_material.setShininess(0.1);
 
         this.tree_top_material = new CGFappearance(scene)
         this.tree_top_material.loadTexture(tree_top_texture)
+        this.tree_top_material.setDiffuse(80 / 255, 80 / 255, 95 / 255, 1.0);
+        this.tree_top_material.setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.trunk_material.setShininess(0.1);
     }
 
     display() {

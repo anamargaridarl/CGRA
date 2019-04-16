@@ -65,16 +65,19 @@ class MyScene extends CGFscene {
 
         //Initialize textures
         this.floor = new CGFappearance(this)
+        this.floor.setDiffuse(0, 0.6, 0, 1);
+        this.floor.setSpecular(0,0.5,0,1);
         this.floor.loadTexture('images/grass6.png');
         this.floor.setTextureWrap('REPEAT', 'REPEAT');
     }
 
     initLights() {
         //Luz Fogueira
-        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
+        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2 + 0.45, 1, 10, 1);
+        this.lights[0].setSpotDirection(0, -1, 0);
         this.lights[0].setDiffuse(1, 102 / 255, 0, 1.0);
-        this.lights[0].setSpecular(1 * 0.1, 102 / 255 * 0.1, 0, 1.0);
-        this.lights[0].setAmbient(1 * 0.1, 102 / 255 * 0.1, 0, 1.0);
+        this.lights[0].setSpecular(1, 102 / 255, 0, 1.0);
+        this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.2);
         this.lights[0].disable();
 
@@ -91,12 +94,12 @@ class MyScene extends CGFscene {
         this.lights[2].setDiffuse(1, 1, 1, 1.0);
         this.lights[2].setSpecular(0.1, 0.1, 0.1, 1.0);
         this.lights[2].setAmbient(0.1, 0.1, 0.1, 1.0);
-        this.lights[2].setConstantAttenuation(0.5);
+        this.lights[2].setConstantAttenuation(1);
         this.lights[2].disable();
 
         this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
-        this.selectedObject = 0;
+        this.selectedObject = 1;
 
         this.updateObjectComplexity();
     }
@@ -184,8 +187,10 @@ class MyScene extends CGFscene {
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
-
         // ---- BEGIN Primitive drawing section
+        this.lights[0].update();
+        this.lights[2].update();
+        
 
         this.displayScene();
 
