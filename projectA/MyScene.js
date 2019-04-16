@@ -177,6 +177,10 @@ class MyScene extends CGFscene {
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
+        this.lights[0].update();
+        this.lights[1].update();
+        this.lights[2].update();
+
 
         // ---- BEGIN Primitive drawing section
 
