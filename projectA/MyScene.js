@@ -163,13 +163,13 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-30, 0, -25)
+        this.translate(-10, 0, -25)
         this.scale(2, 2, 2)
         this.group_patch.display()
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-30, 0, -5)
+        this.translate(-27, 0, -3)
         this.scale(2, 2, 2)
         this.group_patch.display()
         this.popMatrix();
