@@ -51,9 +51,9 @@ class MyScene extends CGFscene {
         this.hill = new MyVoxelHill(this, 0, 0);
         var coords = [
             0,0,
-            5,0,
-            0,5,
-            5,5
+            10,0,
+            0,10,
+            10,10
         ];
         this.ground = new MyQuad(this,coords);
         this.cubemap_day = new MyCubeMap(this, 'images/skybox_day5.png');
@@ -73,7 +73,7 @@ class MyScene extends CGFscene {
     initLights() {
 
         //Luz Fogueira
-        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 4.5, 1);
+        this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
         this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
         this.lights[0].setLinearAttenuation(0.3);
