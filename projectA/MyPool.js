@@ -37,6 +37,4 @@ class MyPool extends CGFobject {
         this.water.display();
         this.scene.popMatrix();
     }
-
-
 }

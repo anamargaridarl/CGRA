@@ -88,5 +88,4 @@ class MyUnitCube extends CGFobject {
 			Scene.popMatrix();
 		}
 	}
-
 }

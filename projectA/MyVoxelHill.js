@@ -66,7 +66,6 @@ class MyVoxelHill extends CGFobject {
             y++;
             x++;
             z++;
-
         }
     }
 }

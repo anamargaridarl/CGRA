@@ -141,5 +141,4 @@ class MyCubeMap extends CGFobject {
 		this.display()
 		this.scene.popMatrix()
 	}
-
 }

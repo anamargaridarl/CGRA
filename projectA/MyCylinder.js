@@ -8,6 +8,7 @@ class MyCylinder extends CGFobject {
         this.slices = slices;
         this.initBuffers();
     }
+
     initBuffers() {
         this.vertices = [];
         this.indices = [];
@@ -81,7 +82,6 @@ class MyCylinder extends CGFobject {
         this.initGLBuffers();
         this.initNormalVizBuffers();
     }
-
 }
 
 
