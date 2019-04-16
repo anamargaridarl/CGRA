@@ -37,7 +37,6 @@ class MyScene extends CGFscene {
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
@@ -62,6 +61,7 @@ class MyScene extends CGFscene {
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
 
+        //Initialize scene scale factor
         this.scaleFactor = 0.6;
 
         //Initialize textures
@@ -143,7 +143,6 @@ class MyScene extends CGFscene {
         this.pool.display();
         this.popMatrix();
 
-        
         this.pushMatrix();
         this.translate(-25,0,-15)
         this.scale(2,2,2)
@@ -177,22 +176,17 @@ class MyScene extends CGFscene {
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
-
         // ---- BEGIN Primitive drawing section
-
-
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
         this.pushMatrix();
         this.displayScene();
         this.popMatrix();
 
-
         if (this.selectedObject == 0)
             this.cubemap_day.displayBase();
         else if (this.selectedObject == 1)
             this.cubemap_night.displayBase();
-
 
         // ---- END Primitive drawing section
     }

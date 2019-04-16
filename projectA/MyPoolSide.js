@@ -6,6 +6,7 @@ class MyPoolSide extends CGFobject {
     constructor(scene,l,c) {
         super(scene);
 		
+		//width - c; height- h
 		this.c = c;
 		this.l = l;
 
@@ -18,7 +19,6 @@ class MyPoolSide extends CGFobject {
         topText.loadTexture('images/marble3.jpeg');
 
 		var textures = [topText, topText, topText, topText];
-		
 		this.cube = new MyUnitCubeQuad(scene,textures);
     }
 
