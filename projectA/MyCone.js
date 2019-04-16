@@ -29,11 +29,11 @@ class MyCone extends CGFobject {
 
             ang += alphaAng;
         }
+        
         this.vertices.push(0, 1, 0);
         this.texCoords.push(1, 1);
 
         this.normals.push(0, 1, 0);
-
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
