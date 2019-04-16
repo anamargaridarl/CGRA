@@ -12,22 +12,17 @@ class MyScene extends CGFscene {
             this.lights[0].disable();
             this.lights[2].disable();
             this.lights[1].enable();
-
-            this.lights[0].update();
-            this.lights[2].update();
-            this.lights[1].update();
         }
 
         if (this.selectedObject == this.lightsIDs['Night']) {
             this.lights[1].disable();
             this.lights[0].enable();
             this.lights[2].enable();
-
-            this.lights[0].update();
-            this.lights[2].update();
-            this.lights[1].update();
         }
 
+        this.lights[0].update();
+        this.lights[2].update();
+        this.lights[1].update();
     }
     init(application) {
         super.init(application);
@@ -50,14 +45,14 @@ class MyScene extends CGFscene {
         this.house = new MyHouse(this);
         this.hill = new MyVoxelHill(this, 0, 0);
         var coords = [
-            0,0,
-            10,0,
-            0,10,
-            10,10
+            0, 0,
+            10, 0,
+            0, 10,
+            10, 10
         ];
-        this.ground = new MyQuad(this,coords);
+        this.ground = new MyQuad(this, coords);
         this.cubemap_day = new MyCubeMap(this, 'images/skybox_day5.png');
-        this.cubemap_night = new MyCubeMap(this, 'images/skybox_night.png');
+        this.cubemap_night = new MyCubeMap(this, 'images/skybox_night3.png');
         this.fire = new MyFire(this);
         this.pool = new MyPool(this);
 
@@ -75,19 +70,26 @@ class MyScene extends CGFscene {
         //Luz Fogueira
         this.lights[0].setPosition(Math.sqrt(1 / 2) / 2, 0.5, 5.5, 1);
         this.lights[0].setDiffuse(1, 102 / 256, 0, 1.0);
-        this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
-        this.lights[0].setLinearAttenuation(0.3);
-        this.lights[0].setSpecular(1, 102 / 256, 0, 1.0);
+        this.lights[0].setSpecular(1*0.1, 102 / 256 * 0.1, 0, 1.0);
+        this.lights[0].setAmbient(1*0.1, 102 / 256 *0.1, 0, 1.0);
+        this.lights[0].setLinearAttenuation(0.2);
+        this.lights[0].disable();
 
         //Luz Sol
-        this.lights[1].setConstantAttenuation(0.2);
+        this.lights[1].setConstantAttenuation(0.0);
         this.lights[1].setPosition(2, 30, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 256, 1.0);
+        this.lights[1].setSpecular(1*0.1, 1 *0.1 ,153 / 256 * 0.1, 1.0);
+        this.lights[1].setAmbient(1*0.1, 1 *0.1 ,153 / 256 * 0.1, 1.0);
+        this.lights[1].disable();
 
         //Luz lua
         this.lights[2].setPosition(2, 30, 1, 1);
         this.lights[2].setDiffuse(1, 1, 1, 1.0);
-        this.lights[2].setConstantAttenuation(1);
+        this.lights[2].setSpecular(0.1, 0.1, 0.1, 1.0);
+        this.lights[2].setAmbient(0.1, 0.1, 0.1, 1.0);
+        this.lights[2].setConstantAttenuation(0.5);
+        this.lights[2].disable();
 
         this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
@@ -107,7 +109,7 @@ class MyScene extends CGFscene {
     displayScene() {
 
         this.pushMatrix()
-        this.scale(4, 4,4)
+        this.scale(4, 4, 4)
         this.house.display();
         this.popMatrix();
 
@@ -124,8 +126,8 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0,0,2);
-        this.scale(3,3,3)
+        this.translate(0, 0, 2);
+        this.scale(3, 3, 3)
         this.fire.display();
         this.popMatrix();
 
@@ -144,14 +146,14 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(-25,0,-15)
-        this.scale(2,2,2)
+        this.translate(-25, 0, -15)
+        this.scale(2, 2, 2)
         this.group_patch.display()
         this.popMatrix();
-        
+
         this.pushMatrix();
-        this.translate(-25,0,-25)
-        this.scale(2,2,2)
+        this.translate(-25, 0, -25)
+        this.scale(2, 2, 2)
         this.row_patch.display()
         this.popMatrix();
 
@@ -175,11 +177,6 @@ class MyScene extends CGFscene {
 
         //Factor display
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
-
-        this.lights[0].update();
-        this.lights[1].update();
-        this.lights[2].update();
-
 
         // ---- BEGIN Primitive drawing section
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);

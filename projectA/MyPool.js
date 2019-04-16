@@ -15,7 +15,7 @@ class MyPool extends CGFobject {
         this.waterT.setSpecular(135/256,206/256,250/256); 
         this.waterT.setDiffuse(135/256*0.1, 206/256*0.1, 250/256*0.1, 1.0);
         this.waterT.setAmbient(135/256*0.1, 206/256*0.1, 250/256*0.1, 1.0);
-        this.waterT.setShininess(0.6);
+        this.waterT.setShininess(0.2);
         this.waterT.loadTexture('images/pool2.jpg');
 
     }
