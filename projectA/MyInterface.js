@@ -20,6 +20,8 @@ class MyInterface extends CGFinterface {
         //Initializa Day / Night
         this.gui.add(this.scene, 'selectedObject', this.scene.lightsIDs).name('Light').onChange(this.scene.updateObjectComplexity.bind(this.scene));
 
+        this.gui.add(this.scene, 'texturesEnabled').name('Textures').onChange(this.scene.updateTextures.bind(this.scene));
+
         return true;
     }
 }

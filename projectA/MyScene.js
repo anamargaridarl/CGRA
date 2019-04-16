@@ -7,8 +7,11 @@ class MyScene extends CGFscene {
         super();
     }
 
-    updateObjectComplexity() {
+    updateTextures() {
+        this.enableTextures(this.texturesEnabled);
+    }
 
+    updateObjectComplexity() {
         if (this.selectedObject == this.lightsIDs['Day']) {
             this.lights[0].disable();
             this.lights[2].disable();
@@ -69,6 +72,8 @@ class MyScene extends CGFscene {
         this.floor.setSpecular(0,0.5,0,1);
         this.floor.loadTexture('images/grass6.png');
         this.floor.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.texturesEnabled = true;
     }
 
     initLights() {
@@ -85,8 +90,8 @@ class MyScene extends CGFscene {
         this.lights[1].setConstantAttenuation(0.0);
         this.lights[1].setPosition(2, 30, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 255, 1.0);
-        this.lights[1].setSpecular(1 * 0.1, 1 * 0.1, 153 / 255 * 0.1, 1.0);
-        this.lights[1].setAmbient(1 * 0.1, 1 * 0.1, 153 / 255 * 0.1, 1.0);
+        this.lights[1].setSpecular(1, 1, 153 / 255, 1.0);
+        this.lights[1].setAmbient(1 , 1, 153 / 255, 1.0);
         this.lights[1].disable();
 
         //Luz lua
@@ -99,7 +104,7 @@ class MyScene extends CGFscene {
 
         this.lightsIDs = { 'Day': 0, 'Night': 1 };
 
-        this.selectedObject = 1;
+        this.selectedObject = 0;
 
         this.updateObjectComplexity();
     }
@@ -189,6 +194,7 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         this.lights[0].update();
+        this.lights[1].update();
         this.lights[2].update();
         
 
