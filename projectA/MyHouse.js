@@ -7,27 +7,30 @@ class MyHouse extends CGFobject {
         //Diffuse texture with grey color (stone)
         var material_house = new CGFappearance(scene)
         material_house.setDiffuse(211 / 255, 211 / 255, 211 / 255, 1.0);
-        material_house.setSpecular(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
-        material_house.setAmbient(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
+        material_house.setSpecular(211 / 255, 211 / 255, 211 / 255, 1.0);
+        material_house.setAmbient(211 / 255, 211 / 255, 211 / 255, 1.0);
         material_house.setShininess(0.1);
         material_house.loadTexture('images/wall5.jpg');
 
         //Diffuse texture with grey color (stone)
         var material_door_side = new CGFappearance(scene)
         material_door_side.setDiffuse(211 / 255, 211 / 255, 211 / 255, 1.0);
-        material_door_side.setSpecular(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
-        material_door_side.setAmbient(211 / 255 * 0.1, 211 / 255 * 0.1, 211 / 255 * 0.1, 1.0);
+        material_door_side.setSpecular(211 / 255, 211 / 255, 211 / 255, 1.0);
+        material_door_side.setAmbient(211 / 255, 211 / 255, 211 / 255, 1.0);
         material_door_side.setShininess(0.1);
         material_door_side.loadTexture('images/doorside.png');
 
         //Diffuse texture with brown color (wood)
         this.material_collumns = new CGFappearance(scene)
         this.material_collumns.setDiffuse(92 / 255, 51 / 255, 23 / 255, 1.0);
-        this.material_collumns.setSpecular(92 / 255 * 0.1, 51 / 255 * 0.1, 23 / 255 * 0.1, 1.0);
+        this.material_collumns.setSpecular(92 / 255, 51 / 255, 23 / 255, 1.0);
         this.material_collumns.setShininess(0.1);
         this.material_collumns.loadTexture('images/column3.png');
 
         this.material_roof = new CGFappearance(scene)
+        this.material_roof.setDiffuse(130 / 255, 51 / 255, 23 / 255, 1.0);
+        this.material_roof.setSpecular(130 / 255, 51 / 255, 23 / 255, 1.0);
+        this.material_roof.setShininess(0.1);
         this.material_roof.loadTexture('images/roof3.jpg');
 
         //House objects
