@@ -87,7 +87,7 @@ class MyScene extends CGFscene {
         this.lights[0].setDiffuse(1, 102 / 255, 0, 1.0);
         this.lights[0].setSpecular(1, 102 / 255, 0, 1.0);
         this.lights[0].setAmbient(1, 102 / 256, 0, 1.0);
-        this.lights[0].setLinearAttenuation(0.5);
+        this.lights[0].setLinearAttenuation(0.2);
         this.lights[0].disable();
 
         //Luz Sol
