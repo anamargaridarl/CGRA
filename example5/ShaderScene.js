@@ -57,6 +57,9 @@ class ShaderScene extends CGFscene {
 
 		this.texture2 = new CGFtexture(this, "textures/FEUP.jpg");
 
+		this.water_tex = new CGFtexture(this, 'textures/waterTex.jpg');
+		this.water_map = new CGFtexture(this, 'textures/waterMap.jpg');
+
 		// shaders initialization
 
 		this.testShaders = [
@@ -212,6 +215,11 @@ class ShaderScene extends CGFscene {
 
 		// bind additional texture to texture unit 1
 		this.texture2.bind(1);
+
+		if (this.selectedExampleShader == 10) {
+			this.appearance.setTexture(this.water_tex);
+			this.water_map.bind(1);
+		}
 
 		//Uncomment following lines in case texture must have wrapping mode 'REPEAT'
 		//this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
