@@ -70,6 +70,7 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
 			new CGFshader(this.gl, "shaders/ex1.vert", "shaders/ex1.frag"),
+			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag"),
 			//new CGFshader(this.gl, "shaders/texture1.vert", "shaders/ex3.frag")
 		   // new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex2.frag")
 		];
@@ -79,6 +80,7 @@ class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
+		this.testShaders[10].setUniformsValues({ uSampler2: 1 });
 
 
 		// Shaders interface variables
@@ -94,6 +96,7 @@ class ShaderScene extends CGFscene {
 			'Sepia': 7,
 			'Convolution': 8,
 			'Ex1 - blue and yellow' : 9,
+			'Ex2 - water' : 10,
 			//'Ex3 - grey scale' : 10
 
 		};
