@@ -227,6 +227,7 @@ class ShaderScene extends CGFscene {
 			this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 			this.water_map.bind(1);
 		} else {
+			this.appearance.setTexture(this.texture);
 			this.texture2.bind(1);
 		}
 
