@@ -100,8 +100,8 @@ class ShaderScene extends CGFscene {
 			'Convolution': 8,
 			'Ex1 - blue and yellow': 9,
 			'Ex2 - water': 10,
-			'Ex3 - grey scale' : 11
-			'EX2 - animation' :12,
+			'EX2 - animation' :11,
+			'Ex3 - grey scale' : 12
 
 		};
 
@@ -187,8 +187,8 @@ class ShaderScene extends CGFscene {
 			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
 		else if (this.selectedExampleShader == 10)
 			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
-		else if (this.selectedExampleShader == 12)
-			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
+		else if (this.selectedExampleShader == 11)
+			this.testShaders[11].setUniformsValues({ timeFactor: t / 100 % 1000 });
 		
 
 	}
