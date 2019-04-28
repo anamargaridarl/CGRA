@@ -84,6 +84,7 @@ class ShaderScene extends CGFscene {
 		this.testShaders[5].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ uSampler2: 1 });
 		this.testShaders[6].setUniformsValues({ timeFactor: 0 });
+		this.testShaders[10].setUniformsValues({ uSampler2: 1, timeFactor: 0 });
 
 
 		// Shaders interface variables
@@ -224,7 +225,7 @@ class ShaderScene extends CGFscene {
 		if (this.selectedExampleShader == 10) {
 			this.appearance.setTexture(this.water_tex);
 			this.appearance.setTextureWrap('REPEAT', 'REPEAT');
-			this.water_map.bind(2);
+			this.water_map.bind(1);
 		} else {
 			this.texture2.bind(1);
 		}
