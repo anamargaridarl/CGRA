@@ -74,7 +74,7 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
 			new CGFshader(this.gl, "shaders/ex1.vert", "shaders/ex1.frag"),
 			new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex2.frag"),
-			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/ex3.frag"),
+			new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex3.frag"),
 			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
 		    
 		];
