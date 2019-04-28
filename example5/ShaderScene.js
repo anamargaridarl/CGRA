@@ -73,9 +73,9 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/sepia.frag"),
 			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/convolution.frag"),
 			new CGFshader(this.gl, "shaders/ex1.vert", "shaders/ex1.frag"),
-			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag"),
 			new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex2.frag"),
-			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/ex3.frag")
+			new CGFshader(this.gl, "shaders/texture1.vert", "shaders/ex3.frag"),
+			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
 		    
 		];
 
@@ -98,10 +98,10 @@ class ShaderScene extends CGFscene {
 			'Animation example': 6,
 			'Sepia': 7,
 			'Convolution': 8,
-			'Ex1 - blue and yellow': 9,
-			'Ex2 - water': 10,
-			'EX2 - animation' :11,
-			'Ex3 - grey scale' : 12
+			'Ex1.1 - blue and yellow': 9,
+			'EX1.2 - animation' :10,
+			'Ex1.3 - grey scale' : 11,
+			'Ex2 - water': 12,
 
 		};
 
@@ -187,8 +187,8 @@ class ShaderScene extends CGFscene {
 			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
 		else if (this.selectedExampleShader == 10)
 			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
-		else if (this.selectedExampleShader == 11)
-			this.testShaders[11].setUniformsValues({ timeFactor: t / 100 % 1000 });
+		else if (this.selectedExampleShader == 12)
+			this.testShaders[12].setUniformsValues({ timeFactor: t / 100 % 1000 });
 		
 
 	}
@@ -221,7 +221,7 @@ class ShaderScene extends CGFscene {
 		this.pushMatrix();
 
 		// bind additional texture to texture unit 1
-		if (this.selectedExampleShader == 10) {
+		if (this.selectedExampleShader == 12) {
 			this.appearance.setTexture(this.water_tex);
 			this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 			this.water_map.bind(2);
