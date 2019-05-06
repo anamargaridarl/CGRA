@@ -105,17 +105,16 @@ class MyLSystem extends CGFobject {
                     this.scene.popMatrix();
                     break;
                 case "/":
-                    this.scene.rotate(-this.angle, 0, 1, 1);
+                    this.scene.rotate(-this.angle, 1, 0, 0);
                     break;
                 case "\\":
-                    this.scene.rotate(this.angle, 0, 1, 1);
+                    this.scene.rotate(this.angle, 1, 0,0);
                     break;
-
                 case "^":
-                    this.scene.rotate(this.angle, 1, 0, 1);
+                    this.scene.rotate(this.angle, 0, 1, 0);
                     break;
                 case "&":
-                    this.scene.rotate(-this.angle, 1, 0, 1);
+                    this.scene.rotate(-this.angle, 0, 1, 0);
                     break;
 
 
