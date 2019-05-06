@@ -21,20 +21,28 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
 
         //Objects connected to MyInterface
-        this.axiom = "F--F--F"; // "X"; //
-        this.ruleF = "F+F--F+F"; // "FF"; //
-        //this.ruleX = "F[-X][X]F[-X]+FX";
+        this.axiom = "X"; //"F--F--F";
+        this.ruleF = "FF"; //"F+F--F+F"; 
+        this.ruleX = "F[-X][X]F[-X]+FX";
+        this.ruleX2 = "F[-X][x]+X";
+        this.ruleX3 = "F[+X]-X";
+        this.ruleX4 = "F[/X][X]F[\\X]+X";
+        this.ruleX5 = "X → F[\X][X]/X";
+        this.ruleX6 = "F[/X]\X";
+        this.ruleX7 = "F[^X][X]F[&X]^X";
+        this.ruleX8 = "F[^X]&X";
+        this.ruleX9 = "F[&X]^X";
         this.angle = 60.0;
         this.iterations = 2;
         this.scaleFactor = 1;
-        this.lSystem = new MyLSystem(this);
+        this.lSystem = new MyLSPlant(this);
 
         this.doGenerate = function () {
             this.lSystem.generate(
                 this.axiom,
                 {
-                    "F": [ this.ruleF ],
-                    "X": [ this.ruleX ]
+                    "F": [this.ruleF],
+                    "X": [this.ruleX, this.ruleX2, this.ruleX3,this.ruleX4,this.ruleX5,this.ruleX6,this.ruleX7,this.ruleX8,this.ruleX9]
                 },
                 this.angle,
                 this.iterations,
@@ -47,7 +55,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        
+
     }
 
     initLights() {
