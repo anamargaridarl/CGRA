@@ -23,6 +23,7 @@ class MyScene extends CGFscene {
         //Objects connected to MyInterface
         this.axiom = "X"; //"F--F--F";
         this.ruleF = "FF"; //"F+F--F+F"; 
+        this.ruleF2 = "F+F--F+F"; 
         this.ruleX = "F[-X][X]F[-X]+FX";
         this.ruleX2 = "F[-X][x]+X";
         this.ruleX3 = "F[+X]-X";
@@ -32,16 +33,16 @@ class MyScene extends CGFscene {
         this.ruleX7 = "F[^X][X]F[&X]^X";
         this.ruleX8 = "F[^X]&X";
         this.ruleX9 = "F[&X]^X";
-        this.angle = 60.0;
-        this.iterations = 2;
-        this.scaleFactor = 1;
+        this.angle = 30.0;
+        this.iterations = 4;
+        this.scaleFactor = 0.5;
         this.lSystem = new MyLSPlant(this);
 
         this.doGenerate = function () {
             this.lSystem.generate(
                 this.axiom,
                 {
-                    "F": [this.ruleF],
+                    "F": [this.ruleF2],
                     "X": [this.ruleX, this.ruleX2, this.ruleX3, this.ruleX4, this.ruleX5, this.ruleX6, this.ruleX7, this.ruleX8, this.ruleX9]
                 },
                 this.angle,
