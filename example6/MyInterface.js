@@ -13,12 +13,12 @@ class MyInterface extends CGFinterface {
         // init GUI. For more information on the methods, check:
         // http://workshop.chromeexperiments.com/examples/gui
         this.gui = new dat.GUI();
-        
+
         var obj = this;
 
-        
+
         this.gui.add(this.scene, 'axiom').name('Axiom');
-        //this.gui.add(this.scene, "ruleX").name('Rule for X'); //TODO: add away to update between the three options of rules for x
+        this.gui.add(this.scene, "ruleX").name('Rule for X'); //TODO: add away to update between the three options of rules for x
         this.gui.add(this.scene, "ruleF").name('Rule for F');
 
         this.gui.add(this.scene, 'angle').name('Angle');

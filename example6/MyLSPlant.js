@@ -1,21 +1,21 @@
 class MyLSPlant extends MyLSystem {
-	constructor(scene) {
+    constructor(scene) {
         super(scene);
     }
 
-    init(){
+    init() {
         // cria o lexico da gramática
         this.initGrammar()
 
     }
 
     // cria o lexico da gramática
-    initGrammar(){
+    initGrammar() {
         this.grammar = {
             "F": new MyBranch(this.scene),
             "X": new MyLeaf(this.scene)
         };
     }
 
-   
+
 }

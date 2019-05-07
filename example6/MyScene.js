@@ -42,7 +42,7 @@ class MyScene extends CGFscene {
                 this.axiom,
                 {
                     "F": [this.ruleF],
-                    "X": [this.ruleX, this.ruleX2, this.ruleX3,this.ruleX4,this.ruleX5,this.ruleX6,this.ruleX7,this.ruleX8,this.ruleX9]
+                    "X": [this.ruleX, this.ruleX2, this.ruleX3, this.ruleX4, this.ruleX5, this.ruleX6, this.ruleX7, this.ruleX8, this.ruleX9]
                 },
                 this.angle,
                 this.iterations,

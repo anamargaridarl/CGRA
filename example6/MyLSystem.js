@@ -108,7 +108,7 @@ class MyLSystem extends CGFobject {
                     this.scene.rotate(-this.angle, 1, 0, 0);
                     break;
                 case "\\":
-                    this.scene.rotate(this.angle, 1, 0,0);
+                    this.scene.rotate(this.angle, 1, 0, 0);
                     break;
                 case "^":
                     this.scene.rotate(this.angle, 0, 1, 0);
