@@ -1,3 +1,7 @@
+/**
+* MyCubeMap
+* @constructor
+*/
 class MyCubeMap extends CGFobject {
 	constructor(scene, texture) {
 		super(scene);

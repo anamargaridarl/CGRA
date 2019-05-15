@@ -21,9 +21,12 @@ class MyScene extends CGFscene {
         this.enableTextures(true);
         this.setUpdatePeriod(50);
 
+        this.appearance = new CGFappearance(this);
+
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.plane = new Plane(this, 32);
+        this.plane = new MyTerrain(this, 32);
+
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this);
         this.bird = new MyBird(this,10,0,10,0,0);
@@ -103,8 +106,10 @@ class MyScene extends CGFscene {
         this.axis.display();
 
         //Apply default appearance
-        this.setDefaultAppearance();
-
+        // this.setDefaultAppearance();
+        this.appearance.apply();
+        
+        // ---- BEGIN Primitive drawing section
         this.displayScene();
 
         this.checkKeys();
