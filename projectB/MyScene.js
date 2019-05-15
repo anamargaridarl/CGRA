@@ -26,6 +26,7 @@ class MyScene extends CGFscene {
         this.plane = new Plane(this, 32);
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this);
+        this.bird = new MyBird(this,10,0,10,0,0);
 
         //Objects connected to MyInterface
     }
@@ -44,14 +45,38 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    update(t){
+    
+    update(t) {
+		if (this.bird)
+			this.bird.updateMovement({ timeFactor: 6 / 100 % 1000 });
+	}
 
+
+    checkKeys() {
+        var text = "Keys pressed: ";
+        var keysPressed = false;
+        // Check for key codes e.g. in https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+            text += " W ";
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyS")) {
+            text += " S ";
+            keysPressed = true;
+        }
+        if (keysPressed)
+            console.log(text);
     }
 
+
+
     displayScene() {
-        
         this.pushMatrix();
-        this.rotate(-0.5*Math.PI, 1, 0, 0);
+        this.cubemap.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
@@ -61,7 +86,7 @@ class MyScene extends CGFscene {
         this.house.display();
         this.popMatrix();
 
-        this.cubemap.display();
+        this.bird.display();
     }
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -82,9 +107,11 @@ class MyScene extends CGFscene {
 
         this.displayScene();
 
+        this.checkKeys();
+
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
-        this.rotate(-0.5*Math.PI, 1, 0, 0);
+        this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();

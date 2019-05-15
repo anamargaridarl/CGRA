@@ -184,14 +184,8 @@ class ShaderScene extends CGFscene {
 	// called periodically (as per setUpdatePeriod() in init())
 	update(t) {
 		// only shader 6 is using time factor
-		if (this.selectedExampleShader == 6)
-			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
-		else if (this.selectedExampleShader == 10)
-			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
-		else if (this.selectedExampleShader == 12)
-			this.testShaders[12].setUniformsValues({ timeFactor: t / 100 % 1000 });
-		
-
+		if (this.bird)
+			this.bird.updatePosition({ timeFactor: 6 / 100 % 1000 });
 	}
 
 	// main display function
