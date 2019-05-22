@@ -29,7 +29,9 @@ class MyScene extends CGFscene {
 
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this);
-        this.bird = new MyBird(this,10,0,10,0,0);
+        this.bird = new MyBird(this,10,10,10,0,0);
+
+        this.birdvelocity = 0;
 
         //Objects connected to MyInterface
     }
@@ -50,8 +52,7 @@ class MyScene extends CGFscene {
     }
     
     update(t) {
-		if (this.bird)
-			this.bird.updatePosition({ timeFactor: 6 / 100 % 1000 });
+			this.bird.updatePosition(t / 100 % 1000);
 	}
 
 
@@ -61,10 +62,27 @@ class MyScene extends CGFscene {
         // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W ";
+            this.bird.accelerate(1)
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyS")) {
             text += " S ";
+            this.bird.accelerate(-1);
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyA")) {
+            text += " A ";
+            this.bird.turn(1);
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyD")) {
+            text += " D ";
+            this.bird.turn(-1);
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyR")) {
+            text += " R ";
+            this.bird.originalPosition();
             keysPressed = true;
         }
         if (keysPressed)
