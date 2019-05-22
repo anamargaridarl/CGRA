@@ -76,7 +76,7 @@ class ShaderScene extends CGFscene {
 			new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex2.frag"),
 			new CGFshader(this.gl, "shaders/ex2.vert", "shaders/ex3.frag"),
 			new CGFshader(this.gl, "shaders/water.vert", "shaders/water.frag")
-		    
+
 		];
 
 		// additional texture will have to be bound to texture unit 1 later, when using the shader, with "this.texture2.bind(1);"
@@ -100,8 +100,8 @@ class ShaderScene extends CGFscene {
 			'Sepia': 7,
 			'Convolution': 8,
 			'Ex1.1 - blue and yellow': 9,
-			'EX1.2 - animation' :10,
-			'Ex1.3 - grey scale' : 11,
+			'EX1.2 - animation': 10,
+			'Ex1.3 - grey scale': 11,
 			'Ex2 - water': 12,
 
 		};
@@ -184,8 +184,14 @@ class ShaderScene extends CGFscene {
 	// called periodically (as per setUpdatePeriod() in init())
 	update(t) {
 		// only shader 6 is using time factor
-		if (this.bird)
-			this.bird.updatePosition({ timeFactor: 6 / 100 % 1000 });
+
+		if (this.selectedExampleShader == 6)
+			this.testShaders[6].setUniformsValues({ timeFactor: t / 100 % 1000 });
+		else if (this.selectedExampleShader == 10)
+			this.testShaders[10].setUniformsValues({ timeFactor: t / 100 % 1000 });
+		else if (this.selectedExampleShader == 12)
+			this.testShaders[12].setUniformsValues({ timeFactor: t / 100 % 1000 });
+
 	}
 
 	// main display function
