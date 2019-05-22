@@ -50,8 +50,13 @@ class MyScene extends CGFscene {
     }
     
     update(t) {
+<<<<<<< HEAD
 		// if (this.bird)
 			// this.bird.updateMovement({ timeFactor: 6 / 100 % 1000 });
+=======
+		if (this.bird)
+			this.bird.updatePosition({ timeFactor: 6 / 100 % 1000 });
+>>>>>>> bd92e71edc81bcc678a9c2d213a58618a9ca6eea
 	}
 
 
