@@ -1,4 +1,4 @@
-class MyLSPlant extends MyLSystem {
+class MyLightning extends MyLSystem {
     constructor(scene) {
         super(scene);
     }
@@ -11,8 +11,8 @@ class MyLSPlant extends MyLSystem {
     // cria o lexico da gramática
     initGrammar() {
         this.grammar = {
-            "F": new MyBranch(this.scene),
-            "X": new MyLeaf(this.scene)
+            "F": new MyQuad(this.scene),
+            "X": new MyQuad(this.scene)
         };
     }
 }

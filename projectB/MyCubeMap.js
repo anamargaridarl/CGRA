@@ -140,7 +140,7 @@ class MyCubeMap extends CGFobject {
 		// Display cube faces
 		this.scene.pushMatrix()
 		this.scene.translate(0, 30, 0)
-		this.scene.scale(80, 60, 80)
+		this.scene.scale(60, 80, 60)
 		this.display()
 		this.scene.popMatrix()
 	}
