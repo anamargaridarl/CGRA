@@ -6,23 +6,7 @@
 class MyLSystem extends CGFobject {
     constructor(scene) {
         super(scene);
-        this.init();
     }
-
-    init() {
-        // cria o lexico da gramática
-        this.initGrammar()
-
-    }
-
-    // cria o lexico da gramática
-    initGrammar() {
-        this.grammar = {
-            "F": new MyRectangle(this.scene, 0.2, 1),
-            "X": new MyRectangle(this.scene, 0.5, 0.5)
-        };
-    }
-
 
     // gera o sistema L com os par�metros atuais da cena
     generate(_axiom, _productions, _angle, _iterations, _scale) {

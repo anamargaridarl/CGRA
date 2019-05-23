@@ -1,6 +1,13 @@
 class MyLightning extends MyLSystem {
-    constructor(scene) {
+    constructor(scene, axiom, ruleF, ruleX, angle, iterations, scaleFactor) {
         super(scene);
+
+        super.generate(axiom, {
+            "F": [ruleF],
+            "X": [ruleX]
+        },
+        angle, iterations, scaleFactor);
+        this.init();
     }
 
     init() {
