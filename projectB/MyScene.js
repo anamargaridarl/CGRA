@@ -28,8 +28,10 @@ class MyScene extends CGFscene {
         this.plane = new MyTerrain(this, 32);
 
         this.house = new MyHouse(this);
-        this.cubemap = new MyCubeMap(this);
-        this.bird = new MyBird(this,10,10,10,0,0);
+        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
+
+        // TODO: mudar para valores a serio
+        this.bird = new MyBird(this, 10, 10, 10, 1);
 
         this.birdvelocity = 0;
 
@@ -92,19 +94,20 @@ class MyScene extends CGFscene {
 
 
     displayScene() {
-        this.pushMatrix();
-        this.cubemap.display();
-        this.popMatrix();
-
+        
         this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
-
+        
         this.pushMatrix()
         this.scale(4, 4, 4)
         this.house.display();
+        this.popMatrix();
+        
+        this.pushMatrix();
+        this.cubemap.displayBase();
         this.popMatrix();
 
         // this.bird.display();
@@ -128,6 +131,7 @@ class MyScene extends CGFscene {
         this.appearance.apply();
         
         // ---- BEGIN Primitive drawing section
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         this.displayScene();
 
         this.checkKeys();

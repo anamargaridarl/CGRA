@@ -6,8 +6,8 @@ class MyCubeMap extends CGFobject {
 	constructor(scene, texture) {
 		super(scene);
 
-		this.cubemap_texture = new CGFappearance(scene)
-		this.cubemap_texture.loadTexture(texture)
+		this.cubemap_texture = new CGFappearance(scene);
+		this.cubemap_texture.loadTexture(texture);
 
 		this.initBuffers();
 	}
@@ -135,8 +135,7 @@ class MyCubeMap extends CGFobject {
 
 	displayBase() {
 		// Apply texture and set filtering
-		this.cubemap_texture.apply()
-		this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+		this.cubemap_texture.apply();
 
 		// Display cube faces
 		this.scene.pushMatrix()
