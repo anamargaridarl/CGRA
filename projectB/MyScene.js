@@ -35,7 +35,7 @@ class MyScene extends CGFscene {
         this.birdvelocity = 0;
 
         // Something is broken
-        // this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
+        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
 
         //Objects connected to MyInterface
     }
