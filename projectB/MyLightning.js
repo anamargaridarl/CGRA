@@ -4,7 +4,7 @@ class MyLightning extends MyLSystem {
 
         super.generate(axiom, {
             "F": [ruleF],
-            "X": [ruleX]
+            "X": [ruleX, "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
         },
         angle, iterations, scaleFactor);
         this.init();

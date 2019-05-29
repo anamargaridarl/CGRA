@@ -50,7 +50,7 @@ class MyScene extends CGFscene {
         this.randomBranches();
 
 
-        //this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
+        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 1);
 
         //Objects connected to MyInterface
     }
@@ -142,7 +142,7 @@ class MyScene extends CGFscene {
         this.cubemap.displayBase();
         this.popMatrix();
 
-        //this.lightning.display();
+        this.lightning.display();
 
         this.pushMatrix();
         this.displayBranches();
