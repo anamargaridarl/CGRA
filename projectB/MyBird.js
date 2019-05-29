@@ -25,7 +25,7 @@ class MyBird extends CGFobject {
         this.rise = false;
         this.yP = 0;
 
-        this.branches = [];
+        this.branches;
 
     }
 
@@ -40,12 +40,12 @@ class MyBird extends CGFobject {
         this.rise = true;
     }
 
-    lookBranches()
+    lookBranches(branches)
     {
         for(var i = 0; i< 5; i++)
         {
-            if(this.branches[i].initialx == this.initialx + this.x && this.branches[i].initialz == this.initialz + this.z )
-            console.log("bananas")
+            if(branches[i].x == this.x + this.initialx && branches[i].z == this.z +this.initialz)
+            console.log("yeeeei");
         }
     }
 
@@ -96,10 +96,8 @@ class MyBird extends CGFobject {
             if (this.yP > 0)
             {
                 this.yP -= t*this.v*0.002;
-                console.log("batatatatatatata")
             }
             else {
-
                 this.startRise();
             }
         }

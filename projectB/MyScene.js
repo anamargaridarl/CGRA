@@ -8,7 +8,10 @@ class MyScene extends CGFscene {
     }
 
     randomBranches() {
-        for (var i = 0; i < 5; i++) {
+
+        this.branches.push(new MyTreeBranch(this,this.branchTexture,0,0,0,0));
+
+        for (var i = 0; i < 4; i++) {
             this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2*Math.PI)));
         }
     }
@@ -79,6 +82,9 @@ class MyScene extends CGFscene {
     }
 
     update(t) {
+
+        if(this.bird.yP == 0)
+        this.bird.lookBranches(this.branches);
         this.bird.updatePosition(t / 100 % 1000);
         this.checkKeys();
     }
