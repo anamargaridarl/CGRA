@@ -9,7 +9,7 @@ class MyScene extends CGFscene {
 
     randomBranches() {
         for (var i = 0; i < 5; i++) {
-            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 6, Math.random() * (10 - 1) + 1, Math.random() * (2*Math.PI)));
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2*Math.PI)));
         }
     }
 
@@ -116,6 +116,7 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyP")) {
             text += " P ";
             keysPressed = true;
+            this.bird.startFall(this.branches);
         }
         if (keysPressed)
             console.log(text);

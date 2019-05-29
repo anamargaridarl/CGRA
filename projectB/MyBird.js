@@ -21,29 +21,101 @@ class MyBird extends CGFobject {
         this.rwings = 0;
         this.v = v;
 
+        this.fall = false;
+        this.rise = false;
+        this.yP = 0;
+
+        this.branches = [];
+
     }
 
-    display() {
-        this.scene.pushMatrix();
-        this.scene.translate(this.initialx + this.x, this.initialy + this.y, this.initialz + this.z);
+    startFall(branches) {
+        this.yP = this.initialy + this.y;
+        this.fall = true;
+        this.branches = branches;
+    }
+
+    startRise() {
+        this.fall = false;
+        this.rise = true;
+    }
+
+    lookBranches()
+    {
+        for(var i = 0; i< 5; i++)
+        {
+            if(this.branches[i].initialx == this.initialx + this.x && this.branches[i].initialz == this.initialz + this.z )
+            console.log("bananas")
+        }
+    }
+
+    move() {
         this.scene.rotate(this.rotatefactor, 0, 1, 0);
         this.scene.pushMatrix();
         this.body.displayBody();
         this.scene.axis.display();
         this.wings.displayWings(this.rwings);
         this.scene.popMatrix();
-        this.scene.popMatrix();
     }
 
+    display() {
 
+        if (this.fall || this.rise) {
+            this.scene.pushMatrix();
+            this.scene.translate(this.initialx + this.x, this.yP, this.initialz + this.z);
+            this.move();
+            this.scene.popMatrix();
+        }
+        else{
+            this.scene.pushMatrix();
+            this.scene.translate(this.initialx + this.x, this.initialy + this.y, this.initialz + this.z);
+            this.move();
+            this.scene.popMatrix();
+        }
+
+
+    }
+
+    riseUpdate(t) {
+        
+        if (this.rise) {
+            if (this.yP < 15)
+            {
+                this.yP += t*this.v*0.002;
+            }
+            else {
+                this.rise = false;
+            }
+        }
+    }
+
+    fallUpdate(t) {
+
+        if (this.fall) {
+            
+            if (this.yP > 0)
+            {
+                this.yP -= t*this.v*0.002;
+                console.log("batatatatatatata")
+            }
+            else {
+
+                this.startRise();
+            }
+        }
+    }
 
     updatePosition(t) {
+
+        this.fallUpdate(t);
+        this.riseUpdate(t);
+
         this.y = (this.initialy + 2 * Math.sin(t * 0.1));
 
-        if(this.v != 0)
-        this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
+        if (this.v != 0)
+            this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
         else
-        this.rwings = (this.initialy + 2 * Math.sin(t * 0.5));
+            this.rwings = (this.initialy + 2 * Math.sin(t * 0.5));
 
         if (this.rotatefactor == Math.PI)
             this.z += this.v * t % 0.2;
