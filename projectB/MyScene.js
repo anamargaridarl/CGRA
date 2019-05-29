@@ -27,13 +27,14 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
 
-        /*  this.plane = new MyTerrain(this, 32);
-              
-          this.house = new MyHouse(this);
-          this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');*/
+        //this.plane = new MyTerrain(this, 32);
+
+        this.house = new MyHouse(this);
+        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
 
         // TODO: mudar para valores a serio
         this.bird = new MyBird(this, 0, 6, 2, 0, 1);
+        this.nest =  new MyNest(this);
 
         //this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
 
@@ -98,25 +99,34 @@ class MyScene extends CGFscene {
 
     displayScene() {
 
-        /* this.pushMatrix();
-         this.rotate(-0.5 * Math.PI, 1, 0, 0);
-         this.scale(60, 60, 1);
-         this.plane.display();
-         this.popMatrix();
-         
-         this.pushMatrix()
-         this.scale(4, 4, 4)
-         this.translate(-3,1,-1);
-         this.house.display();
-         this.popMatrix();
-         
-         this.pushMatrix();
-         this.translate(0,8,0);
-         this.cubemap.displayBase();
-         this.popMatrix();*/
+        // this.pushMatrix();
+        // this.rotate(-0.5 * Math.PI, 1, 0, 0);
+        // this.scale(60, 60, 1);
+        // this.plane.display();
+        // this.popMatrix();
+
+        this.pushMatrix()
+        this.scale(4, 4, 4)
+        this.translate(-3, 1, -1);
+        this.house.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0, 8, 0);
+        this.cubemap.displayBase();
+        this.popMatrix();
 
         //this.lightning.display();
+
+        this.pushMatrix();
         this.bird.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0,0,0);
+        this.nest.display();
+        this.popMatrix();
+
     }
 
     display() {
