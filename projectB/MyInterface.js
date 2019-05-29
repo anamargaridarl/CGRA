@@ -41,7 +41,10 @@ class MyInterface extends CGFinterface {
         this.gui = new dat.GUI();
 
         this.gui.add(this.scene, 'scaleFactor', 0.1, 10.0).name('Scale');
-        
+        this.gui.add(this.scene.bird, 'v', 0.1, 3).name('speedFactorV');  
+        this.gui.add(this.scene.bird, 'rotatefactor', 0.1, 3).name('speedFactorRot');  
+        this.gui.add(this.scene.bird, 'scaleFactor', 0.5, 3).name('scaleFactorBird');     
+
         var obj = this;
 
         this.initKeys();

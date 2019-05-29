@@ -3,7 +3,7 @@
 * @constructor
 */
 class MyBird extends CGFobject {
-    constructor(scene, x, y, z, angYY, v) {
+    constructor(scene, x, y, z) {
         super(scene);
 
         this.body = new MyBirdBody(scene);
@@ -13,19 +13,21 @@ class MyBird extends CGFobject {
         this.initialy = y;
         this.initialz = z;
 
-        this.rotatefactor = angYY;
+        this.rotatefactor = 0;
         this.x = x;
         this.y = y;
         this.z = z;
 
         this.rwings = 0;
-        this.v = v;
+        this.v = 0;
 
         this.fall = false;
         this.rise = false;
         this.yP = 0;
 
         this.branches;
+
+        this.scaleFactor = 1;
 
     }
 
@@ -40,12 +42,11 @@ class MyBird extends CGFobject {
         this.rise = true;
     }
 
-    lookBranches(branches)
-    {
-        for(var i = 0; i< 5; i++)
-        {
-            if(branches[i].x == this.x + this.initialx && branches[i].z == this.z +this.initialz)
-            console.log("yeeeei");
+    lookBranches(branches) {
+
+        for (var i = 0; i < 5; i++) {
+            if (branches[i].x == this.x + this.initialx && branches[i].z == this.z + this.initialz)
+                console.log("yeeeei");
         }
     }
 
@@ -66,7 +67,7 @@ class MyBird extends CGFobject {
             this.move();
             this.scene.popMatrix();
         }
-        else{
+        else {
             this.scene.pushMatrix();
             this.scene.translate(this.initialx + this.x, this.initialy + this.y, this.initialz + this.z);
             this.move();
@@ -77,14 +78,14 @@ class MyBird extends CGFobject {
     }
 
     riseUpdate(t) {
-        
+
         if (this.rise) {
-            if (this.yP < 15)
-            {
-                this.yP += t*this.v*0.002;
+            if (this.yP < this.y) {
+                this.yP += t * this.v * 0.002;
             }
             else {
                 this.rise = false;
+                this.y = this.yP;
             }
         }
     }
@@ -92,10 +93,9 @@ class MyBird extends CGFobject {
     fallUpdate(t) {
 
         if (this.fall) {
-            
-            if (this.yP > 0)
-            {
-                this.yP -= t*this.v*0.002;
+
+            if (this.yP > 0) {
+                this.yP -= t * this.v * 0.002;
             }
             else {
                 this.startRise();
@@ -111,58 +111,36 @@ class MyBird extends CGFobject {
         this.y = (this.initialy + 2 * Math.sin(t * 0.1));
 
         if (this.v != 0)
+        {
+            this.z -= Math.cos(this.rotatefactor) * this.v;
+            this.x -= Math.sin(this.rotatefactor) * this.v;
             this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
+        }
         else
             this.rwings = (this.initialy + 2 * Math.sin(t * 0.5));
 
-        if (this.rotatefactor == Math.PI)
-            this.z += this.v * t % 0.2;
-        else if (this.rotatefactor == Math.PI / 2)
-            this.x -= this.v * t % 0.2;
-        else if (this.rotatefactor == 0)
-            this.z -= this.v * t % 0.2;
-        else if (this.rotatefactor == Math.PI / 2 + Math.PI)
-            this.x += this.v * t % 0.2;
-
-
     }
 
-    turn(rotatefactor) {
-        if (rotatefactor > 0) {
-            if (this.rotatefactor >= 2 * Math.PI)
-                this.rotatefactor = Math.PI / 2;
-            else
-                this.rotatefactor += Math.PI / 2;
-        }
-        else {
-            if (this.rotatefactor <= 0)
-                this.rotatefactor = 2 * Math.PI;
-            else
-                this.rotatefactor -= Math.PI / 2;
-        }
+    turn(v) {
+        this.rotatefactor += v *10;
     }
 
-    accelerate(flag) {
-        if (flag > 0) {
-            this.v += 0.1;
-        }
-        else {
-            if (this.v > 0.01) {
-                this.v -= 0.1;
-            }
-            else {
-                this.v = 0;
-                this.rwings = 1;
-            }
+    accelerate(v) {
+
+        if (this.v <= 0.05) {
+            this.v = 0;
+            this.rwings = 1;
         }
 
+        this.v += v;
     }
+
 
     originalPosition() {
         this.rotatefactor = 0;
-        this.x = 0;
-        this.y = 0;
-        this.z = 0;
+        this.x = this.initialx;
+        this.y = this.initialy;
+        this.z = this.initialz;
         this.v = 0;
     }
 

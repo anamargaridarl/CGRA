@@ -9,10 +9,10 @@ class MyScene extends CGFscene {
 
     randomBranches() {
 
-        this.branches.push(new MyTreeBranch(this,this.branchTexture,0,0,0,0));
+        this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 0, 0));
 
         for (var i = 0; i < 4; i++) {
-            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2*Math.PI)));
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2 * Math.PI)));
         }
     }
 
@@ -37,7 +37,10 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
 
-        this.plane = new MyTerrain(this, 32);
+        //this.plane = new MyTerrain(this, 32);
+        this.testFloor = new MyQuad(this);
+
+
 
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
@@ -58,8 +61,7 @@ class MyScene extends CGFscene {
         //Objects connected to MyInterface
     }
 
-    displayBranches()
-    {
+    displayBranches() {
         for (var i = 0; i < 5; i++) {
             this.branches[i].display();
         }
@@ -71,6 +73,7 @@ class MyScene extends CGFscene {
         this.lights[0].enable();
         this.lights[0].update();
     }
+
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(45, 45, 45), vec3.fromValues(0, 0, 0));
     }
@@ -83,8 +86,8 @@ class MyScene extends CGFscene {
 
     update(t) {
 
-        if(this.bird.yP == 0)
-        this.bird.lookBranches(this.branches);
+        if (this.bird.yP <= 0.1)
+            this.bird.lookBranches(this.branches);
         this.bird.updatePosition(t / 100 % 1000);
         this.checkKeys();
     }
@@ -96,22 +99,22 @@ class MyScene extends CGFscene {
         // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W ";
-            this.bird.accelerate(1)
+            this.bird.accelerate(0.1)
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyS")) {
             text += " S ";
-            this.bird.accelerate(-1);
+            this.bird.accelerate(-0.1);
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyA")) {
             text += " A ";
-            this.bird.turn(1);
+            this.bird.turn(0.1);
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyD")) {
             text += " D ";
-            this.bird.turn(-1);
+            this.bird.turn(-0.1);
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyR")) {
@@ -132,10 +135,16 @@ class MyScene extends CGFscene {
 
     displayScene() {
 
-        this.pushMatrix();
+        /*this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
+        this.popMatrix();*/
+
+        this.pushMatrix();
+        this.scale(60, 60, 60);
+        this.rotate(Math.PI / 2, 1, 0, 0);
+        this.testFloor.display();
         this.popMatrix();
 
         this.pushMatrix()
@@ -145,11 +154,11 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0, 8, 0);
+        this.translate(0, 10, 0);
         this.cubemap.displayBase();
         this.popMatrix();
 
-        this.lightning.display();
+        // this.lightning.display();
 
         this.pushMatrix();
         this.displayBranches();
@@ -161,6 +170,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
+        this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
 
