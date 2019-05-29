@@ -26,14 +26,14 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
-        
-      /*  this.plane = new MyTerrain(this, 32);
-            
-        this.house = new MyHouse(this);
-        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');*/
+
+        /*  this.plane = new MyTerrain(this, 32);
+              
+          this.house = new MyHouse(this);
+          this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');*/
 
         // TODO: mudar para valores a serio
-        this.bird = new MyBird(this, 0, 6, 2, 0,1);
+        this.bird = new MyBird(this, 0, 6, 2, 0, 1);
 
         //this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
 
@@ -54,10 +54,11 @@ class MyScene extends CGFscene {
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setShininess(10.0);
     }
-    
+
     update(t) {
-			this.bird.updatePosition(t / 100 % 1000);
-	}
+        this.bird.updatePosition(t / 100 % 1000);
+        this.checkKeys();
+    }
 
 
     checkKeys() {
@@ -96,23 +97,23 @@ class MyScene extends CGFscene {
 
 
     displayScene() {
-        
-       /* this.pushMatrix();
-        this.rotate(-0.5 * Math.PI, 1, 0, 0);
-        this.scale(60, 60, 1);
-        this.plane.display();
-        this.popMatrix();
-        
-        this.pushMatrix()
-        this.scale(4, 4, 4)
-        this.translate(-3,1,-1);
-        this.house.display();
-        this.popMatrix();
-        
-        this.pushMatrix();
-        this.translate(0,8,0);
-        this.cubemap.displayBase();
-        this.popMatrix();*/
+
+        /* this.pushMatrix();
+         this.rotate(-0.5 * Math.PI, 1, 0, 0);
+         this.scale(60, 60, 1);
+         this.plane.display();
+         this.popMatrix();
+         
+         this.pushMatrix()
+         this.scale(4, 4, 4)
+         this.translate(-3,1,-1);
+         this.house.display();
+         this.popMatrix();
+         
+         this.pushMatrix();
+         this.translate(0,8,0);
+         this.cubemap.displayBase();
+         this.popMatrix();*/
 
         //this.lightning.display();
         this.bird.display();
@@ -137,12 +138,11 @@ class MyScene extends CGFscene {
         //Apply default appearance
         // this.setDefaultAppearance();
         this.appearance.apply();
-        
+
         // ---- BEGIN Primitive drawing section
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         this.displayScene();
 
-        this.checkKeys();
 
         // ---- END Primitive drawing section
     }
