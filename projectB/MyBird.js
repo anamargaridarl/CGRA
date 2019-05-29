@@ -39,7 +39,22 @@ class MyBird extends CGFobject {
 
     updatePosition(t) {
         this.y = (this.initialy + 2 * Math.sin(t * 0.1));
+
+        if(this.v != 0)
         this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
+        else
+        this.rwings = (this.initialy + 2 * Math.sin(t * 0.5));
+
+        if (this.rotatefactor == Math.PI)
+            this.z += this.v * t % 0.2;
+        else if (this.rotatefactor == Math.PI / 2)
+            this.x -= this.v * t % 0.2;
+        else if (this.rotatefactor == 0)
+            this.z -= this.v * t % 0.2;
+        else if (this.rotatefactor == Math.PI / 2 + Math.PI)
+            this.x += this.v * t % 0.2;
+
+
     }
 
     turn(rotatefactor) {
@@ -57,15 +72,17 @@ class MyBird extends CGFobject {
         }
     }
 
-    accelerate(v) {
-        if (v > 0) {
-            this.v += 0.01;
-            this.x += 0.5;
+    accelerate(flag) {
+        if (flag > 0) {
+            this.v += 0.1;
         }
         else {
-            if (this.v > 0) {
-                this.v -= 0.01;
-                this.x -= 0.5;
+            if (this.v > 0.01) {
+                this.v -= 0.1;
+            }
+            else {
+                this.v = 0;
+                this.rwings = 1;
             }
         }
 
