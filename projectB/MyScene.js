@@ -25,16 +25,17 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.plane = new MyTerrain(this, 32);
-
+        this.scaleFactor = 1;
+        
+      /*  this.plane = new MyTerrain(this, 32);
+            
         this.house = new MyHouse(this);
-        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
+        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');*/
 
         // TODO: mudar para valores a serio
-        this.bird = new MyBird(this, 10, 10, 10, 1);
-        this.birdvelocity = 0;
+        this.bird = new MyBird(this, 0, 6, 2, 0,1);
 
-        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
+        //this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
 
         //Objects connected to MyInterface
     }
@@ -96,7 +97,7 @@ class MyScene extends CGFscene {
 
     displayScene() {
         
-        this.pushMatrix();
+       /* this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
@@ -104,14 +105,19 @@ class MyScene extends CGFscene {
         
         this.pushMatrix()
         this.scale(4, 4, 4)
+        this.translate(-3,1,-1);
         this.house.display();
         this.popMatrix();
         
+        this.pushMatrix();
+        this.translate(0,8,0);
         this.cubemap.displayBase();
+        this.popMatrix();*/
 
-        // this.lightning.display();
-        // this.bird.display();
+        //this.lightning.display();
+        this.bird.display();
     }
+
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -125,6 +131,8 @@ class MyScene extends CGFscene {
 
         // Draw axis
         this.axis.display();
+
+        this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         //Apply default appearance
         // this.setDefaultAppearance();
