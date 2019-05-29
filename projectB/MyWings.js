@@ -5,12 +5,15 @@ class MyWings extends CGFobject {
         this.higher = new MyQuad(scene);
         this.lower = new MyTriangle(scene);
 
+        this.wingsText = new CGFappearance(scene)
+        this.wingsText.loadTexture('images/beak2.jpeg');
 
     }
-
+    
     displayWings(rwings) {
-
+        
         this.scene.pushMatrix();
+        this.wingsText.apply();
         this.scene.rotate(-Math.sin(rwings * 0.4), 0, 0, 1);
 
         this.scene.pushMatrix();
@@ -19,6 +22,7 @@ class MyWings extends CGFobject {
         this.scene.rotate(-Math.PI / 2, 1, 0, 0);
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI / 10, 0, 1, 0);
+        this.wingsText.apply();
         this.lower.display();
         this.scene.popMatrix();
         this.scene.popMatrix();
@@ -34,10 +38,10 @@ class MyWings extends CGFobject {
         this.scene.popMatrix();
         this.scene.popMatrix();
         this.scene.popMatrix();
-
+        
         this.scene.pushMatrix();
         this.scene.rotate(Math.sin(rwings * 0.4), 0, 0, 1);
-
+        
         this.scene.pushMatrix();
         this.scene.translate(-0.8 - 0.74, 0.1, 0.5);
         this.scene.scale(0.5, 1, 0.20);
@@ -45,10 +49,11 @@ class MyWings extends CGFobject {
         this.scene.scale(-1, 1, 1);
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI / 10, 0, 1, 0);
+        this.wingsText.apply();
         this.lower.display();
         this.scene.popMatrix();
         this.scene.popMatrix();
-
+        
 
         this.scene.pushMatrix();
         this.scene.translate(-0.5, 0.2, 0.5);
