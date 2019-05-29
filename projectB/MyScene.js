@@ -6,6 +6,13 @@ class MyScene extends CGFscene {
     constructor() {
         super();
     }
+
+    randomBranches() {
+        for (var i = 0; i < 5; i++) {
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 6, Math.random() * (10 - 1) + 1, Math.random() * (2*Math.PI)));
+        }
+    }
+
     init(application) {
         super.init(application);
         this.initCameras();
@@ -33,13 +40,28 @@ class MyScene extends CGFscene {
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
 
         // TODO: mudar para valores a serio
-        this.bird = new MyBird(this, 0, 6, 2, 0, 1);
-        this.nest =  new MyNest(this);
+        this.bird = new MyBird(this, 0, 6, 2, 0, 0);
+        this.nest = new MyNest(this);
+
+        this.branchTexture = new CGFappearance(this);
+        this.branchTexture.loadTexture('images/column3.png');
+
+        this.branches = [];
+        this.randomBranches();
+
 
         this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 1);
 
         //Objects connected to MyInterface
     }
+
+    displayBranches()
+    {
+        for (var i = 0; i < 5; i++) {
+            this.branches[i].display();
+        }
+    }
+
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
@@ -91,6 +113,10 @@ class MyScene extends CGFscene {
             this.bird.originalPosition();
             keysPressed = true;
         }
+        if (this.gui.isKeyPressed("KeyP")) {
+            text += " P ";
+            keysPressed = true;
+        }
         if (keysPressed)
             console.log(text);
     }
@@ -119,13 +145,18 @@ class MyScene extends CGFscene {
         this.lightning.display();
 
         this.pushMatrix();
-        this.bird.display();
+        this.displayBranches();
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(0,0,0);
+        this.translate(2, 5.2, 5);
         this.nest.display();
         this.popMatrix();
+
+        this.pushMatrix();
+        this.bird.display();
+        this.popMatrix();
+
     }
 
     display() {
