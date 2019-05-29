@@ -36,7 +36,7 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this, 0, 6, 2, 0, 1);
         this.nest =  new MyNest(this);
 
-        //this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
+        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
 
         //Objects connected to MyInterface
     }
@@ -116,7 +116,7 @@ class MyScene extends CGFscene {
         this.cubemap.displayBase();
         this.popMatrix();
 
-        //this.lightning.display();
+        this.lightning.display();
 
         this.pushMatrix();
         this.bird.display();
@@ -126,7 +126,6 @@ class MyScene extends CGFscene {
         this.translate(0,0,0);
         this.nest.display();
         this.popMatrix();
-
     }
 
     display() {
