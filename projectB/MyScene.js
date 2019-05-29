@@ -27,7 +27,7 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
 
-        //this.plane = new MyTerrain(this, 32);
+        this.plane = new MyTerrain(this, 32);
 
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
@@ -36,7 +36,7 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this, 0, 6, 2, 0, 1);
         this.nest =  new MyNest(this);
 
-        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 0.5);
+        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 1);
 
         //Objects connected to MyInterface
     }
@@ -99,11 +99,11 @@ class MyScene extends CGFscene {
 
     displayScene() {
 
-        // this.pushMatrix();
-        // this.rotate(-0.5 * Math.PI, 1, 0, 0);
-        // this.scale(60, 60, 1);
-        // this.plane.display();
-        // this.popMatrix();
+        this.pushMatrix();
+        this.rotate(-0.5 * Math.PI, 1, 0, 0);
+        this.scale(60, 60, 1);
+        this.plane.display();
+        this.popMatrix();
 
         this.pushMatrix()
         this.scale(4, 4, 4)
