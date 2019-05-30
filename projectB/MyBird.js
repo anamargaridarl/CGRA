@@ -25,7 +25,8 @@ class MyBird extends CGFobject {
         this.rise = false;
         this.yP = 1000;
 
-        this.birdBranches ;
+        this.birdBranches;
+        this.speedfactor = 1;
 
         this.scaleFactor = 1;
 
@@ -42,19 +43,54 @@ class MyBird extends CGFobject {
         this.rise = true;
     }
 
+    differenceCoords(i, j) {
+
+        console.log("i",i)
+        console.log("j",j)
+        console.log(Math.abs(i-j))
+        if (Math.abs(i - j) < 4)
+            return true;
+        else
+            return false;
+    }
+
     lookBranches(branches) {
 
-        for (var i = 0; i < branches.length; i++) {
+        if (!this.birdBranches) {
+            for (var i = 0; i < branches.length; i++) {
+                console.log(i)
+                if (this.differenceCoords(branches[i].x, this.x) && this.differenceCoords(branches[i].z, this.z)) {
+                    branches[i].ang = 0;
+                    this.birdBranches = branches[i];
+                    branches.splice(i, 1);
+                    break;
+                }
 
-            if (branches[i].x == this.x  && branches[i].z == this.z )
-            {
-                console.log("yei")
-                this.birdBranches = branches[i];
-                branches.splice(i,1);
-                break;
             }
+        }
+    }
+
+    lookNest(nest, branches) {
+
+        if (this.birdBranches) {
+
+            if (this.differenceCoords(nest.x, this.x) && this.differenceCoords(nest.z, this.z)) {
+
+                this.birdBranches.x = nest.x;
+                this.birdBranches.y = nest.y + 0.5;
+                this.birdBranches.z = nest.z;
+
+                branches.push(this.birdBranches)
+                this.birdBranches = null;
+                return true;
+
+            }
+            else
+                return false;
 
         }
+        else
+            return false
     }
 
     move() {
@@ -67,18 +103,13 @@ class MyBird extends CGFobject {
         this.scene.popMatrix();
     }
 
-    displayBirdBranches()
-    {
-        if(this.birdBranches != undefined)
-        {
-            console.log(this.x)
-            console.log(this.y)
-            console.log(this.z)
+    displayBirdBranches() {
+        if (this.birdBranches != undefined) {
 
-            this.birdBranches.x = 0; //small adjustment to rotation
-            this.birdBranches.y = -0.6;
-            this.birdBranches.z = 0 ;
-            this.birdBranches.ang = Math.PI/2;
+            this.birdBranches.x = 1; //small adjustment to rotation
+            this.birdBranches.y = 0.5;
+            this.birdBranches.z = -0.5;
+            this.birdBranches.ang = Math.PI / 2;
 
             this.birdBranches.display();
 
@@ -95,7 +126,7 @@ class MyBird extends CGFobject {
         }
         else {
             this.scene.pushMatrix();
-            this.scene.translate(this.x, this.y,  this.z);
+            this.scene.translate(this.x, this.y, this.z);
             this.move();
             this.scene.popMatrix();
         }
@@ -103,11 +134,11 @@ class MyBird extends CGFobject {
 
     }
 
-    riseUpdate(t) {
+    riseUpdate() {
 
         if (this.rise) {
             if (this.yP < this.y) {
-                this.yP += t * this.v * 0.002;
+                this.yP += this.v;
             }
             else {
                 this.rise = false;
@@ -116,12 +147,12 @@ class MyBird extends CGFobject {
         }
     }
 
-    fallUpdate(t) {
+    fallUpdate() {
 
         if (this.fall) {
 
             if (this.yP > 0) {
-                this.yP -= t * this.v * 0.002;
+                this.yP -= this.v;
             }
             else {
                 this.startRise();
@@ -131,15 +162,14 @@ class MyBird extends CGFobject {
 
     updatePosition(t) {
 
-        this.fallUpdate(t);
-        this.riseUpdate(t);
+        this.fallUpdate();
+        this.riseUpdate();
 
         this.y = (this.initialy + 2 * Math.sin(t * 0.1));
 
-        if (this.v != 0)
-        {
-            // this.z -= Math.cos(this.rotatefactor) * this.v;
-            // this.x -= Math.sin(this.rotatefactor) * this.v;
+        if (this.v != 0) {
+            this.z -= Math.cos(this.rotatefactor) * this.v;
+            this.x -= Math.sin(this.rotatefactor) * this.v;
             this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
         }
         else
@@ -148,32 +178,29 @@ class MyBird extends CGFobject {
     }
 
     turn(v) {
-        this.rotatefactor += v *this.v ;
+        this.rotatefactor += v * this.speedfactor;
     }
 
     accelerate(v) {
 
-        if (this.v <= 0.05) {
+        this.v += v * this.speedfactor;
+        if (this.v <= 0.0005) {
             this.v = 0;
             this.rwings = 1;
         }
-
-        this.v += v;
     }
 
 
     originalPosition() {
 
-        if(this.rise || this.fall)
-        {
+        if (this.rise || this.fall) {
             this.rise = false;
-            this.fall =false;
+            this.fall = false;
         }
-        console.log(this.initialy)
+
         this.rotatefactor = 0;
         this.x = this.initialx;
         this.y = this.initialy;
-        console.log(this.y)
 
         this.z = this.initialz;
         this.v = 0;

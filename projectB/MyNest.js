@@ -1,20 +1,25 @@
 class MyNest extends CGFobject {
-    constructor(scene) {
+    constructor(scene,x,y,z) {
         super(scene)
 
         var woodT = new CGFappearance(scene)
         woodT.loadTexture('images/nest.jpg');
 
         this.wood = new MyTreeBranch(scene,woodT,0,0,0,0);
+
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     display() {
 
+        this.scene.pushMatrix();
+
+        this.scene.translate(this.x,this.y,this.z);
+
         var beta = 0;
         var alpha = (2 * Math.PI) / 20;
-
-       this.wood.display();
-
        
        for (var i = 0; i < 20; i++) {
         
@@ -35,6 +40,9 @@ class MyNest extends CGFobject {
 
             beta += alpha;
         }     
+
+        this.scene.popMatrix();
+
            
     }
 }

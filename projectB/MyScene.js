@@ -12,7 +12,7 @@ class MyScene extends CGFscene {
         this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 2, 0));
 
         for (var i = 0; i < 4; i++) {
-            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2 * Math.PI)));
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
         }
     }
 
@@ -47,7 +47,7 @@ class MyScene extends CGFscene {
 
         // TODO: mudar para valores a serio
         this.bird = new MyBird(this, 0, 10, 2, 0, 0);
-        this.nest = new MyNest(this);
+        this.nest = new MyNest(this, 2, 0, 5);
 
         this.branchTexture = new CGFappearance(this);
         this.branchTexture.loadTexture('images/column3.png');
@@ -62,7 +62,7 @@ class MyScene extends CGFscene {
     }
 
     displayBranches() {
-        for (var i = 0; i <this.branches.length; i++) {
+        for (var i = 0; i < this.branches.length; i++) {
             this.branches[i].display();
         }
     }
@@ -77,7 +77,7 @@ class MyScene extends CGFscene {
         this.lights[1].setPosition(2, 20, 1, 1);
         this.lights[1].setDiffuse(1.0, 1, 153 / 255, 1.0);
         this.lights[1].setSpecular(1, 1, 153 / 255, 1.0);
-        this.lights[1].setAmbient(1 , 1, 153 / 255, 1.0);
+        this.lights[1].setAmbient(1, 1, 153 / 255, 1.0);
         this.lights[1].enable();
         this.lights[1].update();
 
@@ -95,8 +95,13 @@ class MyScene extends CGFscene {
 
     update(t) {
 
-        if (this.bird.yP <= 0.1)
-            this.bird.lookBranches(this.branches);
+        if (this.bird.yP <= 0.1) {
+            //if (!this.bird.lookNest(this.nest, this.branches))
+                this.bird.lookBranches(this.branches);
+            
+        }
+
+
         this.bird.updatePosition(t / 100 % 1000);
         this.checkKeys();
     }
@@ -174,7 +179,6 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.translate(2, 5.2, 5);
         this.nest.display();
         this.popMatrix();
 
