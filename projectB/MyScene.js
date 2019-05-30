@@ -14,6 +14,7 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 4; i++) {
             this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
         }
+
     }
 
     init(application) {
@@ -95,8 +96,9 @@ class MyScene extends CGFscene {
 
     update(t) {
 
-        if (this.bird.yP <= 0.1) {
-            //if (!this.bird.lookNest(this.nest, this.branches))
+        if (this.bird.yP <= 0.001) {
+            console.log("meias")
+            if (!this.bird.lookNest(this.nest, this.branches))
                 this.bird.lookBranches(this.branches);
             
         }

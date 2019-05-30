@@ -45,8 +45,6 @@ class MyBird extends CGFobject {
 
     differenceCoords(i, j) {
 
-        console.log("i",i)
-        console.log("j",j)
         console.log(Math.abs(i-j))
         if (Math.abs(i - j) < 4)
             return true;
@@ -58,7 +56,6 @@ class MyBird extends CGFobject {
 
         if (!this.birdBranches) {
             for (var i = 0; i < branches.length; i++) {
-                console.log(i)
                 if (this.differenceCoords(branches[i].x, this.x) && this.differenceCoords(branches[i].z, this.z)) {
                     branches[i].ang = 0;
                     this.birdBranches = branches[i];
@@ -79,6 +76,8 @@ class MyBird extends CGFobject {
                 this.birdBranches.x = nest.x;
                 this.birdBranches.y = nest.y + 0.5;
                 this.birdBranches.z = nest.z;
+                this.birdBranches.ang = Math.random() * (2 * Math.PI);
+        
 
                 branches.push(this.birdBranches)
                 this.birdBranches = null;
