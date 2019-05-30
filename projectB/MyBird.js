@@ -23,7 +23,7 @@ class MyBird extends CGFobject {
 
         this.fall = false;
         this.rise = false;
-        this.yP = 0;
+        this.yP = 1000;
 
         this.branches;
 
@@ -32,7 +32,7 @@ class MyBird extends CGFobject {
     }
 
     startFall(branches) {
-        this.yP = this.initialy + this.y;
+        this.yP = this.y;
         this.fall = true;
         this.branches = branches;
     }
@@ -44,8 +44,16 @@ class MyBird extends CGFobject {
 
     lookBranches(branches) {
 
+        console.log(this.x)
+        console.log(this.z)
         for (var i = 0; i < 5; i++) {
-            if (branches[i].x == this.x + this.initialx && branches[i].z == this.z + this.initialz)
+
+            console.log(i)
+            console.log(branches[i].x)
+            console.log(branches[i].z)
+
+
+            if (branches[i].x == this.x  && branches[i].z == this.z )
                 console.log("yeeeei");
         }
     }
@@ -63,13 +71,13 @@ class MyBird extends CGFobject {
 
         if (this.fall || this.rise) {
             this.scene.pushMatrix();
-            this.scene.translate(this.initialx + this.x, this.yP, this.initialz + this.z);
+            this.scene.translate(this.x, this.yP, this.z);
             this.move();
             this.scene.popMatrix();
         }
         else {
             this.scene.pushMatrix();
-            this.scene.translate(this.initialx + this.x, this.initialy + this.y, this.initialz + this.z);
+            this.scene.translate(this.x, this.y,  this.z);
             this.move();
             this.scene.popMatrix();
         }
@@ -122,7 +130,7 @@ class MyBird extends CGFobject {
     }
 
     turn(v) {
-        this.rotatefactor += v *10;
+        this.rotatefactor += v *this.v ;
     }
 
     accelerate(v) {
@@ -137,9 +145,19 @@ class MyBird extends CGFobject {
 
 
     originalPosition() {
+
+        if(this.rise || this.fall)
+        {
+            this.rise = false;
+            this.fall =false;
+        }
+        
+        console.log(this.initialy)
         this.rotatefactor = 0;
         this.x = this.initialx;
         this.y = this.initialy;
+        console.log(this.y)
+
         this.z = this.initialz;
         this.v = 0;
     }

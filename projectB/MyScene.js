@@ -46,7 +46,7 @@ class MyScene extends CGFscene {
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
 
         // TODO: mudar para valores a serio
-        this.bird = new MyBird(this, 0, 6, 2, 0, 0);
+        this.bird = new MyBird(this, 0, 10, 2, 0, 0);
         this.nest = new MyNest(this);
 
         this.branchTexture = new CGFappearance(this);
