@@ -25,7 +25,7 @@ class MyBird extends CGFobject {
         this.rise = false;
         this.yP = 1000;
 
-        this.branches;
+        this.birdBranches = [];
 
         this.scaleFactor = 1;
 
@@ -44,17 +44,23 @@ class MyBird extends CGFobject {
 
     lookBranches(branches) {
 
-        console.log(this.x)
-        console.log(this.z)
-        for (var i = 0; i < 5; i++) {
+        // console.log(this.x)
+        // console.log(this.z)
+        for (var i = 0; i < branches.length; i++) {
 
-            console.log(i)
-            console.log(branches[i].x)
-            console.log(branches[i].z)
+            // console.log(i)
+            // console.log(branches[i].x)
+            // console.log(branches[i].z)
 
 
             if (branches[i].x == this.x  && branches[i].z == this.z )
-                console.log("yeeeei");
+            {
+                console.log("yei")
+                this.birdBranches.push(branches[i]);
+                branches.splice(i,1);
+                break;
+            }
+
         }
     }
 
@@ -120,8 +126,8 @@ class MyBird extends CGFobject {
 
         if (this.v != 0)
         {
-            this.z -= Math.cos(this.rotatefactor) * this.v;
-            this.x -= Math.sin(this.rotatefactor) * this.v;
+            // this.z -= Math.cos(this.rotatefactor) * this.v;
+            // this.x -= Math.sin(this.rotatefactor) * this.v;
             this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
         }
         else
@@ -151,7 +157,6 @@ class MyBird extends CGFobject {
             this.rise = false;
             this.fall =false;
         }
-        
         console.log(this.initialy)
         this.rotatefactor = 0;
         this.x = this.initialx;

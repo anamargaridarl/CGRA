@@ -9,7 +9,7 @@ class MyScene extends CGFscene {
 
     randomBranches() {
 
-        this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 0, 0));
+        this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 2, 0));
 
         for (var i = 0; i < 4; i++) {
             this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - 1) + 1, 0, Math.random() * (10 - 1) + 1, Math.random() * (2 * Math.PI)));
@@ -62,7 +62,7 @@ class MyScene extends CGFscene {
     }
 
     displayBranches() {
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < this.branches.length; i++) {
             this.branches[i].display();
         }
     }
@@ -72,6 +72,15 @@ class MyScene extends CGFscene {
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].enable();
         this.lights[0].update();
+
+        this.lights[1].setConstantAttenuation(0.0);
+        this.lights[1].setPosition(2, 20, 1, 1);
+        this.lights[1].setDiffuse(1.0, 1, 153 / 255, 1.0);
+        this.lights[1].setSpecular(1, 1, 153 / 255, 1.0);
+        this.lights[1].setAmbient(1 , 1, 153 / 255, 1.0);
+        this.lights[1].enable();
+        this.lights[1].update();
+
     }
 
     initCameras() {
