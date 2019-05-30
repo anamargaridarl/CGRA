@@ -71,9 +71,14 @@ class MyBird extends CGFobject {
     {
         if(this.birdBranches != undefined)
         {
-            this.birdBranches.x = this.x +1;
-            this.birdBranches.y = this.y;
-            this.birdBranches.z = this.z+1;
+            console.log(this.x)
+            console.log(this.y)
+            console.log(this.z)
+
+            this.birdBranches.x = 0; //small adjustment to rotation
+            this.birdBranches.y = -0.6;
+            this.birdBranches.z = 0 ;
+            this.birdBranches.ang = Math.PI/2;
 
             this.birdBranches.display();
 
