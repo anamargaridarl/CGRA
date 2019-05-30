@@ -25,7 +25,7 @@ class MyBird extends CGFobject {
         this.rise = false;
         this.yP = 1000;
 
-        this.birdBranches = [];
+        this.birdBranches ;
 
         this.scaleFactor = 1;
 
@@ -44,19 +44,12 @@ class MyBird extends CGFobject {
 
     lookBranches(branches) {
 
-        // console.log(this.x)
-        // console.log(this.z)
         for (var i = 0; i < branches.length; i++) {
-
-            // console.log(i)
-            // console.log(branches[i].x)
-            // console.log(branches[i].z)
-
 
             if (branches[i].x == this.x  && branches[i].z == this.z )
             {
                 console.log("yei")
-                this.birdBranches.push(branches[i]);
+                this.birdBranches = branches[i];
                 branches.splice(i,1);
                 break;
             }
@@ -67,10 +60,24 @@ class MyBird extends CGFobject {
     move() {
         this.scene.rotate(this.rotatefactor, 0, 1, 0);
         this.scene.pushMatrix();
+        this.displayBirdBranches();
         this.body.displayBody();
         this.scene.axis.display();
         this.wings.displayWings(this.rwings);
         this.scene.popMatrix();
+    }
+
+    displayBirdBranches()
+    {
+        if(this.birdBranches != undefined)
+        {
+            this.birdBranches.x = this.x +1;
+            this.birdBranches.y = this.y;
+            this.birdBranches.z = this.z+1;
+
+            this.birdBranches.display();
+
+        }
     }
 
     display() {

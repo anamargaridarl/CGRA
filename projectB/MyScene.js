@@ -62,7 +62,7 @@ class MyScene extends CGFscene {
     }
 
     displayBranches() {
-        for (var i = 0; i < this.branches.length; i++) {
+        for (var i = 0; i <this.branches.length; i++) {
             this.branches[i].display();
         }
     }
