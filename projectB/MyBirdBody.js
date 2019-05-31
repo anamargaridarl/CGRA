@@ -21,6 +21,8 @@ class MyBirdBody extends CGFobject {
         this.eyes = new MyUnitCubeQuad(scene, eyesbird);
         this.beak = new MyCone(scene, 20, 2);
 
+        this.sphere = new MySphere(scene,20,20)
+
     }
 
     displayBody() {
@@ -56,6 +58,11 @@ class MyBirdBody extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(0, 0, 0.5);
         this.bodyhead.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, -2, 0);
+        this.sphere.display();
         this.scene.popMatrix();
 
     }
