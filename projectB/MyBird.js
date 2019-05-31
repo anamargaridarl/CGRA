@@ -20,6 +20,7 @@ class MyBird extends CGFobject {
 
         this.rwings = 0;
         this.v = 0;
+        this.semfactor=0;
 
         this.fall = false;
         this.rise = false;
@@ -161,6 +162,9 @@ class MyBird extends CGFobject {
 
     updatePosition(t) {
 
+        if(this.v != this.semfactor * this.speedfactor)
+            this.v = this.semfactor * this.speedfactor;
+
         this.fallUpdate();
         this.riseUpdate();
 
@@ -182,11 +186,16 @@ class MyBird extends CGFobject {
 
     accelerate(v) {
 
-        this.v += v * this.speedfactor;
+        this.semfactor += v ;
+        this.v =  this.semfactor * this.speedfactor;
+
+        console.log(this.v)
         if (this.v <= 0.0005) {
             this.v = 0;
             this.rwings = 1;
+            this.semfactor = 0;
         }
+
     }
 
 
@@ -203,6 +212,7 @@ class MyBird extends CGFobject {
 
         this.z = this.initialz;
         this.v = 0;
+        this.semfactor = 0;
     }
 
 }
