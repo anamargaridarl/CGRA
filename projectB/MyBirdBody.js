@@ -62,7 +62,7 @@ class MyBirdBody extends CGFobject {
 
         this.scene.pushMatrix();
         this.scene.translate(0, -2, 0);
-        this.sphere.display();
+        this.sphere._display();
         this.scene.popMatrix();
 
     }
