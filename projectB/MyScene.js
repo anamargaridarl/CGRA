@@ -141,11 +141,14 @@ class MyScene extends CGFscene {
             keysPressed = true;
             this.bird.startFall(this.branches);
         }
+        if (this.gui.isKeyPressed("KeyL")) {
+            text += " L ";
+            keysPressed = true;
+            this.lightning.display();
+        }
         if (keysPressed)
             console.log(text);
     }
-
-
 
     displayScene() {
 
@@ -155,13 +158,13 @@ class MyScene extends CGFscene {
         this.plane.display();
         this.popMatrix();
 
-     /*   this.pushMatrix();
-        this.scale(60, 60, 60);
-        this.rotate(Math.PI / 2, 1, 0, 0);
-        this.testFloor.display();
-        this.popMatrix();*/
+        /*this.pushMatrix();
+           this.scale(60, 60, 60);
+           this.rotate(Math.PI / 2, 1, 0, 0);
+           this.testFloor.display();
+           this.popMatrix();*/
 
-       this.pushMatrix()
+        this.pushMatrix()
         this.scale(4, 4, 4)
         this.translate(-3, 1, -1);
         this.house.display();
