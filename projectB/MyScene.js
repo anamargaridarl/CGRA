@@ -38,8 +38,8 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
 
-        //this.plane = new MyTerrain(this, 32);
-        this.testFloor = new MyQuad(this);
+        this.plane = new MyTerrain(this, 32);
+        // this.testFloor = new MyQuad(this);
 
 
 
@@ -100,9 +100,7 @@ class MyScene extends CGFscene {
             console.log("meias")
             if (!this.bird.lookNest(this.nest, this.branches))
                 this.bird.lookBranches(this.branches);
-            
         }
-
 
         this.bird.updatePosition(t / 100 % 1000);
         this.checkKeys();
@@ -151,17 +149,17 @@ class MyScene extends CGFscene {
 
     displayScene() {
 
-        /*this.pushMatrix();
+        this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
-        this.popMatrix();*/
-
-        this.pushMatrix();
-        this.scale(60, 60, 60);
-        this.rotate(Math.PI / 2, 1, 0, 0);
-        this.testFloor.display();
         this.popMatrix();
+
+        // this.pushMatrix();
+        // this.scale(60, 60, 60);
+        // this.rotate(Math.PI / 2, 1, 0, 0);
+        // this.testFloor.display();
+        // this.popMatrix();
 
         this.pushMatrix()
         this.scale(4, 4, 4)
