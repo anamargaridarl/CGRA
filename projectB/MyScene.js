@@ -41,8 +41,6 @@ class MyScene extends CGFscene {
         this.plane = new MyTerrain(this, 32);
         // this.testFloor = new MyQuad(this);
 
-
-
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
 
@@ -145,6 +143,7 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyL")) {
             text += " L ";
             this.display_lightning = true;
+            this.lightning.startAnimation();
             keysPressed = true;
         }
         if (keysPressed)
