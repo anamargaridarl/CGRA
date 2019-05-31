@@ -10,8 +10,9 @@ class MyNest extends CGFobject {
         this.x = x;
         this.y = y;
         this.z = z;
-    }
 
+        this.NestBranches = [];
+    }
     display() {
 
         this.scene.pushMatrix();
