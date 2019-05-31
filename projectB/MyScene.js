@@ -38,8 +38,8 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.scaleFactor = 1;
 
-        //this.plane = new MyTerrain(this, 32);
-        this.testFloor = new MyQuad(this);
+        this.plane = new MyTerrain(this, 32);
+        // this.testFloor = new MyQuad(this);
 
 
 
@@ -100,9 +100,7 @@ class MyScene extends CGFscene {
             console.log("meias")
             if (!this.bird.lookNest(this.nest, this.branches))
                 this.bird.lookBranches(this.branches);
-            
         }
-
 
         this.bird.updatePosition(t / 100 % 1000);
         this.checkKeys();
