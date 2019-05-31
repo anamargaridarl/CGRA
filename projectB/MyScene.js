@@ -58,6 +58,7 @@ class MyScene extends CGFscene {
 
 
         this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 1);
+        this.display_lightning = false;
 
         //Objects connected to MyInterface
     }
@@ -138,13 +139,13 @@ class MyScene extends CGFscene {
         }
         if (this.gui.isKeyPressed("KeyP")) {
             text += " P ";
-            keysPressed = true;
             this.bird.startFall(this.branches);
+            keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyL")) {
             text += " L ";
+            this.display_lightning = true;
             keysPressed = true;
-            this.lightning.display();
         }
         if (keysPressed)
             console.log(text);
@@ -174,22 +175,24 @@ class MyScene extends CGFscene {
         this.translate(0, 10, 0);
         this.cubemap.displayBase();
         this.popMatrix();
-
-        // this.lightning.display();
-
+        
         this.pushMatrix();
         this.displayBranches();
         this.popMatrix();
-
+        
         this.pushMatrix();
         this.nest.display();
         this.popMatrix();
-
+        
         this.pushMatrix();
         this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
-
+        
+        if (this.display_lightning) {
+            this.lightning.display();
+            this.display_lightning = false;
+        }
     }
 
     display() {
