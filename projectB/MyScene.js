@@ -151,7 +151,7 @@ class MyScene extends CGFscene {
 
     displayScene() {
 
-     /*  this.pushMatrix();
+       this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
@@ -166,7 +166,7 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(0, 10, 0);
         this.cubemap.displayBase();
-        this.popMatrix();*/
+        this.popMatrix();
         
         this.pushMatrix();
         this.displayBranches();
@@ -181,11 +181,11 @@ class MyScene extends CGFscene {
         this.bird.display();
         this.popMatrix();
         
-        /*
+        
         if (this.display_lightning) {
             this.lightning.display();
             this.display_lightning = false;
-        }*/
+        }
     }
 
     display() {
