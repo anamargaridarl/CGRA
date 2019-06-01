@@ -201,22 +201,34 @@ class MyScene extends CGFscene {
             this.popMatrix();
         }
 
+        this.drawTrees();
+    }
+
+    drawTrees() {
         this.pushMatrix();
-        this.translate(-8, 0, 0);
         this.plants[0].display();
-        for (var i = 1; i < 7; ++i) {
-            this.plants[i].display();
-            this.translate(3, 0, 0);
-        }
-        this.popMatrix();
-        
-        this.pushMatrix();
-        this.translate(-8, 0, 5);
+        this.translate(10, 0, 0);
+        this.plants[1].display();
+        this.translate(-30, 0, 3);
+        this.plants[2].display();
+        this.translate(5, 0, 5);
+        this.plants[3].display();
+        this.translate(-2, 0, 5);
+        this.plants[4].display();
+        this.translate(10, 0, -3);
+        this.plants[5].display();
+        this.translate(4, 0, 1);
+        this.plants[6].display();
+        this.translate(0, 0, 10);
         this.plants[7].display();
-        for (var i = 8; i < 11; ++i) {
-            this.plants[i].display();
-            this.translate(3, 0, 0);
-        }
+        this.translate(5, 5, 5);
+        this.plants[8].display();
+        this.translate(-4, 0, -6);
+        this.plants[9].display();
+        this.translate(0, -10, -30);
+        this.plants[10].display();
+        this.translate(5, 0, 3);
+        this.plants[11].display();
         this.popMatrix();
     }
 
