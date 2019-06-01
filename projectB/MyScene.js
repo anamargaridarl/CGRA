@@ -56,7 +56,7 @@ class MyScene extends CGFscene {
         this.start_lightning = false;
         this.lightning_animated = false;
 
-        //Objects connected to MyInterface
+        this.plant = new MyLSPlant(this);
     }
 
     displayBranches() {
@@ -196,6 +196,8 @@ class MyScene extends CGFscene {
             this.lightning.display();
             this.popMatrix();
         }
+
+        this.plant.display();
     }
 
     display() {

@@ -9,11 +9,9 @@ class MyBranch extends CGFobject {
         this.material.setDiffuse(139 / 256, 69 / 256, 19 / 256, 1);
         this.material.setSpecular(139 / 256, 69 / 256, 19 / 256, 1);
         this.material.setShininess(1);
-
     }
 
     display() {
-
         this.material.apply();
         this.cylinder.display();
     }
