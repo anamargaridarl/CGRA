@@ -39,7 +39,6 @@ class MyScene extends CGFscene {
         this.scaleFactor = 1;
 
         this.plane = new MyTerrain(this, 32);
-        // this.testFloor = new MyQuad(this);
 
         this.house = new MyHouse(this);
         this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
@@ -164,7 +163,12 @@ class MyScene extends CGFscene {
     }
 
     displayScene() {
+<<<<<<< HEAD
         this.pushMatrix();
+=======
+
+       this.pushMatrix();
+>>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
@@ -191,11 +195,17 @@ class MyScene extends CGFscene {
         this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
+<<<<<<< HEAD
 
         if (this.lightning_animated) {
             this.pushMatrix();
             this.rotate(Math.PI, 0, 0, 1);
             this.translate(0, -20, 0);
+=======
+        
+        
+        if (this.display_lightning) {
+>>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
             this.lightning.display();
             this.popMatrix();
         }
