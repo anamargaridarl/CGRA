@@ -56,7 +56,11 @@ class MyScene extends CGFscene {
         this.start_lightning = false;
         this.lightning_animated = false;
 
-        this.plant = new MyLSPlant(this);
+        this.plants = []
+
+        for (var i = 0; i < 12; ++i) {
+            this.plants.push(new MyLSPlant(this));
+        }
     }
 
     displayBranches() {
@@ -197,7 +201,23 @@ class MyScene extends CGFscene {
             this.popMatrix();
         }
 
-        this.plant.display();
+        this.pushMatrix();
+        this.translate(-8, 0, 0);
+        this.plants[0].display();
+        for (var i = 1; i < 7; ++i) {
+            this.plants[i].display();
+            this.translate(3, 0, 0);
+        }
+        this.popMatrix();
+        
+        this.pushMatrix();
+        this.translate(-8, 0, 5);
+        this.plants[7].display();
+        for (var i = 8; i < 11; ++i) {
+            this.plants[i].display();
+            this.translate(3, 0, 0);
+        }
+        this.popMatrix();
     }
 
     display() {
