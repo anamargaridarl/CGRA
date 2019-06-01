@@ -4,7 +4,8 @@ class MyBranch extends CGFobject {
 
         this.cylinder = new MyCylinder(this.scene, 4);
 
-        this.material = new CGFappearance(scene)
+        this.material = new CGFappearance(scene);
+        this.material.loadTexture('images/column3.png');
         this.material.setAmbient(139 / 256, 69 / 256, 19 / 256, 1);
         this.material.setDiffuse(139 / 256, 69 / 256, 19 / 256, 1);
         this.material.setSpecular(139 / 256, 69 / 256, 19 / 256, 1);
