@@ -163,12 +163,7 @@ class MyScene extends CGFscene {
     }
 
     displayScene() {
-<<<<<<< HEAD
         this.pushMatrix();
-=======
-
-       this.pushMatrix();
->>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
@@ -195,17 +190,15 @@ class MyScene extends CGFscene {
         this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
-<<<<<<< HEAD
 
         if (this.lightning_animated) {
             this.pushMatrix();
             this.rotate(Math.PI, 0, 0, 1);
             this.translate(0, -20, 0);
-=======
+        }
         
         
         if (this.display_lightning) {
->>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
             this.lightning.display();
             this.popMatrix();
         }
@@ -238,4 +231,4 @@ class MyScene extends CGFscene {
 
         // ---- END Primitive drawing section
     }
-}
+};
