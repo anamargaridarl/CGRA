@@ -1,6 +1,9 @@
 class MyLightning extends MyLSystem {
     constructor(scene) {
         super(scene);
+        
+        this.lightning_texture = new CGFappearance(scene);
+        this.lightning_texture.loadTexture('images/marble3.jpg');
 
         this.init();
     }
@@ -46,8 +49,9 @@ class MyLightning extends MyLSystem {
     }
 
     display() {
+        this.lightning_texture.apply();
+
         this.scene.pushMatrix();
-        // this.scene.scale(0.3, 0.7, 0.7);
         this.scene.scale(this.scale, this.scale, this.scale);
 
         var i;
