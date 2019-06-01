@@ -11,7 +11,7 @@ class MyLightning extends MyLSystem {
     doGenerate() {
         this.generate("X", {
             "F": ["FF"],
-            "X": ["F[-X][X]F[-X]+FX", "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[^X][X]F[&X]^X", "F[/X][X]F[\\X]+X"]
+            "X": ["F[-X][X]F[-X]+FX", "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[^X][X]F[&X]^X", "F[/X][X]F[\\X]+X", "F[\X][X]/X"]
         }, 25, 3, 0.5);
     }
 
