@@ -54,9 +54,10 @@ class MyScene extends CGFscene {
         this.branches = [];
         this.randomBranches();
 
-
-        this.lightning = new MyLightning(this, "X", "FF", "F[-X][X]F[-X]+FX", 25, 3, 1);
-        this.display_lightning = false;
+        this.lightning = new MyLightning(this);
+        
+        this.start_lightning = false;
+        this.lightning_animated = false;
 
         //Objects connected to MyInterface
     }
@@ -86,7 +87,7 @@ class MyScene extends CGFscene {
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(45, 45, 45), vec3.fromValues(0, 0, 0));
     }
-    
+
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
@@ -95,9 +96,16 @@ class MyScene extends CGFscene {
     }
 
     update(t) {
-        if (this.display_lightning) {
+        if (this.start_lightning) {
             this.lightning.startAnimation(t);
-            this.display_lightning = false;
+            this.start_lightning = false;
+            this.lightning_animated = true;
+        }
+
+        if (this.lightning_animated) {
+            if (this.lightning.updateLightning(t)) {
+                this.lightning_animated = false;
+            }
         }
 
         if (this.bird.yP <= 0.001) {
@@ -147,7 +155,7 @@ class MyScene extends CGFscene {
         }
         if (this.gui.isKeyPressed("KeyL")) {
             text += " L ";
-            this.display_lightning = true;
+            this.start_lightning = true;
             this.lightning.startAnimation();
             keysPressed = true;
         }
@@ -156,18 +164,11 @@ class MyScene extends CGFscene {
     }
 
     displayScene() {
-
         this.pushMatrix();
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
         this.popMatrix();
-
-        /*this.pushMatrix();
-           this.scale(60, 60, 60);
-           this.rotate(Math.PI / 2, 1, 0, 0);
-           this.testFloor.display();
-           this.popMatrix();*/
 
         this.pushMatrix()
         this.scale(4, 4, 4)
@@ -179,19 +180,23 @@ class MyScene extends CGFscene {
         this.translate(0, 10, 0);
         this.cubemap.displayBase();
         this.popMatrix();
-        
+
         this.pushMatrix();
         this.displayBranches();
         this.popMatrix();
-        
+
         this.pushMatrix();
         this.nest.display();
         this.popMatrix();
-        
+
         this.pushMatrix();
         this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
+
+        if (this.lightning_animated) {
+            this.lightning.display();
+        }
     }
 
     display() {

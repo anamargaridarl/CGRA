@@ -1,17 +1,15 @@
 class MyLightning extends MyLSystem {
-    constructor(scene, axiom, ruleF, ruleX, angle, iterations, scaleFactor) {
+    constructor(scene) {
         super(scene);
 
-        this.doGenerate = function () {
-            super.generate(axiom, {
-                "F": [ruleF],
-                "X": [ruleX, "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
-            }, angle, iterations, scaleFactor);
-        }
-
-        this.depth = 0;
-
         this.init();
+    }
+
+    doGenerate() {
+        this.generate("X", {
+            "F": ["FF"],
+            "X": ["F[-X][X]F[-X]+FX", "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
+        }, 25, 3, 0.5);
     }
 
     init() {
@@ -29,19 +27,27 @@ class MyLightning extends MyLSystem {
 
     startAnimation(t) {
         this.doGenerate();
-        this.depth = 3;
+        this.depth = 0;
         this.start_time = t;
     }
 
-    update(t) {
+    updateLightning(t) {
         this.elapsed_time = t - this.start_time;
 
-        if (this.elapsed_time >= 1000)
-            return false;
+        if (this.elapsed_time >= 1000) {
+            return true;
+        }
+
+        if (this.elapsed_time != 0) {
+            this.depth = this.elapsed_time * this.axiom.length / 1000;
+        }
+
+        return false;
     }
 
     display() {
         this.scene.pushMatrix();
+        // this.scene.scale(0.3, 0.7, 0.7);
         this.scene.scale(this.scale, this.scale, this.scale);
 
         var i;
@@ -87,7 +93,7 @@ class MyLightning extends MyLSystem {
                 default:
                     var primitive = this.grammar[this.axiom[i]];
 
-                    if (i < this.depth && this.depth != 0) {
+                    if (i < this.depth && this.depth != 0 && primitive) {
                         primitive.display();
                         this.scene.translate(0, 1, 0);
                     }
