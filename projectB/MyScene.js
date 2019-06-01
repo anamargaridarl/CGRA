@@ -8,13 +8,11 @@ class MyScene extends CGFscene {
     }
 
     randomBranches() {
-
         this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 2, 0));
 
         for (var i = 0; i < 4; i++) {
             this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
         }
-
     }
 
     init(application) {
@@ -54,11 +52,11 @@ class MyScene extends CGFscene {
         this.randomBranches();
 
         this.lightning = new MyLightning(this);
-        
+
         this.start_lightning = false;
         this.lightning_animated = false;
 
-        //Objects connected to MyInterface
+        this.plant = new MyLSPlant(this);
     }
 
     displayBranches() {
@@ -195,13 +193,11 @@ class MyScene extends CGFscene {
             this.pushMatrix();
             this.rotate(Math.PI, 0, 0, 1);
             this.translate(0, -20, 0);
-        }
-        
-        
-        if (this.display_lightning) {
             this.lightning.display();
             this.popMatrix();
         }
+
+        this.plant.display();
     }
 
     display() {
