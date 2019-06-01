@@ -2,14 +2,15 @@ class MyLightning extends MyLSystem {
     constructor(scene, axiom, ruleF, ruleX, angle, iterations, scaleFactor) {
         super(scene);
 
-        super.generate(axiom, {
-            "F": [ruleF],
-            "X": [ruleX, "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
-        },
-        angle, iterations, scaleFactor);
+        this.doGenerate = function () {
+            super.generate(axiom, {
+                "F": [ruleF],
+                "X": [ruleX, "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
+            }, angle, iterations, scaleFactor);
+        }
 
         this.depth = 0;
-        
+
         this.init();
     }
 
@@ -27,8 +28,16 @@ class MyLightning extends MyLSystem {
     }
 
     startAnimation(t) {
-        this.depth = 1/t;
-        this.iterate();
+        this.doGenerate();
+        this.depth = 3;
+        this.start_time = t;
+    }
+
+    update(t) {
+        this.elapsed_time = t - this.start_time;
+
+        if (this.elapsed_time >= 1000)
+            return false;
     }
 
     display() {
