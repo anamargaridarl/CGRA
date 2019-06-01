@@ -11,7 +11,7 @@ class MyLightning extends MyLSystem {
     doGenerate() {
         this.generate("X", {
             "F": ["FF"],
-            "X": ["F[-X][X]F[-X]+FX", "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[+X]-X"]
+            "X": ["F[-X][X]F[-X]+FX", "F[-X][X]F[-X]+X", "F[-X][X]+X", "F[^X][X]F[&X]^X", "F[/X][X]F[\\X]+X"]
         }, 25, 3, 0.5);
     }
 
@@ -52,7 +52,7 @@ class MyLightning extends MyLSystem {
         this.lightning_texture.apply();
 
         this.scene.pushMatrix();
-        this.scene.scale(this.scale, this.scale, this.scale);
+        this.scene.scale(this.scale, this.scale * 1.5, this.scale);
 
         var i;
 

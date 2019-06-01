@@ -8,13 +8,11 @@ class MyScene extends CGFscene {
     }
 
     randomBranches() {
-
         this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 2, 0));
 
         for (var i = 0; i < 4; i++) {
             this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
         }
-
     }
 
     init(application) {
@@ -54,7 +52,7 @@ class MyScene extends CGFscene {
         this.randomBranches();
 
         this.lightning = new MyLightning(this);
-        
+
         this.start_lightning = false;
         this.lightning_animated = false;
 
@@ -163,12 +161,7 @@ class MyScene extends CGFscene {
     }
 
     displayScene() {
-<<<<<<< HEAD
         this.pushMatrix();
-=======
-
-       this.pushMatrix();
->>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
         this.rotate(-0.5 * Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
         this.plane.display();
@@ -195,17 +188,11 @@ class MyScene extends CGFscene {
         this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
         this.bird.display();
         this.popMatrix();
-<<<<<<< HEAD
 
         if (this.lightning_animated) {
             this.pushMatrix();
             this.rotate(Math.PI, 0, 0, 1);
             this.translate(0, -20, 0);
-=======
-        
-        
-        if (this.display_lightning) {
->>>>>>> b71249a3ea2a8d53d9123c234b103043d71d7d82
             this.lightning.display();
             this.popMatrix();
         }
