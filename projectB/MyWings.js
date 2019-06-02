@@ -10,11 +10,14 @@ class MyWings extends CGFobject {
 
     }
     
-    displayWings(rwings) {
+    displayWings(rwings,v) {
         
         this.scene.pushMatrix();
         this.wingsText.apply();
-        this.scene.rotate(-Math.sin(rwings * 0.4), 0, 0, 1);
+        if(v !=0)
+        this.scene.rotate(-0.5*Math.sin(rwings*v*3), 0, 0, 1);
+        else
+        this.scene.rotate(-0.5*Math.sin(rwings*0.3), 0, 0, 1);
 
         this.scene.pushMatrix();
         this.scene.translate(+0.4 + 0.75, 0.1, 0.5);
@@ -40,7 +43,10 @@ class MyWings extends CGFobject {
         this.scene.popMatrix();
         
         this.scene.pushMatrix();
-        this.scene.rotate(Math.sin(rwings * 0.4), 0, 0, 1);
+        if(v !=0)
+        this.scene.rotate(0.5*Math.sin(rwings*v*3), 0, 0, 1);
+        else
+        this.scene.rotate(0.5*Math.sin(rwings * 0.3), 0, 0, 1);
         
         this.scene.pushMatrix();
         this.scene.translate(-0.4 - 0.74, 0.1, 0.5);

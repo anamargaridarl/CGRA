@@ -100,7 +100,7 @@ class MyBird extends CGFobject {
         this.scene.scale(this.birdScale, this.birdScale, this.birdScale);
         this.body.displayBody();
         this.scene.axis.display();
-        this.wings.displayWings(this.rwings);
+        this.wings.displayWings(this.rwings, this.v);
         this.scene.popMatrix();
     }
 
@@ -163,20 +163,21 @@ class MyBird extends CGFobject {
     updatePosition(t) {
 
         if (this.v != this.semfactor * this.speedfactor)
+        {
             this.v = this.semfactor * this.speedfactor;
+        }
 
         this.fallUpdate();
         this.riseUpdate();
 
-        this.y = (this.initialy + Math.sin(t * 2 * Math.PI));
+        this.y = (this.initialy + 0.4*Math.sin(t * 2 * Math.PI));
 
         if (this.v != 0) {
             this.z -= Math.cos(this.rotatefactor) * this.v;
             this.x -= Math.sin(this.rotatefactor) * this.v;
-            this.rwings = (this.initialy + 2 * Math.sin(t * this.v));
         }
-        else
-            this.rwings = (this.initialy + 2 * Math.sin(t * 0.5));
+      
+            this.rwings = (this.initialy +  t * 10);
 
     }
 
