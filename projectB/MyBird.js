@@ -34,7 +34,6 @@ class MyBird extends CGFobject {
     }
 
     startFall(branches) {
-        this.v = 3;
         this.yP = this.y;
         this.fall = true;
         this.branches = branches;
@@ -163,22 +162,21 @@ class MyBird extends CGFobject {
 
     updatePosition(t) {
 
-        if (this.v != this.semfactor * this.speedfactor)
-        {
+        if (this.v != this.semfactor * this.speedfactor) {
             this.v = this.semfactor * this.speedfactor;
         }
 
         this.fallUpdate();
         this.riseUpdate();
 
-        this.y = (this.initialy + 0.4*Math.sin(t * 2 * Math.PI));
+        this.y = (this.initialy + 0.4 * Math.sin(t * 2 * Math.PI));
 
         if (this.v != 0) {
             this.z -= Math.cos(this.rotatefactor) * this.v;
             this.x -= Math.sin(this.rotatefactor) * this.v;
         }
-      
-            this.rwings = (this.initialy +  t * 10);
+
+        this.rwings = (this.initialy + t * 10);
 
     }
 
