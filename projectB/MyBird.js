@@ -20,7 +20,7 @@ class MyBird extends CGFobject {
 
         this.rwings = 0;
         this.v = 0;
-        this.semfactor=0;
+        this.semfactor = 0;
 
         this.fall = false;
         this.rise = false;
@@ -29,7 +29,7 @@ class MyBird extends CGFobject {
         this.birdBranches;
         this.speedfactor = 1;
 
-        this.scaleFactor = 1;
+        this.birdScale = 1;
 
     }
 
@@ -46,8 +46,8 @@ class MyBird extends CGFobject {
 
     differenceCoords(i, j) {
 
-        console.log(Math.abs(i-j))
-        if (Math.abs(i - j) < 4)
+        console.log(Math.abs(i - j))
+        if (Math.abs(i - j) < 2)
             return true;
         else
             return false;
@@ -78,7 +78,7 @@ class MyBird extends CGFobject {
                 this.birdBranches.y = nest.y + 0.5;
                 this.birdBranches.z = nest.z;
                 this.birdBranches.ang = Math.random() * (2 * Math.PI);
-        
+
 
                 branches.push(this.birdBranches)
                 this.birdBranches = null;
@@ -97,6 +97,7 @@ class MyBird extends CGFobject {
         this.scene.rotate(this.rotatefactor, 0, 1, 0);
         this.scene.pushMatrix();
         this.displayBirdBranches();
+        this.scene.scale(this.birdScale, this.birdScale, this.birdScale);
         this.body.displayBody();
         this.scene.axis.display();
         this.wings.displayWings(this.rwings);
@@ -106,9 +107,9 @@ class MyBird extends CGFobject {
     displayBirdBranches() {
         if (this.birdBranches != undefined) {
 
-            this.birdBranches.x = 1; //small adjustment to rotation
+            this.birdBranches.x = -0.5;
             this.birdBranches.y = 0.5;
-            this.birdBranches.z = -0.5;
+            this.birdBranches.z = -1;
             this.birdBranches.ang = Math.PI / 2;
 
             this.birdBranches.display();
@@ -130,7 +131,6 @@ class MyBird extends CGFobject {
             this.move();
             this.scene.popMatrix();
         }
-
 
     }
 
@@ -162,7 +162,7 @@ class MyBird extends CGFobject {
 
     updatePosition(t) {
 
-        if(this.v != this.semfactor * this.speedfactor)
+        if (this.v != this.semfactor * this.speedfactor)
             this.v = this.semfactor * this.speedfactor;
 
         this.fallUpdate();
@@ -186,8 +186,8 @@ class MyBird extends CGFobject {
 
     accelerate(v) {
 
-        this.semfactor += v ;
-        this.v =  this.semfactor * this.speedfactor;
+        this.semfactor += v;
+        this.v = this.semfactor * this.speedfactor;
 
         console.log(this.v)
         if (this.v <= 0.0005) {

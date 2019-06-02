@@ -61,6 +61,12 @@ class MyScene extends CGFscene {
         for (var i = 0; i < 12; ++i) {
             this.plants.push(new MyLSPlant(this));
         }
+
+        var cubeT = new CGFappearance(this)
+        cubeT.loadTexture('images/beak.jpeg');
+
+        var cubeText = [cubeT, cubeT, cubeT, cubeT];
+        this.cube = new MyUnitCubeQuad(this,cubeText);
     }
 
     displayBranches() {
@@ -172,8 +178,8 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix()
-        this.scale(4, 4, 4)
-        this.translate(-3, 1, -1);
+        this.scale(4,4,3);
+        this.translate(-2, 0, -2);
         this.house.display();
         this.popMatrix();
 
@@ -186,10 +192,17 @@ class MyScene extends CGFscene {
         this.displayBranches();
         this.popMatrix();
 
+        this.pushMatrix();
         this.nest.display();
+        this.popMatrix();
+
 
         this.pushMatrix();
-        this.scale(this.bird.scaleFactor, this.bird.scaleFactor, this.bird.scaleFactor)
+        this.translate(0,0.5,0)
+        this.cube.display();
+        this.popMatrix();
+
+        this.pushMatrix();
         this.bird.display();
         this.popMatrix();
 
