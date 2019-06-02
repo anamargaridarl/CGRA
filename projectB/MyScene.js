@@ -8,10 +8,9 @@ class MyScene extends CGFscene {
     }
 
     randomBranches() {
-        this.branches.push(new MyTreeBranch(this, this.branchTexture, 0, 0, 2, 0));
 
-        for (var i = 0; i < 4; i++) {
-            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
+        for (var i = 0; i < 5; i++) {
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -10) - 10, 0.1, Math.random() * (10 - -10) - 10, Math.random() * (2 * Math.PI)));
         }
     }
 
@@ -193,6 +192,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
+        this.scale(0.8,0.8,0.8)
         this.nest.display();
         this.popMatrix();
 
