@@ -121,7 +121,7 @@ class MyScene extends CGFscene {
                 this.bird.lookBranches(this.branches);
         }
 
-        this.bird.updatePosition(t / 100 % 1000);
+        this.bird.updatePosition(t / 1000 % 1000);
         this.checkKeys();
     }
 
