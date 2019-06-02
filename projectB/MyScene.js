@@ -61,11 +61,7 @@ class MyScene extends CGFscene {
             this.plants.push(new MyLSPlant(this));
         }
 
-        var cubeT = new CGFappearance(this)
-        cubeT.loadTexture('images/beak.jpeg');
-
-        var cubeText = [cubeT, cubeT, cubeT, cubeT];
-        this.cube = new MyUnitCubeQuad(this,cubeText);
+        this.setUpdatePeriod(1000/60);
     }
 
     displayBranches() {
@@ -120,7 +116,7 @@ class MyScene extends CGFscene {
                 this.bird.lookBranches(this.branches);
         }
 
-        this.bird.updatePosition(t / 1000 % 1000);
+        this.bird.updatePosition(t);
         this.checkKeys();
     }
 
