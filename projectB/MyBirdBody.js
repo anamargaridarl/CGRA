@@ -30,13 +30,13 @@ class MyBirdBody extends CGFobject {
 
         //Eyes
         this.scene.pushMatrix();
-        this.scene.translate(0.2, 0.7, -0.5);
+        this.scene.translate(0.1, 0.4, -0.2);
         this.scene.scale(0.1, 0.1, 0.1);
         this.eyes.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(-0.2, 0.7, -0.5);
+        this.scene.translate(-0.1, 0.4, -0.2);
         this.scene.scale(0.1, 0.1, 0.1);
         this.eyes.display();
         this.scene.popMatrix();
@@ -44,7 +44,7 @@ class MyBirdBody extends CGFobject {
         //Beak
         this.scene.pushMatrix();
         this.beakText.apply();
-        this.scene.translate(0, 0.5, - 0.5);
+        this.scene.translate(0, 0.2, -0.1);
         this.scene.rotate(-Math.PI / 2, 1, 0, 0);
         this.scene.scale(0.1, 0.4, 0.1);
         this.beak.display();
@@ -53,7 +53,7 @@ class MyBirdBody extends CGFobject {
         //Head
         this.scene.pushMatrix();
         this.feathers.apply();
-        this.scene.scale(0.5,0.5,0.5)
+        this.scene.scale(0.25,0.25,0.25)
         this.scene.translate(0, 1, 0);
         this.bodyhead.display();
         this.scene.popMatrix();
@@ -61,7 +61,7 @@ class MyBirdBody extends CGFobject {
         //Body
         this.scene.pushMatrix();
         this.feathers.apply();
-        this.scene.scale(0.6,0.6,0.9);
+        this.scene.scale(0.25,0.30,0.5);
         this.scene.translate(0, 0.2, 1);
         this.bodyhead.display();
         this.scene.popMatrix();
@@ -69,10 +69,18 @@ class MyBirdBody extends CGFobject {
         //Tail
         this.scene.pushMatrix();
         this.tailText.apply();
-        this.scene.translate(0, 0, 2.3);
-        this.scene.scale(0.3,0.5,0.5);
-        this.scene.rotate(-Math.PI/5,0,1,0)
+        this.scene.translate(-0.1, 0, 1);
+        this.scene.scale(0.1,0.1,0.2);
+        this.scene.rotate(-Math.PI ,0,1,0)
         this.scene.rotate(Math.PI/2,1,0,0)
+        this.tail.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.tailText.apply();
+        this.scene.translate(0.1, 0, 1);
+        this.scene.scale(0.1,0.1,0.2);
+        this.scene.rotate(-Math.PI/2,1,0,0)
         this.tail.display();
         this.scene.popMatrix();
 
