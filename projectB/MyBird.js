@@ -25,6 +25,7 @@ class MyBird extends CGFobject {
         this.fall = false;
         this.rise = false;
         this.yP = 1000;
+        this.lastT = 0;
 
         this.birdBranches;
         this.speedfactor = 1;
@@ -134,11 +135,11 @@ class MyBird extends CGFobject {
 
     }
 
-    riseUpdate() {
+    riseUpdate(t) {
 
         if (this.rise) {
             if (this.yP < this.y) {
-                this.yP += this.v;
+                this.yP += Math.abs(Math.sin((t - this.lastT) / (Math.PI * 60)))
             }
             else {
                 this.rise = false;
@@ -147,12 +148,12 @@ class MyBird extends CGFobject {
         }
     }
 
-    fallUpdate() {
+    fallUpdate(t) {
 
         if (this.fall) {
 
             if (this.yP > 0) {
-                this.yP -= this.v;
+                this.yP -= Math.abs(Math.sin((t - this.lastT) / (Math.PI * 60)));
             }
             else {
                 this.startRise();
@@ -166,17 +167,20 @@ class MyBird extends CGFobject {
             this.v = this.semfactor * this.speedfactor;
         }
 
-        this.fallUpdate();
-        this.riseUpdate();
+        this.fallUpdate(t);
+        this.riseUpdate(t);
 
-        this.y = (this.initialy + 0.4 * Math.sin(t * 2 * Math.PI));
+        this.y = (this.initialy + 0.3 * Math.sin(t / (Math.PI * 2) / 60));
 
         if (this.v != 0) {
             this.z -= Math.cos(this.rotatefactor) * this.v;
             this.x -= Math.sin(this.rotatefactor) * this.v;
+            this.rwings = 0.5 * (Math.sin(t / (Math.PI * 60) * this.v * 10));
         }
+        else
+            this.rwings = 0.5 * (Math.sin(t / (Math.PI * 60) * this.speedfactor));
 
-        this.rwings = (this.initialy + t * 10);
+        this.lastT = t;
 
     }
 
