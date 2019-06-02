@@ -34,6 +34,7 @@ class MyBird extends CGFobject {
     }
 
     startFall(branches) {
+        this.v = 3;
         this.yP = this.y;
         this.fall = true;
         this.branches = branches;
