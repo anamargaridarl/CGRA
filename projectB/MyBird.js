@@ -100,7 +100,6 @@ class MyBird extends CGFobject {
         this.displayBirdBranches();
         this.scene.scale(this.birdScale, this.birdScale, this.birdScale);
         this.body.displayBody();
-        this.scene.axis.display();
         this.wings.displayWings(this.rwings, this.v);
         this.scene.popMatrix();
     }
