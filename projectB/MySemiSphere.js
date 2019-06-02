@@ -19,8 +19,8 @@ class MySemiSphere extends CGFobject {
 
         var betaSphere = (Math.PI * 0.5) / this.stacks;
 
-        for (var j = 0; j < this.stacks + 1; j++) {
-            for (i = 0; i < this.slices; i++) {
+        for (var i = 0; i < this.stacks + 1; i++) {
+            for (var j = 0; j < this.slices; j++) {
 
                 this.vertices.push(Math.cos(alpha * i) * Math.cos(betaSphere * j), Math.sin(alpha * i) * Math.cos(betaSphere * j), Math.sin(betaSphere * j));
 
@@ -31,17 +31,17 @@ class MySemiSphere extends CGFobject {
             }
         }
 
-        for (var j = 0; j < this.stacks; j++) {
-            for (var i = 0; i < this.slices; i++) {
+        for (var i = 0; i < this.stacks; i++) {
+            for (var j = 0; j  < this.slices; j++) {
 
-                if (i == this.slices - 1) {
-                    //0
-                    this.indices.push(this.slices * j, this.slices * (j + 1), i + this.slices * (j + 1));
-                    this.indices.push(this.slices * j, i + this.slices * (j + 1), i + this.slices * j);
+                if (j == this.slices - 1) {
+                   
+                    this.indices.push(this.slices * i, this.slices * (i + 1), j + this.slices * (i + 1));
+                    this.indices.push(this.slices * i, j + this.slices * (i + 1), j + this.slices * i);
                 } else {
-                    //1
-                    this.indices.push(i + this.slices * j, 1 + i + this.slices * j, i + this.slices * (j + 1));
-                    this.indices.push(1 + i + this.slices * j, 1 + i + this.slices * (j + 1), i + this.slices * (j + 1));
+                 
+                    this.indices.push(j + this.slices * i, 1 + j + this.slices * i, j + this.slices * (i + 1));
+                    this.indices.push(1 + j + this.slices * i, 1 + j + this.slices * (i + 1), j + this.slices * (i + 1));
                 }
 
             }
