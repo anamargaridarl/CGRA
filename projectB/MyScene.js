@@ -10,7 +10,7 @@ class MyScene extends CGFscene {
     randomBranches() {
 
         for (var i = 0; i < 5; i++) {
-            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -5) -5, 0.1, Math.random() * (10 - -5) - 5, Math.random() * (2 * Math.PI)));
+            this.branches.push(new MyTreeBranch(this, this.branchTexture, Math.random() * (10 - -4) -4, 0.1, Math.random() * (10 - -4) - 4, Math.random() * (2 * Math.PI)));
         }
     }
 
