@@ -27,7 +27,6 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
         this.enableTextures(true);
-        this.setUpdatePeriod(50);
 
         this.appearance = new CGFappearance(this);
 
@@ -38,11 +37,10 @@ class MyScene extends CGFscene {
         this.plane = new MyTerrain(this, 32);
 
         this.house = new MyHouse(this);
-        this.cubemap = new MyCubeMap(this, 'images/skybox_day5.png');
+        this.cubemap = new MyCubeMap(this, 'images/skybox.png');
 
-        // TODO: mudar para valores a serio
         this.bird = new MyBird(this, 0, 3, 2, 0, 0);
-        this.nest = new MyNest(this, 2, 0, 5);
+        this.nest = new MyNest(this, 1, 0, 5);
 
         this.branchTexture = new CGFappearance(this);
         this.branchTexture.loadTexture('images/column3.png');
@@ -111,7 +109,6 @@ class MyScene extends CGFscene {
         }
 
         if (this.bird.yP <= 0.001) {
-            console.log("meias")
             if (!this.bird.lookNest(this.nest, this.branches))
                 this.bird.lookBranches(this.branches);
         }
@@ -173,8 +170,8 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix()
+        this.translate(-8, 2, -2);
         this.scale(4,4,3);
-        this.translate(-4, 0, -2);
         this.house.display();
         this.popMatrix();
 
@@ -188,7 +185,6 @@ class MyScene extends CGFscene {
         this.popMatrix();
 
         this.pushMatrix();
-        this.scale(0.8,0.8,0.8)
         this.nest.display();
         this.popMatrix();
 

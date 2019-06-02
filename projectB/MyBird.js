@@ -110,7 +110,7 @@ class MyBird extends CGFobject {
 
             this.birdBranches.x = -0.5;
             this.birdBranches.y = 0.5;
-            this.birdBranches.z = -1;
+            this.birdBranches.z = -0.5;
             this.birdBranches.ang = Math.PI / 2;
 
             this.birdBranches.display();
