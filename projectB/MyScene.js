@@ -58,7 +58,7 @@ class MyScene extends CGFscene {
 
         this.plants = []
 
-        for (var i = 0; i < 12; ++i) {
+        for (var i = 0; i < 5; ++i) {
             this.plants.push(new MyLSPlant(this));
         }
 
@@ -179,7 +179,7 @@ class MyScene extends CGFscene {
 
         this.pushMatrix()
         this.scale(4,4,3);
-        this.translate(-2, 0, -2);
+        this.translate(-4, 0, -2);
         this.house.display();
         this.popMatrix();
 
@@ -219,6 +219,7 @@ class MyScene extends CGFscene {
 
     drawTrees() {
         this.pushMatrix();
+        this.translate(8, 0, 5);
         this.plants[0].display();
         this.translate(10, 0, 0);
         this.plants[1].display();
@@ -228,20 +229,6 @@ class MyScene extends CGFscene {
         this.plants[3].display();
         this.translate(-2, 0, 5);
         this.plants[4].display();
-        this.translate(10, 0, -3);
-        this.plants[5].display();
-        this.translate(4, 0, 1);
-        this.plants[6].display();
-        this.translate(0, 0, 10);
-        this.plants[7].display();
-        this.translate(5, 5, 5);
-        this.plants[8].display();
-        this.translate(-4, 0, -6);
-        this.plants[9].display();
-        this.translate(0, -10, -30);
-        this.plants[10].display();
-        this.translate(5, 0, 3);
-        this.plants[11].display();
         this.popMatrix();
     }
 
