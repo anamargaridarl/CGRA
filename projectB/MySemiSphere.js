@@ -22,11 +22,11 @@ class MySemiSphere extends CGFobject {
         for (var i = 0; i < this.stacks + 1; i++) {
             for (var j = 0; j < this.slices; j++) {
 
-                this.vertices.push(Math.cos(alpha * i) * Math.cos(betaSphere * j), Math.sin(alpha * i) * Math.cos(betaSphere * j), Math.sin(betaSphere * j));
+                this.vertices.push(Math.cos(alpha * j) * Math.cos(betaSphere * i), Math.sin(alpha * j) * Math.cos(betaSphere * i), Math.sin(betaSphere * i));
 
-                this.normals.push(Math.cos(alpha * i) * Math.cos(betaSphere * j), Math.sin(alpha * i) * Math.cos(betaSphere * j), Math.sin(betaSphere * j));
+                this.normals.push(Math.cos(alpha * j) * Math.cos(betaSphere * i), Math.sin(alpha * j) * Math.cos(betaSphere * i), Math.sin(betaSphere * i));
 
-                this.texCoords.push((Math.cos(i * alpha) * Math.cos(betaSphere * j) + 1) / 2, (Math.sin(i * alpha) * Math.cos(betaSphere * j) + 1) / 2);
+                this.texCoords.push((Math.cos(j * alpha) * Math.cos(betaSphere * i) + 1) / 2, (Math.sin( alpha * j) * Math.cos(betaSphere * i) + 1) / 2);
 
             }
         }
