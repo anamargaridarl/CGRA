@@ -168,7 +168,7 @@ class MyBird extends CGFobject {
         this.fallUpdate();
         this.riseUpdate();
 
-        this.y = (this.initialy + 2 * Math.sin(t * 0.1));
+        this.y = (this.initialy + Math.sin(t * 0.2 * Math.PI));
 
         if (this.v != 0) {
             this.z -= Math.cos(this.rotatefactor) * this.v;
